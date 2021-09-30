@@ -37,6 +37,8 @@ API.Plugins.settings = {
 								html += '<select name="branch">';
 								console.log("Adding branches");
 								for(const [key, branch] of Object.entries(settings.output.repository.branches)){
+									console.log(branch);
+									console.log(settings.output.repository.branch);
 									if(branch != ''){
 										if(settings.output.repository.branch == branch){
 											html += '<option value="'+branch+'" selected>'+API.Helper.ucfirst(branch)+'</option>';
