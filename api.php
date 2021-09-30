@@ -63,7 +63,6 @@ class settingsAPI extends API {
 		if(isset($data)){
 			if(!is_array($data)){ $data = json_decode($data, true); }
 			$data['silent']=true;
-			var_dump($data);
 			return $this->__update($data);
 		}
 	}
