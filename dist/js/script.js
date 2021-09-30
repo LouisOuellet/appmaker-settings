@@ -11,6 +11,8 @@ API.Plugins.settings = {
 				API.request('settings','fetch',function(result){
 					settings = JSON.parse(result);
 					API.Plugins.settings.GUI.Tabs.add('overview',function(content, tab){
+						console.log(content);
+						console.log(settings);
 						var html = '';
 						html += '<h3>'+API.Contents.Language['Security & Setup Warnings']+'</h3>';
 						html += '<ul>';
@@ -22,6 +24,8 @@ API.Plugins.settings = {
 							html += '</li>';
 						}
 						html += '</ul>';
+						console.log(content);
+						console.log(settings);
 						html += '<hr>';
 						html += '<h3>'+API.Contents.Language['Updates']+'</h3>';
 						html += '<div class="form-group">';
