@@ -371,6 +371,7 @@ API.Plugins.settings = {
 								switch($(this).attr('name')){
 									case'SaveSQL':
 										var data = {};
+										data.sql = {};
 										data.sql.host = content.find('input[name="host"]').val();
 										settings.sql.host = content.find('input[name="host"]').val();
 										data.sql.database = content.find('input[name="database"]').val();
@@ -444,6 +445,7 @@ API.Plugins.settings = {
 								switch($(this).attr('name')){
 									case'SaveSMTP':
 										var data = {};
+										data.smtp = {};
 										data.smtp.host = content.find('input[name="host"]').val();
 										settings.smtphost = content.find('input[name="host"]').val();
 										data.smtp.port = content.find('input[name="port"]').val();
