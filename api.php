@@ -2,6 +2,7 @@
 class settingsAPI extends API {
 
 	public function fetch(){
+
 		// Last Background Job
 		$datetime1 = new DateTime($this->Settings["last_background_jobs"]);
 		$datetime2 = new DateTime(date("Y-m-d H:i:s"));
@@ -12,6 +13,15 @@ class settingsAPI extends API {
 		elseif($interval->format('%d') > 0){ $isJobOld = true; }
 		elseif($interval->format('%H') > 0){ $isJobOld = true; }
 		elseif($interval->format('%i') > 5){ $isJobOld = true; }
+
+		// Fetch Manifest
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, $this->Settings['repository']['host']['raw'].$this->Settings['repository']['name'].'/'.$this->Settings['repository']['branch'].$this->Settings['repository']['manifest']);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    $manifest = json_decode(curl_exec($curl), true);
+    curl_close($curl);
+
+		// Return
 		return [
 			"success" => $this->Language->Field["This request was successfull"],
 			"request" => $request,
@@ -23,6 +33,7 @@ class settingsAPI extends API {
 					'age' => $this->getTimeDiff($this->Settings["last_background_jobs"],date("Y-m-d H:i:s")),
 				],
 				'directory' => dirname(__FILE__,3),
+				"manifest" => $manifest,
 			],
 		];
 		// $config = $this->Settings;
@@ -33,17 +44,6 @@ class settingsAPI extends API {
 		// 		if(is_file($file)){ array_push($pages,$plugin); }
 		// 	}
 		// }
-		// // Adding Extras
-		// $config['extra'] = [
-		// 	'last_background_jobs' => [
-		// 		'time' => $this->getTimeDiff($this->Settings["last_background_jobs"],date("Y-m-d H:i:s")),
-		// 		'directory' => dirname(__FILE__,3),
-		// 		'age' => $isJobOld,
-		// 	],
-		// 	'lsp' => [
-		// 		'branches' => explode("\n",shell_exec("git branch -r")),
-		// 		'current' => $this->LSP->Update,
-		// 	],
 		// 	'whoami' => exec('whoami'),
 		// 	'languages' => scandir(dirname(__FILE__,3).'/dist/languages/'),
 		// 	'pages' => $pages,

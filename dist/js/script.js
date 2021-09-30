@@ -13,6 +13,7 @@ API.Plugins.settings = {
 					cron = json.output.cron;
 					directory = json.output.directory;
 					settings = json.output.settings;
+					manifest = json.output.manifest;
 					API.Plugins.settings.GUI.Tabs.add('overview',function(content, tab){
 						var html = '';
 						html += '<h3>'+API.Contents.Language['Security & Setup Warnings']+'</h3>';
@@ -50,23 +51,23 @@ API.Plugins.settings = {
 								html += '</div>';
 							html += '</div>';
 						html += '</div>';
-						// if(API.Plugins.settings.element.data.extra.lsp.current){
-						// 	html += '<div class="form-group">';
-						// 		html += '<div class="input-group">';
-						// 			html += '<div class="input-group-prepend">';
-						// 				html += '<span class="input-group-text">';
-						// 					html += '<i class="fas fa-exclamation-circle mr-1"></i>'+API.Contents.Language['A new version is available'];
-						// 					html += '<i class="fas fa-chevron-right ml-1"></i>';
-						// 				html += '</span>';
-						// 			html += '</div>';
-						// 			html += '<div class="input-group-append">';
-				    //         html += '<button type="button" name="StartUpdate" class="btn btn-primary">';
-				    //           html += '<i class="fas fa-cloud-download-alt mr-1"></i></i>'+API.Contents.Language['Update'];
-				    //         html += '</button>';
-						// 			html += '</div>';
-						// 		html += '</div>';
-						// 	html += '</div>';
-						// }
+						if(settings.build < manifest.build){
+							html += '<div class="form-group">';
+								html += '<div class="input-group">';
+									html += '<div class="input-group-prepend">';
+										html += '<span class="input-group-text">';
+											html += '<i class="fas fa-exclamation-circle mr-1"></i>'+API.Contents.Language['A new version is available'];
+											html += '<i class="fas fa-chevron-right ml-1"></i>';
+										html += '</span>';
+									html += '</div>';
+									html += '<div class="input-group-append">';
+				            html += '<button type="button" name="StartUpdate" class="btn btn-primary">';
+				              html += '<i class="fas fa-cloud-download-alt mr-1"></i></i>'+API.Contents.Language['Update'];
+				            html += '</button>';
+									html += '</div>';
+								html += '</div>';
+							html += '</div>';
+						}
 						content.html(html);
 						content.find('select').select2({ theme: 'bootstrap4' });
 						content.find('button').each(function(){
