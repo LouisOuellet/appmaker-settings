@@ -2,5 +2,7 @@
 		"settings": "settings",
 		"Settings": "Settings",
 		"Settings Saved": "Settings Saved",
-		"Application Updated": "Application Updated"
+		"Application updated successfully": "Application updated successfully",
+		"No updates available": "No updates available",
+		"Application not activated": "Application not activated"
 }
