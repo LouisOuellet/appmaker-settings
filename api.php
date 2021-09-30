@@ -42,7 +42,11 @@ class settingsAPI extends APIextend {
 			return $this->SaveCfg($data['settings']);
 		}
 	}
-	public function updateAPP(){
-		return $this->__update();
+	public function update($request, $data){
+		if(isset($data)){
+			if(!is_array($data)){ $data = json_decode($data, true); }
+			$data['silent']=true;
+			return $this->__update($data);
+		}
 	}
 }
