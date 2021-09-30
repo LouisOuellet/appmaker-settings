@@ -9,18 +9,22 @@ API.Plugins.settings = {
 		Tabs:{
 			init:function(){
 				API.request('settings','fetch',function(result){
-					settings = JSON.parse(result);
+					json = JSON.parse(result);
+					cron = json.output.cron;
+					directory = json.output.directory;
+					settings = json.output.settings;
 					API.Plugins.settings.GUI.Tabs.add('overview',function(content, tab){
 						console.log(content);
+						console.log(json);
 						console.log(settings);
 						var html = '';
 						html += '<h3>'+API.Contents.Language['Security & Setup Warnings']+'</h3>';
 						html += '<ul>';
 						if(location.protocol !== 'https:'){ html += '<li>'+API.Contents.Language['HyperText Transfer Protocol Secure is currently not running.']+'</li>'; }
-						if(settings.output.cron.status){
+						if(cron.status){
 							html += '<li>';
-								html += API.Contents.Language['It has been']+' '+settings.output.cron.age+' '+API.Contents.Language['since the last cron ran.']+'<br />';
-								html += API.Contents.Language['Make sure to setup your CRON as followed']+': <code>* * * * * php '+settings.output.directory+'/cli.php --cron</code>';
+								html += API.Contents.Language['It has been']+' '+cron.age+' '+API.Contents.Language['since the last cron ran.']+'<br />';
+								html += API.Contents.Language['Make sure to setup your CRON as followed']+': <code>* * * * * php '+directory+'/cli.php --cron</code>';
 							html += '</li>';
 						}
 						html += '</ul>';
@@ -36,11 +40,11 @@ API.Plugins.settings = {
 								html += '</div>';
 								html += '<select name="branch">';
 								console.log("Adding branches");
-								for(const [key, branch] of Object.entries(settings.output.repository.branches)){
+								for(const [key, branch] of Object.entries(settings.repository.branches)){
 									console.log(branch);
-									console.log(settings.output.repository.branch);
+									console.log(settings.repository.branch);
 									if(branch != ''){
-										if(settings.output.repository.branch == branch){
+										if(settings.repository.branch == branch){
 											html += '<option value="'+branch+'" selected>'+API.Helper.ucfirst(branch)+'</option>';
 										} else { html += '<option value="'+branch+'">'+API.Helper.ucfirst(branch)+'</option>'; }
 									}
@@ -79,8 +83,8 @@ API.Plugins.settings = {
 								switch($(this).attr('name')){
 									case'StartUpdate': API.request('settings','update');break;
 									case'ChangeBranch':
-										settings.output.repository.branch = content.find('select').val();
-										API.request('settings','save',{data:{repository:settings.output.repository}});
+										settings.repository.branch = content.find('select').val();
+										API.request('settings','save',{data:{repository:settings.repository}});
 										break;
 								}
 							});
