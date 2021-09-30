@@ -73,7 +73,7 @@ API.Plugins.settings = {
 						content.find('button').each(function(){
 							$(this).off().click(function(){
 								switch($(this).attr('name')){
-									case'StartUpdate': API.request('settings','update');break;
+									case'StartUpdate': API.request('settings','update',{data:[]});break;
 									case'ChangeBranch':
 										settings.repository.branch = content.find('select').select2('val');
 										API.request('settings','save',{data:{repository:settings.repository}});
