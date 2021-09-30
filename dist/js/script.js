@@ -273,16 +273,6 @@ API.Plugins.settings = {
 								}
 							});
 						});
-						content.html(html);
-						content.find('button').each(function(){
-							$(this).click(function(){
-								var key = $(this).attr('name');
-								var settings = {};
-								settings[key] = content.find('input[name='+key+']')[0].checked;
-								settings.customization = API.Contents.Settings.customization;
-								API.request('settings','save',{data:{settings:settings}});
-							});
-						});
 					});
 					// API.Plugins.settings.GUI.Tabs.add('SQL',function(content, tab){
 					// 	var html = '';
