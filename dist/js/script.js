@@ -51,6 +51,8 @@ API.Plugins.settings = {
 								html += '</div>';
 							html += '</div>';
 						html += '</div>';
+						console.log(settings.build);
+						console.log(manifest.build);
 						if(settings.build < manifest.build){
 							html += '<div class="form-group">';
 								html += '<div class="input-group">';
