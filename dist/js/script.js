@@ -14,6 +14,9 @@ API.Plugins.settings = {
 					directory = json.output.directory;
 					settings = json.output.settings;
 					manifest = json.output.manifest;
+					languages = json.output.languages;
+					timezones = json.output.timezones;
+					pages = json.output.pages;
 					API.Plugins.settings.GUI.Tabs.add('overview',function(content, tab){
 						var html = '';
 						html += '<h3>'+API.Contents.Language['Security & Setup Warnings']+'</h3>';
@@ -84,105 +87,104 @@ API.Plugins.settings = {
 							});
 						});
 					});
-					// API.Plugins.settings.GUI.Tabs.add('basic',function(content, tab){
-					// 	var html = '', checked = '';
-					// 	html += '<h3>'+API.Contents.Language['Background Jobs']+'</h3>';
-					// 	html += '<div class="form-group clearfix">';
-		      //     html += '<div class="icheck-primary">';
-					// 			if(API.Plugins.settings.element.data.background_jobs == 'ajax'){ checked = 'checked'; } else { checked = ''; }
-		      //       html += '<input type="radio" id="background_jobs1" value="ajax" name="background_jobs" '+checked+'>';
-		      //       html += '<label for="background_jobs1">'+API.Contents.Language['AJAX']+'</label>';
-		      //       html += '<p class="text-muted" style="margin-left:30px;">'+API.Contents.Language['Execute one task with each page loaded']+'</p>';
-		      //     html += '</div>';
-		      //     html += '<div class="icheck-primary">';
-					// 			if(API.Plugins.settings.element.data.background_jobs == 'webcron'){ checked = 'checked'; } else { checked = ''; }
-		      //       html += '<input type="radio" id="background_jobs2" value="webcron" name="background_jobs" '+checked+'>';
-		      //       html += '<label for="background_jobs2">'+API.Contents.Language['Webcron']+'</label>';
-		      //       html += '<p class="text-muted" style="margin-left:30px;">'+API.Contents.Language['cron.php is registered at a webcron service to call cron.php every 5 minutes over HTTP.']+'</p>';
-		      //     html += '</div>';
-		      //     html += '<div class="icheck-primary">';
-					// 			if(API.Plugins.settings.element.data.background_jobs == 'cron'){ checked = 'checked'; } else { checked = ''; }
-		      //       html += '<input type="radio" id="background_jobs3" value="cron" name="background_jobs" '+checked+'>';
-		      //       html += '<label for="background_jobs3">'+API.Contents.Language['Cron']+'</label>';
-		      //       html += '<p class="text-muted" style="margin-left:30px;">'+API.Contents.Language['Use system cron service to call the cron.php file every 5 minutes. The cron.php needs to be executed by the system user']+' "'+API.Plugins.settings.element.data.extra.whoami+'".</p>';
-		      //     html += '</div>';
-		      //   html += '</div>';
-					// 	html += '<hr>';
-					// 	html += '<h3>'+API.Contents.Language['Language']+'</h3>';
-					// 	html += '<div class="form-group row">';
-		      //     html += '<div class="input-group">';
-		      //       html += '<div class="input-group-prepend">';
-		      //         html += '<span class="input-group-text">';
-		      //           html += '<i class="fas fa-globe"></i>';
-		      //         html += '</span>';
-		      //       html += '</div>';
-		      //       html += '<select class="form-control" name="language">';
-					// 				for(var [key, language] of Object.entries(API.Plugins.settings.element.data.extra.languages)){
-					// 					if((language != ".")&&(language != "..")){
-					// 						language = language.replace(/.json/g, "");
-					// 						if(API.Plugins.settings.element.data.language == language){
-					// 							html += '<option value="'+language+'" selected>'+API.Helper.ucfirst(language)+'</option>';
-					// 						} else { html += '<option value="'+language+'">'+API.Helper.ucfirst(language)+'</option>'; }
-					// 					}
-					// 				}
-		      //       html += '</select>';
-		      //     html += '</div>';
-		      //   html += '</div>';
-					// 	html += '<hr>';
-					// 	html += '<h3>'+API.Contents.Language['Timezone']+'</h3>';
-					// 	html += '<div class="form-group row">';
-		      //     html += '<div class="input-group">';
-		      //       html += '<div class="input-group-prepend">';
-		      //         html += '<span class="input-group-text">';
-		      //           html += '<i class="fas fa-clock"></i>';
-		      //         html += '</span>';
-		      //       html += '</div>';
-		      //       html += '<select class="form-control" name="timezone">';
-					// 				for(const [key, timezone] of Object.entries(API.Plugins.settings.element.data.Timezones)){
-					// 					if(API.Plugins.settings.element.data.timezone == timezone){
-					// 						html += '<option value="'+timezone+'" selected>'+timezone+'</option>';
-					// 					} else { html += '<option value="'+timezone+'">'+timezone+'</option>'; }
-					// 				}
-		      //       html += '</select>';
-		      //     html += '</div>';
-		      //   html += '</div>';
-					// 	html += '<hr>';
-					// 	html += '<h3>'+API.Contents.Language['Landing Page']+'</h3>';
-					// 	html += '<div class="form-group row">';
-		      //     html += '<div class="input-group">';
-		      //       html += '<div class="input-group-prepend">';
-		      //         html += '<span class="input-group-text">';
-		      //           html += '<i class="fas fa-columns"></i>';
-		      //         html += '</span>';
-		      //       html += '</div>';
-		      //       html += '<select class="form-control" name="page">';
-					// 				for(const [key, page] of Object.entries(API.Plugins.settings.element.data.extra.pages)){
-					// 					if(API.Plugins.settings.element.data.page == page){ html += '<option value="'+page+'" selected>'+API.Helper.ucfirst(page)+'</option>'; }
-					// 					else { html += '<option value="'+page+'">'+API.Helper.ucfirst(page)+'</option>'; }
-					// 				}
-		      //       html += '</select>';
-		      //     html += '</div>';
-		      //   html += '</div>';
-		      //   html += '<div class="form-group row">';
-	        //     html += '<div class="input-group">';
-          //       html += '<button type="button" name="SaveCRON" class="btn btn-success">';
-          //         html += '<i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save'];
-          //       html += '</button>';
-	        //     html += '</div>';
-		      //   html += '</div>';
-					// 	content.html(html);
-					// 	content.find('select').select2({ theme: 'bootstrap4' });
-					// 	content.find('button').click(function(){
-					// 		var settings = { background_jobs:content.find('input:checked').val() };
-					// 		content.find('select').each(function(){
-					// 			var key = $(this).attr('name');
-					// 			var value = $(this).select2('data')[0].id;
-					// 			settings[key] = value;
-					// 		});
-					// 		settings.customization = API.Contents.Settings.customization;
-					// 		API.request('settings','save',{data:{settings:settings}});
-					// 	});
-					// });
+					API.Plugins.settings.GUI.Tabs.add('basic',function(content, tab){
+						var html = '', checked = '';
+						html += '<h3>'+API.Contents.Language['Background Jobs']+'</h3>';
+						html += '<div class="form-group clearfix">';
+		          html += '<div class="icheck-primary">';
+								if(settings.background_jobs == 'service'){ checked = 'checked'; } else { checked = ''; }
+		            html += '<input type="radio" id="background_jobs1" value="service" name="background_jobs" '+checked+'>';
+		            html += '<label for="background_jobs1">'+API.Contents.Language['Service']+'</label>';
+		            html += '<p class="text-muted" style="margin-left:30px;">'+API.Contents.Language['The Service executes in a loop on the host system']+'</p>';
+		          html += '</div>';
+		          html += '<div class="icheck-primary">';
+								if(settings.background_jobs == 'cron'){ checked = 'checked'; } else { checked = ''; }
+		            html += '<input type="radio" id="background_jobs3" value="cron" name="background_jobs" '+checked+'>';
+		            html += '<label for="background_jobs3">'+API.Contents.Language['Cron']+'</label>';
+		            html += '<p class="text-muted" style="margin-left:30px;">'+API.Contents.Language['Use system cron service to call the cron.php file every 5 minutes. The cron.php needs to be executed by the system user']+' "'+settings.extra.whoami+'".</p>';
+		          html += '</div>';
+		        html += '</div>';
+						html += '<hr>';
+						html += '<h3>'+API.Contents.Language['Language']+'</h3>';
+						html += '<div class="form-group row">';
+		          html += '<div class="input-group">';
+		            html += '<div class="input-group-prepend">';
+		              html += '<span class="input-group-text">';
+		                html += '<i class="fas fa-globe"></i>';
+		              html += '</span>';
+		            html += '</div>';
+		            html += '<select class="form-control" name="language">';
+									for(var [key, language] of Object.entries(languages)){
+										if(settings.language == language){
+											html += '<option value="'+language+'" selected>'+API.Helper.ucfirst(language)+'</option>';
+										} else { html += '<option value="'+language+'">'+API.Helper.ucfirst(language)+'</option>'; }
+									}
+		            html += '</select>';
+		          html += '</div>';
+		        html += '</div>';
+						html += '<hr>';
+						html += '<h3>'+API.Contents.Language['Timezone']+'</h3>';
+						html += '<div class="form-group row">';
+		          html += '<div class="input-group">';
+		            html += '<div class="input-group-prepend">';
+		              html += '<span class="input-group-text">';
+		                html += '<i class="fas fa-clock"></i>';
+		              html += '</span>';
+		            html += '</div>';
+		            html += '<select class="form-control" name="timezone">';
+									for(const [key, timezone] of Object.entries(timezones)){
+										if(settings.timezone == timezone){
+											html += '<option value="'+timezone+'" selected>'+timezone+'</option>';
+										} else { html += '<option value="'+timezone+'">'+timezone+'</option>'; }
+									}
+		            html += '</select>';
+		          html += '</div>';
+		        html += '</div>';
+						html += '<hr>';
+						html += '<h3>'+API.Contents.Language['Landing Page']+'</h3>';
+						html += '<div class="form-group row">';
+		          html += '<div class="input-group">';
+		            html += '<div class="input-group-prepend">';
+		              html += '<span class="input-group-text">';
+		                html += '<i class="fas fa-columns"></i>';
+		              html += '</span>';
+		            html += '</div>';
+		            html += '<select class="form-control" name="page">';
+									for(const [key, page] of Object.entries(pages)){
+										if(settings.page == page){ html += '<option value="'+page+'" selected>'+API.Helper.ucfirst(page)+'</option>'; }
+										else { html += '<option value="'+page+'">'+API.Helper.ucfirst(page)+'</option>'; }
+									}
+		            html += '</select>';
+		          html += '</div>';
+		        html += '</div>';
+		        html += '<div class="form-group row">';
+	            html += '<div class="input-group">';
+                html += '<button type="button" name="SaveCRON" class="btn btn-success">';
+                  html += '<i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save'];
+                html += '</button>';
+	            html += '</div>';
+		        html += '</div>';
+						content.html(html);
+						content.find('select').select2({ theme: 'bootstrap4' });
+						content.find('button').each(function(){
+							$(this).off().click(function(){
+								switch($(this).attr('name')){
+									case'SaveCRON':
+										var data = {};
+										data.background_jobs = content.find('input:checked').val();
+										settings.background_jobs = content.find('input:checked').val();
+										data.language = content.find('select[name="language"]').select2('val');
+										settings.language = content.find('select[name="language"]').select2('val');
+										data.timezone = content.find('select[name="timezone"]').select2('val');
+										settings.timezone = content.find('select[name="timezone"]').select2('val');
+										data.page = content.find('select[name="page"]').select2('val');
+										settings.page = content.find('select[name="page"]').select2('val');
+										API.request('settings','save',{data:data});
+										break;
+								}
+							});
+						});
+					});
 					// API.Plugins.settings.GUI.Tabs.add('advanced',function(content, tab){
 					// 	var html = '', checked = '';
 					// 	html += '<h3>'+API.Contents.Language['Debug Mode']+'</h3>';
@@ -200,7 +202,7 @@ API.Plugins.settings = {
 				  //   html += '</p>';
 				  //   html += '<div class="form-group clearfix">';
 				  //     html += '<div class="icheck-primary">';
-					// 			if(API.Plugins.settings.element.data.debug){ checked = 'checked'; } else { checked = ''; }
+					// 			if(settings.debug){ checked = 'checked'; } else { checked = ''; }
 				  //       html += '<input type="checkbox" id="debug" name="debug" '+checked+'>';
 				  //       html += '<label for="debug">'+API.Contents.Language['Enable']+'</label>';
 				  //     html += '</div>';
@@ -225,7 +227,7 @@ API.Plugins.settings = {
 				  //   html += '</p>';
 				  //   html += '<div class="form-group clearfix">';
 				  //     html += '<div class="icheck-primary">';
-					// 			if(API.Plugins.settings.element.data.maintenance){ checked = 'checked'; } else { checked = ''; }
+					// 			if(settings.maintenance){ checked = 'checked'; } else { checked = ''; }
 				  //       html += '<input type="checkbox" id="maintenance" name="maintenance" '+checked+'>';
 				  //       html += '<label for="maintenance">'+API.Contents.Language['Enable']+'</label>';
 				  //     html += '</div>';
@@ -246,7 +248,7 @@ API.Plugins.settings = {
 				  //   html += '</p>';
 				  //   html += '<div class="form-group clearfix">';
 				  //     html += '<div class="icheck-primary">';
-					// 			if(API.Plugins.settings.element.data.developer){ checked = 'checked'; } else { checked = ''; }
+					// 			if(settings.developer){ checked = 'checked'; } else { checked = ''; }
 				  //       html += '<input type="checkbox" id="developer" name="developer" '+checked+'>';
 				  //       html += '<label for="developer">'+API.Contents.Language['Enable']+'</label>';
 				  //     html += '</div>';
@@ -277,13 +279,13 @@ API.Plugins.settings = {
 				  //           html += '<i class="fas fa-server"></i>';
 				  //         html += '</span>';
 				  //       html += '</div>';
-				  //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Host']+'" name="host" value="'+API.Plugins.settings.element.data.sql.host+'">';
+				  //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Host']+'" name="host" value="'+settings.sql.host+'">';
 					// 			html += '<div class="input-group-prepend">';
 				  //         html += '<span class="input-group-text">';
 				  //           html += '<i class="fas fa-database"></i>';
 				  //         html += '</span>';
 				  //       html += '</div>';
-				  //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Database']+'" name="database" value="'+API.Plugins.settings.element.data.sql.database+'">';
+				  //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Database']+'" name="database" value="'+settings.sql.database+'">';
 				  //     html += '</div>';
 				  //   html += '</div>';
 				  //   html += '<div class="form-group row">';
@@ -293,13 +295,13 @@ API.Plugins.settings = {
 				  //           html += '<i class="fas fa-user"></i>';
 				  //         html += '</span>';
 				  //       html += '</div>';
-				  //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Username']+'" name="username" value="'+API.Plugins.settings.element.data.sql.username+'">';
+				  //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Username']+'" name="username" value="'+settings.sql.username+'">';
 				  //       html += '<div class="input-group-prepend">';
 				  //         html += '<span class="input-group-text">';
 				  //           html += '<i class="fas fa-user-lock"></i>';
 				  //         html += '</span>';
 				  //       html += '</div>';
-				  //       html += '<input type="password" class="form-control" placeholder="'+API.Contents.Language['Password']+'" name="password" value="'+API.Plugins.settings.element.data.sql.password+'">';
+				  //       html += '<input type="password" class="form-control" placeholder="'+API.Contents.Language['Password']+'" name="password" value="'+settings.sql.password+'">';
 				  //     html += '</div>';
 				  //   html += '</div>';
 					// 	html += '<hr>';
@@ -311,7 +313,7 @@ API.Plugins.settings = {
 				  //           html += '<i class="fab fa-slack-hash"></i>';
 				  //         html += '</span>';
 				  //       html += '</div>';
-				  //       html += '<input type="number" class="form-control" name="SQLlimit" placeholder="'+API.Contents.Language['SQL Result Limit']+'" value="'+API.Plugins.settings.element.data.SQLlimit+'">';
+				  //       html += '<input type="number" class="form-control" name="SQLlimit" placeholder="'+API.Contents.Language['SQL Result Limit']+'" value="'+settings.SQLlimit+'">';
 				  //     html += '</div>';
 				  //   html += '</div>';
 				  //   html += '<div class="form-group row">';
@@ -361,23 +363,23 @@ API.Plugins.settings = {
 					// });
 					// API.Plugins.settings.GUI.Tabs.add('SMTP',function(content, tab){
 					// 	var html = '', checkSSL = '', checkSTARTTLS = '';
-					// 	if(typeof API.Plugins.settings.element.data.smtp === 'undefined'){
-					// 		API.Plugins.settings.element.data.smtp = { host:'', port:'', username:'', password:'', encryption:'' };
+					// 	if(typeof settings.smtp === 'undefined'){
+					// 		settings.smtp = { host:'', port:'', username:'', password:'', encryption:'' };
 					// 	}
-					// 	if(typeof API.Plugins.settings.element.data.smtp.host === 'undefined'){ API.Plugins.settings.element.data.smtp.host = ''; }
-					// 	if(typeof API.Plugins.settings.element.data.smtp.port === 'undefined'){ API.Plugins.settings.element.data.smtp.port = ''; }
-					// 	if(typeof API.Plugins.settings.element.data.smtp.username === 'undefined'){ API.Plugins.settings.element.data.smtp.username = ''; }
-					// 	if(typeof API.Plugins.settings.element.data.smtp.password === 'undefined'){ API.Plugins.settings.element.data.smtp.password = ''; }
-					// 	if(typeof API.Plugins.settings.element.data.smtp.encryption === 'undefined'){ API.Plugins.settings.element.data.smtp.encryption = ''; }
-					// 	if(API.Plugins.settings.element.data.smtp.encryption == 'SSL'){ checkSSL = 'selected' }
-					// 	if(API.Plugins.settings.element.data.smtp.encryption == 'STARTTLS'){ checkSTARTTLS = 'selected' }
+					// 	if(typeof settings.smtp.host === 'undefined'){ settings.smtp.host = ''; }
+					// 	if(typeof settings.smtp.port === 'undefined'){ settings.smtp.port = ''; }
+					// 	if(typeof settings.smtp.username === 'undefined'){ settings.smtp.username = ''; }
+					// 	if(typeof settings.smtp.password === 'undefined'){ settings.smtp.password = ''; }
+					// 	if(typeof settings.smtp.encryption === 'undefined'){ settings.smtp.encryption = ''; }
+					// 	if(settings.smtp.encryption == 'SSL'){ checkSSL = 'selected' }
+					// 	if(settings.smtp.encryption == 'STARTTLS'){ checkSTARTTLS = 'selected' }
 					// 	html += '<h3>'+API.Contents.Language['SMTP']+'</h3>';
 					// 	html += '<div class="form-group row">';
 		      //     html += '<div class="input-group">';
 		      //       html += '<div class="input-group-prepend">';
 		      //         html += '<span class="input-group-text"><i class="fas fa-server"></i></span>';
 		      //       html += '</div>';
-		      //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Host']+'" name="host" value="'+API.Plugins.settings.element.data.smtp.host+'">';
+		      //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Host']+'" name="host" value="'+settings.smtp.host+'">';
 		      //       html += '<div class="input-group-prepend">';
 		      //         html += '<span class="input-group-text"><i class="fas fa-key"></i></span>';
 		      //       html += '</div>';
@@ -388,7 +390,7 @@ API.Plugins.settings = {
 		      //       html += '<div class="input-group-prepend">';
 		      //         html += '<span class="input-group-text"><i class="fas fa-ethernet"></i></span>';
 		      //       html += '</div>';
-		      //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Port']+'" name="port" value="'+API.Plugins.settings.element.data.smtp.port+'">';
+		      //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Port']+'" name="port" value="'+settings.smtp.port+'">';
 		      //     html += '</div>';
 		      //   html += '</div>';
 					// 	html += '<div class="form-group row">';
@@ -396,11 +398,11 @@ API.Plugins.settings = {
           //       html += '<div class="input-group-prepend">';
           //         html += '<span class="input-group-text"><i class="fas fa-user"></i></span>';
           //       html += '</div>';
-          //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Username']+'" name="username" value="'+API.Plugins.settings.element.data.smtp.username+'">';
+          //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Username']+'" name="username" value="'+settings.smtp.username+'">';
           //       html += '<div class="input-group-prepend">';
           //         html += '<span class="input-group-text"><i class="fas fa-user-lock"></i></span>';
           //       html += '</div>';
-          //       html += '<input type="password" class="form-control" placeholder="'+API.Contents.Language['Password']+'" name="password" value="'+API.Plugins.settings.element.data.smtp.password+'">';
+          //       html += '<input type="password" class="form-control" placeholder="'+API.Contents.Language['Password']+'" name="password" value="'+settings.smtp.password+'">';
 	        //     html += '</div>';
 		      //   html += '</div>';
 		      //   html += '<div class="form-group row">';
@@ -423,27 +425,27 @@ API.Plugins.settings = {
 					// });
 					// API.Plugins.settings.GUI.Tabs.add('LDAP',function(content, tab){
 					// 	var html = '';
-					// 	if(typeof API.Plugins.settings.element.data.ldap === 'undefined'){
-					// 		API.Plugins.settings.element.data.ldap = { host:'', port:'', username:'', password:'', domain:'', base:'', branches:'' };
+					// 	if(typeof settings.ldap === 'undefined'){
+					// 		settings.ldap = { host:'', port:'', username:'', password:'', domain:'', base:'', branches:'' };
 					// 	}
-					// 	if(typeof API.Plugins.settings.element.data.ldap.host === 'undefined'){ API.Plugins.settings.element.data.ldap.host = ''; }
-					// 	if(typeof API.Plugins.settings.element.data.ldap.port === 'undefined'){ API.Plugins.settings.element.data.ldap.port = ''; }
-					// 	if(typeof API.Plugins.settings.element.data.ldap.username === 'undefined'){ API.Plugins.settings.element.data.ldap.username = ''; }
-					// 	if(typeof API.Plugins.settings.element.data.ldap.password === 'undefined'){ API.Plugins.settings.element.data.ldap.password = ''; }
-					// 	if(typeof API.Plugins.settings.element.data.ldap.domain === 'undefined'){ API.Plugins.settings.element.data.ldap.domain = ''; }
-					// 	if(typeof API.Plugins.settings.element.data.ldap.base === 'undefined'){ API.Plugins.settings.element.data.ldap.base = ''; }
-					// 	if(typeof API.Plugins.settings.element.data.ldap.branches === 'undefined'){ API.Plugins.settings.element.data.ldap.branches = ''; }
+					// 	if(typeof settings.ldap.host === 'undefined'){ settings.ldap.host = ''; }
+					// 	if(typeof settings.ldap.port === 'undefined'){ settings.ldap.port = ''; }
+					// 	if(typeof settings.ldap.username === 'undefined'){ settings.ldap.username = ''; }
+					// 	if(typeof settings.ldap.password === 'undefined'){ settings.ldap.password = ''; }
+					// 	if(typeof settings.ldap.domain === 'undefined'){ settings.ldap.domain = ''; }
+					// 	if(typeof settings.ldap.base === 'undefined'){ settings.ldap.base = ''; }
+					// 	if(typeof settings.ldap.branches === 'undefined'){ settings.ldap.branches = ''; }
 					// 	html += '<h3>'+API.Contents.Language['LDAP Database']+'</h3>';
 					// 	html += '<div class="form-group row">';
 	        //     html += '<div class="input-group">';
           //       html += '<div class="input-group-prepend">';
           //         html += '<span class="input-group-text"><i class="fas fa-server"></i></span>';
           //       html += '</div>';
-          //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Host']+'" name="host" value="'+API.Plugins.settings.element.data.ldap.host+'">';
+          //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Host']+'" name="host" value="'+settings.ldap.host+'">';
           //       html += '<div class="input-group-prepend">';
           //         html += '<span class="input-group-text"><i class="fas fa-ethernet"></i></span>';
           //       html += '</div>';
-          //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Port']+'" name="port" value="'+API.Plugins.settings.element.data.ldap.port+'">';
+          //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Port']+'" name="port" value="'+settings.ldap.port+'">';
 	        //     html += '</div>';
 		      //   html += '</div>';
 					// 	html += '<div class="form-group row">';
@@ -451,11 +453,11 @@ API.Plugins.settings = {
 		      //       html += '<div class="input-group-prepend">';
 		      //         html += '<span class="input-group-text"><i class="fas fa-database"></i></span>';
 		      //       html += '</div>';
-		      //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Domain']+'" name="domain" value="'+API.Plugins.settings.element.data.ldap.domain+'">';
+		      //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Domain']+'" name="domain" value="'+settings.ldap.domain+'">';
 		      //       html += '<div class="input-group-prepend">';
 		      //         html += '<span class="input-group-text"><i class="fas fa-code-branch"></i></span>';
 		      //       html += '</div>';
-		      //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Base DN']+'" name="base" value="'+API.Plugins.settings.element.data.ldap.base+'">';
+		      //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Base DN']+'" name="base" value="'+settings.ldap.base+'">';
 		      //     html += '</div>';
 		      //   html += '</div>';
 					// 	html += '<div class="form-group row">';
@@ -463,11 +465,11 @@ API.Plugins.settings = {
 		      //       html += '<div class="input-group-prepend">';
 		      //         html += '<span class="input-group-text"><i class="fas fa-user"></i></span>';
 		      //       html += '</div>';
-		      //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Username']+'" name="username" value="'+API.Plugins.settings.element.data.ldap.username+'">';
+		      //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Username']+'" name="username" value="'+settings.ldap.username+'">';
 		      //       html += '<div class="input-group-prepend">';
 		      //         html += '<span class="input-group-text"><i class="fas fa-user-lock"></i></span>';
 		      //       html += '</div>';
-		      //       html += '<input type="password" class="form-control" placeholder="'+API.Contents.Language['Password']+'" name="password" value="'+API.Plugins.settings.element.data.ldap.password+'">';
+		      //       html += '<input type="password" class="form-control" placeholder="'+API.Contents.Language['Password']+'" name="password" value="'+settings.ldap.password+'">';
 		      //     html += '</div>';
 		      //   html += '</div>';
 					// 	html += '<div class="form-group row">';
@@ -475,7 +477,7 @@ API.Plugins.settings = {
 		      //       html += '<div class="input-group-prepend">';
 		      //         html += '<span class="input-group-text"><i class="fas fa-code-branch"></i></span>';
 		      //       html += '</div>';
-					// 			var branches = '';for(const [key, branch] of Object.entries(API.Plugins.settings.element.data.ldap.branches)){ branches += branch+"\n"; }
+					// 			var branches = '';for(const [key, branch] of Object.entries(settings.ldap.branches)){ branches += branch+"\n"; }
 		      //       html += '<textarea class="form-control" rows="6" placeholder="'+API.Contents.Language['One LDAP branch per line...']+'" style="resize: none;" name="branches">'+branches+'</textarea>';
 		      //     html += '</div>';
 		      //   html += '</div>';
@@ -500,20 +502,20 @@ API.Plugins.settings = {
 					// });
 					// API.Plugins.settings.GUI.Tabs.add('LSP',function(content, tab){
 					// 	var html = '';
-					// 	if(typeof API.Plugins.settings.element.data.lsp === 'undefined'){
-					// 		API.Plugins.settings.element.data.lsp = { host:'', application:'', token:'' };
+					// 	if(typeof settings.lsp === 'undefined'){
+					// 		settings.lsp = { host:'', application:'', token:'' };
 					// 	}
-					// 	if(typeof API.Plugins.settings.element.data.lsp.host === 'undefined'){ API.Plugins.settings.element.data.lsp.host = ''; }
-					// 	if(typeof API.Plugins.settings.element.data.lsp.application === 'undefined'){ API.Plugins.settings.element.data.lsp.application = ''; }
-					// 	if(typeof API.Plugins.settings.element.data.lsp.token === 'undefined'){ API.Plugins.settings.element.data.lsp.token = ''; }
-					// 	if(typeof API.Plugins.settings.element.data.license === 'undefined'){ API.Plugins.settings.element.data.license = ''; }
+					// 	if(typeof settings.lsp.host === 'undefined'){ settings.lsp.host = ''; }
+					// 	if(typeof settings.lsp.application === 'undefined'){ settings.lsp.application = ''; }
+					// 	if(typeof settings.lsp.token === 'undefined'){ settings.lsp.token = ''; }
+					// 	if(typeof settings.license === 'undefined'){ settings.license = ''; }
 					// 	html += '<h3>'+API.Contents.Language['Licensing Server']+'</h3>';
 					// 	html += '<div class="form-group row">';
 					// 		html += '<div class="input-group">';
 					// 			html += '<div class="input-group-prepend">';
 					// 				html += '<span class="input-group-text"><i class="fas fa-server"></i></span>';
 					// 			html += '</div>';
-					// 			html += '<input type="text" class="form-control" name="host" placeholder="'+API.Contents.Language['Host']+'" value="'+API.Plugins.settings.element.data.lsp.host+'">';
+					// 			html += '<input type="text" class="form-control" name="host" placeholder="'+API.Contents.Language['Host']+'" value="'+settings.lsp.host+'">';
 					// 		html += '</div>';
 					// 	html += '</div>';
 					// 	html += '<div class="form-group row">';
@@ -521,7 +523,7 @@ API.Plugins.settings = {
 					// 			html += '<div class="input-group-prepend">';
 					// 				html += '<span class="input-group-text"><i class="fas fa-archive"></i></span>';
 					// 			html += '</div>';
-					// 			html += '<input type="text" class="form-control" name="application" placeholder="'+API.Contents.Language['Application']+'" value="'+API.Plugins.settings.element.data.lsp.application+'">';
+					// 			html += '<input type="text" class="form-control" name="application" placeholder="'+API.Contents.Language['Application']+'" value="'+settings.lsp.application+'">';
 					// 		html += '</div>';
 					// 	html += '</div>';
 					// 	html += '<div class="form-group row">';
@@ -529,7 +531,7 @@ API.Plugins.settings = {
 					// 			html += '<div class="input-group-prepend">';
 					// 				html += '<span class="input-group-text"><i class="fas fa-ticket-alt"></i></span>';
 					// 			html += '</div>';
-					// 			html += '<input type="password" class="form-control" name="token" placeholder="'+API.Contents.Language['Token']+'" value="'+API.Plugins.settings.element.data.lsp.token+'">';
+					// 			html += '<input type="password" class="form-control" name="token" placeholder="'+API.Contents.Language['Token']+'" value="'+settings.lsp.token+'">';
 					// 		html += '</div>';
 					// 	html += '</div>';
 					// 	html += '<hr>';
@@ -576,17 +578,17 @@ API.Plugins.settings = {
 					// });
 					// API.Plugins.settings.GUI.Tabs.add('developper',function(content, tab){
 					// 	var html = '', checked = '';
-					// 	if(typeof API.Plugins.settings.element.data.version === 'undefined'){ API.Plugins.settings.element.data.version = ''; }
-					// 	if(typeof API.Plugins.settings.element.data.title === 'undefined'){ API.Plugins.settings.element.data.title = ''; }
-					// 	if(typeof API.Plugins.settings.element.data.registration === 'undefined'){ API.Plugins.settings.element.data.registration = false; }
-					// 	if(typeof API.Plugins.settings.element.data.forgot === 'undefined'){ API.Plugins.settings.element.data.forgot = false; }
+					// 	if(typeof settings.version === 'undefined'){ settings.version = ''; }
+					// 	if(typeof settings.title === 'undefined'){ settings.title = ''; }
+					// 	if(typeof settings.registration === 'undefined'){ settings.registration = false; }
+					// 	if(typeof settings.forgot === 'undefined'){ settings.forgot = false; }
 					// 	html += '<h3>'+API.Contents.Language['Application Details']+'</h3>';
 					// 	html += '<div class="form-group row">';
 					// 		html += '<div class="input-group">';
 					// 			html += '<div class="input-group-prepend">';
 					// 				html += '<span class="input-group-text"><i class="fas fa-code-branch"></i></span>';
 					// 			html += '</div>';
-					// 			html += '<input type="text" class="form-control" name="version" placeholder="'+API.Contents.Language['Version']+'" value="'+API.Plugins.settings.element.data.version+'">';
+					// 			html += '<input type="text" class="form-control" name="version" placeholder="'+API.Contents.Language['Version']+'" value="'+settings.version+'">';
 					// 		html += '</div>';
 					// 	html += '</div>';
 					// 	html += '<div class="form-group row">';
@@ -594,19 +596,19 @@ API.Plugins.settings = {
 					// 			html += '<div class="input-group-prepend">';
 					// 				html += '<span class="input-group-text"><i class="fas fa-heading"></i></span>';
 					// 			html += '</div>';
-					// 			html += '<input type="text" class="form-control" name="title" placeholder="'+API.Contents.Language['Title']+'" value="'+API.Plugins.settings.element.data.title+'">';
+					// 			html += '<input type="text" class="form-control" name="title" placeholder="'+API.Contents.Language['Title']+'" value="'+settings.title+'">';
 					// 		html += '</div>';
 					// 	html += '</div>';
 			    //   html += '<div class="form-group clearfix">';
 			    //     html += '<div class="icheck-primary">';
-					// 			if(API.Plugins.settings.element.data.registration){ checked = 'checked'; } else { checked = ''; }
+					// 			if(settings.registration){ checked = 'checked'; } else { checked = ''; }
 			    //       html += '<input type="checkbox" id="registration" name="registration" '+checked+'>';
 			    //       html += '<label for="registration">'+API.Contents.Language['Allow user registration']+'</label>';
 			    //     html += '</div>';
 			    //   html += '</div>';
 			    //   html += '<div class="form-group clearfix">';
 			    //     html += '<div class="icheck-primary">';
-					// 			if(API.Plugins.settings.element.data.forgot){ checked = 'checked'; } else { checked = ''; }
+					// 			if(settings.forgot){ checked = 'checked'; } else { checked = ''; }
 			    //       html += '<input type="checkbox" id="forgot" name="forgot" '+checked+'>';
 			    //       html += '<label for="forgot">'+API.Contents.Language['Allow user to reset their password from the login page']+'</label>';
 			    //     html += '</div>';
@@ -637,12 +639,12 @@ API.Plugins.settings = {
 					// });
 					// API.Plugins.settings.GUI.Tabs.add('customization',function(content, tab){
 					// 	var html = '', checked = '';
-					// 	if(API.Helper.isSet(API.Plugins.settings.element.data,['customization','pace','value'])){ API.Plugins.settings.element.data.customization.pace.value = 'primary'; }
-					// 	if(API.Helper.isSet(API.Plugins.settings.element.data,['customization','logobg','value'])){ API.Plugins.settings.element.data.customization.logobg.value = 'dark'; }
-					// 	if(API.Helper.isSet(API.Plugins.settings.element.data,['customization','nav','value'])){ API.Plugins.settings.element.data.customization.nav.value = 'warning'; }
-					// 	if(API.Helper.isSet(API.Plugins.settings.element.data,['customization','navmode','value'])){ API.Plugins.settings.element.data.customization.navmode.value = 'light'; }
-					// 	if(API.Helper.isSet(API.Plugins.settings.element.data,['customization','sidenav','value'])){ API.Plugins.settings.element.data.customization.sidenav.value = 'primary'; }
-					// 	if(API.Helper.isSet(API.Plugins.settings.element.data,['customization','sidenavmode','value'])){ API.Plugins.settings.element.data.customization.sidenavmode.value = 'light'; }
+					// 	if(API.Helper.isSet(settings,['customization','pace','value'])){ settings.customization.pace.value = 'primary'; }
+					// 	if(API.Helper.isSet(settings,['customization','logobg','value'])){ settings.customization.logobg.value = 'dark'; }
+					// 	if(API.Helper.isSet(settings,['customization','nav','value'])){ settings.customization.nav.value = 'warning'; }
+					// 	if(API.Helper.isSet(settings,['customization','navmode','value'])){ settings.customization.navmode.value = 'light'; }
+					// 	if(API.Helper.isSet(settings,['customization','sidenav','value'])){ settings.customization.sidenav.value = 'primary'; }
+					// 	if(API.Helper.isSet(settings,['customization','sidenavmode','value'])){ settings.customization.sidenavmode.value = 'light'; }
 					// 	html += '<h3>'+API.Contents.Language['Customization']+'</h3>';
 					// 	html += '<div class="row">';
 					// 	html += '<div class="col-md-6 py-2">';
@@ -654,7 +656,7 @@ API.Plugins.settings = {
 			    //         html += '</div>';
 			    //         html += '<select class="form-control" name="pace">';
 					// 					for(var [key, value] of Object.entries(["primary","secondary","info","success","warning","danger"])){
-					// 						if(API.Plugins.settings.element.data.customization.pace.value == value){
+					// 						if(settings.customization.pace.value == value){
 					// 							html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
 					// 						} else { html += '<option value="'+value+'">'+API.Helper.ucfirst(value)+'</option>'; }
 					// 					}
@@ -670,7 +672,7 @@ API.Plugins.settings = {
 			    //         html += '</div>';
 			    //         html += '<select class="form-control" name="logobg">';
 					// 					for(var [key, value] of Object.entries(["light","dark"])){
-					// 						if(API.Plugins.settings.element.data.customization.logobg.value == value){
+					// 						if(settings.customization.logobg.value == value){
 					// 							html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
 					// 						} else { html += '<option value="'+value+'">'+API.Helper.ucfirst(value)+'</option>'; }
 					// 					}
@@ -686,7 +688,7 @@ API.Plugins.settings = {
 			    //         html += '</div>';
 			    //         html += '<select class="form-control" name="nav">';
 					// 					for(var [key, value] of Object.entries(["primary","secondary","info","success","warning","danger"])){
-					// 						if(API.Plugins.settings.element.data.customization.nav.value == value){
+					// 						if(settings.customization.nav.value == value){
 					// 							html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
 					// 						} else { html += '<option value="'+value+'">'+API.Helper.ucfirst(value)+'</option>'; }
 					// 					}
@@ -702,7 +704,7 @@ API.Plugins.settings = {
 			    //         html += '</div>';
 			    //         html += '<select class="form-control" name="navmode">';
 					// 					for(var [key, value] of Object.entries(["light","dark"])){
-					// 						if(API.Plugins.settings.element.data.customization.navmode.value == value){
+					// 						if(settings.customization.navmode.value == value){
 					// 							html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
 					// 						} else { html += '<option value="'+value+'">'+API.Helper.ucfirst(value)+'</option>'; }
 					// 					}
@@ -718,7 +720,7 @@ API.Plugins.settings = {
 			    //         html += '</div>';
 			    //         html += '<select class="form-control" name="sidenav">';
 					// 					for(var [key, value] of Object.entries(["primary","secondary","info","success","warning","danger"])){
-					// 						if(API.Plugins.settings.element.data.customization.sidenav.value == value){
+					// 						if(settings.customization.sidenav.value == value){
 					// 							html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
 					// 						} else { html += '<option value="'+value+'">'+API.Helper.ucfirst(value)+'</option>'; }
 					// 					}
@@ -734,7 +736,7 @@ API.Plugins.settings = {
 			    //         html += '</div>';
 			    //         html += '<select class="form-control" name="sidenavmode">';
 					// 					for(var [key, value] of Object.entries(["light","dark"])){
-					// 						if(API.Plugins.settings.element.data.customization.sidenavmode.value == value){
+					// 						if(settings.customization.sidenavmode.value == value){
 					// 							html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
 					// 						} else { html += '<option value="'+value+'">'+API.Helper.ucfirst(value)+'</option>'; }
 					// 					}

@@ -21,6 +21,13 @@ class settingsAPI extends API {
     $manifest = json_decode(curl_exec($curl), true);
     curl_close($curl);
 
+		// Fetch Languages
+		$languages = scandir(dirname(__FILE__,3).'/dist/languages/');
+		foreach($languages as $key => $language){ if(!is_file(dirname(__FILE__,3).'/dist/languages/'.$language)){ unset($languages[$key]); } else { $languages[$key] = str_replace('.json','',$language); } }
+
+		// Fetch Plugins
+		foreach($this->Plugins as $plugin => $conf){ if(is_file(dirname(__FILE__,3).'/plugins'.$plugin.'/src/views/index.php')){ $pages[] = $plugin; } }
+
 		// Return
 		return [
 			"success" => $this->Language->Field["This request was successfull"],
@@ -34,6 +41,9 @@ class settingsAPI extends API {
 				],
 				'directory' => dirname(__FILE__,3),
 				"manifest" => $manifest,
+				'languages' => $languages,
+				'timezones' => $this->Timezones,
+				'pages' => $pages,
 			],
 		];
 		// $config = $this->Settings;
@@ -45,7 +55,6 @@ class settingsAPI extends API {
 		// 	}
 		// }
 		// 	'whoami' => exec('whoami'),
-		// 	'languages' => scandir(dirname(__FILE__,3).'/dist/languages/'),
 		// 	'pages' => $pages,
 		// ];
 		// return $config;

@@ -4,5 +4,6 @@
 		"Settings Saved": "Parametres Enregistre",
 		"Application updated successfully": "Application mis a jours avec succes",
 		"No updates available": "Aucune mise a jour disponible",
-		"Application not activated": "L'application n'est pas active"
+		"Application not activated": "L'application n'est pas active",
+		"The Service executes in aloop on the host system": "The Service executes in aloop on the host system"
 }
