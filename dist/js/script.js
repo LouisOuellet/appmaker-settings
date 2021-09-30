@@ -99,9 +99,9 @@ API.Plugins.settings = {
 		          html += '</div>';
 		          html += '<div class="icheck-primary">';
 								if(settings.background_jobs == 'cron'){ checked = 'checked'; } else { checked = ''; }
-		            html += '<input type="radio" id="background_jobs3" value="cron" name="background_jobs" '+checked+'>';
-		            html += '<label for="background_jobs3">'+API.Contents.Language['Cron']+'</label>';
-		            html += '<p class="text-muted" style="margin-left:30px;">'+API.Contents.Language['Use system cron service to call the cron.php file every 5 minutes. The cron.php needs to be executed by the system user']+' "'+settings.extra.whoami+'".</p>';
+		            html += '<input type="radio" id="background_jobs2" value="cron" name="background_jobs" '+checked+'>';
+		            html += '<label for="background_jobs2">'+API.Contents.Language['Cron']+'</label>';
+		            html += '<p class="text-muted" style="margin-left:30px;">'+API.Contents.Language['Use system cron service to call the cron.php file every 5 minutes. The cron.php needs to be executed by the system user']+'</p>';
 		          html += '</div>';
 		        html += '</div>';
 						// html += '<hr>';
