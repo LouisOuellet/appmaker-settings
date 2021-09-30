@@ -89,21 +89,21 @@ API.Plugins.settings = {
 					});
 					API.Plugins.settings.GUI.Tabs.add('basic',function(content, tab){
 						var html = '', checked = '';
-						// html += '<h3>'+API.Contents.Language['Background Jobs']+'</h3>';
-						// html += '<div class="form-group clearfix">';
-		        //   html += '<div class="icheck-primary">';
-						// 		if(settings.background_jobs == 'service'){ checked = 'checked'; } else { checked = ''; }
-		        //     html += '<input type="radio" id="background_jobs1" value="service" name="background_jobs" '+checked+'>';
-		        //     html += '<label for="background_jobs1">'+API.Contents.Language['Service']+'</label>';
-		        //     html += '<p class="text-muted" style="margin-left:30px;">'+API.Contents.Language['The Service executes in a loop on the host system']+'</p>';
-		        //   html += '</div>';
-		        //   html += '<div class="icheck-primary">';
-						// 		if(settings.background_jobs == 'cron'){ checked = 'checked'; } else { checked = ''; }
-		        //     html += '<input type="radio" id="background_jobs3" value="cron" name="background_jobs" '+checked+'>';
-		        //     html += '<label for="background_jobs3">'+API.Contents.Language['Cron']+'</label>';
-		        //     html += '<p class="text-muted" style="margin-left:30px;">'+API.Contents.Language['Use system cron service to call the cron.php file every 5 minutes. The cron.php needs to be executed by the system user']+' "'+settings.extra.whoami+'".</p>';
-		        //   html += '</div>';
-		        // html += '</div>';
+						html += '<h3>'+API.Contents.Language['Background Jobs']+'</h3>';
+						html += '<div class="form-group clearfix">';
+		          html += '<div class="icheck-primary">';
+								if(settings.background_jobs == 'service'){ checked = 'checked'; } else { checked = ''; }
+		            html += '<input type="radio" id="background_jobs1" value="service" name="background_jobs" '+checked+'>';
+		            html += '<label for="background_jobs1">'+API.Contents.Language['Service']+'</label>';
+		            html += '<p class="text-muted" style="margin-left:30px;">'+API.Contents.Language['The Service executes in a loop on the host system']+'</p>';
+		          html += '</div>';
+		          html += '<div class="icheck-primary">';
+								if(settings.background_jobs == 'cron'){ checked = 'checked'; } else { checked = ''; }
+		            html += '<input type="radio" id="background_jobs3" value="cron" name="background_jobs" '+checked+'>';
+		            html += '<label for="background_jobs3">'+API.Contents.Language['Cron']+'</label>';
+		            html += '<p class="text-muted" style="margin-left:30px;">'+API.Contents.Language['Use system cron service to call the cron.php file every 5 minutes. The cron.php needs to be executed by the system user']+' "'+settings.extra.whoami+'".</p>';
+		          html += '</div>';
+		        html += '</div>';
 						// html += '<hr>';
 						// html += '<h3>'+API.Contents.Language['Language']+'</h3>';
 						// html += '<div class="form-group row">';
