@@ -36,9 +36,9 @@ API.Plugins.settings = {
 									html += '</span>';
 								html += '</div>';
 								html += '<select name="branch">';
-								for(const [key, branch] of Object.entries(settings.repository.branches)){
+								for(const [key, branch] of Object.entries(settings.output.repository.branches)){
 									if(branch != ''){
-										if(settings.repository.branch == branch){
+										if(settings.output.repository.branch == branch){
 											html += '<option value="'+branch+'" selected>'+API.Helper.ucfirst(branch)+'</option>';
 										} else { html += '<option value="'+branch+'">'+API.Helper.ucfirst(branch)+'</option>'; }
 									}
@@ -76,8 +76,8 @@ API.Plugins.settings = {
 								switch($(this).attr('name')){
 									case'StartUpdate': API.request('settings','update');break;
 									case'ChangeBranch':
-										settings.repository.branch = content.find('select').val();
-										API.request('settings','save',{data:{repository:settings.repository}});
+										settings.output.repository.branch = content.find('select').val();
+										API.request('settings','save',{data:{repository:settings.output.repository}});
 										break;
 								}
 							});
