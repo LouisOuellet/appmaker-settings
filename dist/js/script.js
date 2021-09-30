@@ -150,12 +150,10 @@ API.Plugins.settings = {
 		              html += '</span>';
 		            html += '</div>';
 		            html += '<select class="form-control" name="page">';
-								console.log(pages);
-									// for(const [key, page] of Object.entries(pages)){
-									// 	console.log(pages);
-									// 	// if(settings.page == page){ html += '<option value="'+page+'" selected>'+API.Helper.ucfirst(page)+'</option>'; }
-									// 	// else { html += '<option value="'+page+'">'+API.Helper.ucfirst(page)+'</option>'; }
-									// }
+									for(const [key, page] of Object.entries(pages)){
+										if(settings.page == page){ html += '<option value="'+page+'" selected>'+API.Helper.ucfirst(page)+'</option>'; }
+										else { html += '<option value="'+page+'">'+API.Helper.ucfirst(page)+'</option>'; }
+									}
 		            html += '</select>';
 		          html += '</div>';
 		        html += '</div>';
