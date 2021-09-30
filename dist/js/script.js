@@ -74,9 +74,8 @@ API.Plugins.settings = {
 								switch($(this).attr('name')){
 									case'StartUpdate': API.request('settings','update');break;
 									case'ChangeBranch':
-										console.log(content.find('select').select2('val'));
-										// settings.repository.branch = content.find('select').select2('val');
-										// API.request('settings','save',{data:{repository:settings.repository}});
+										settings.repository.branch = content.find('select').select2('val');
+										API.request('settings','save',{data:{repository:settings.repository}});
 										break;
 								}
 							});
