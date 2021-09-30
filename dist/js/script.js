@@ -24,9 +24,8 @@ API.Plugins.settings = {
 							html += '</li>';
 						}
 						html += '</ul>';
-						console.log(content);
-						console.log(settings);
 						html += '<hr>';
+						console.log("Adding update block");
 						html += '<h3>'+API.Contents.Language['Updates']+'</h3>';
 						html += '<div class="form-group">';
 							html += '<div class="input-group">';
@@ -36,6 +35,7 @@ API.Plugins.settings = {
 									html += '</span>';
 								html += '</div>';
 								html += '<select name="branch">';
+								console.log("Adding branches");
 								for(const [key, branch] of Object.entries(settings.output.repository.branches)){
 									if(branch != ''){
 										if(settings.output.repository.branch == branch){
@@ -44,6 +44,7 @@ API.Plugins.settings = {
 									}
 								}
 								html += '</select>';
+								console.log("Adding save button");
 								html += '<div class="input-group-append">';
 									html += '<button type="button" name="ChangeBranch" class="btn btn-success">';
 			              html += '<i class="fas fa-save mr-1"></i></i>'+API.Contents.Language['Save'];
