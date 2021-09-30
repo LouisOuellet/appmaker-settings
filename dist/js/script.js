@@ -253,11 +253,11 @@ API.Plugins.settings = {
 				    //     html += '<label for="developer">'+API.Contents.Language['Enable']+'</label>';
 				    //   html += '</div>';
 				    // html += '</div>';
-				    html += '<div class="form-group row">';
-				      html += '<div class="input-group">';
-				        html += '<button type="button" name="developer" class="btn btn-success"><i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save']+'</button>';
-				      html += '</div>';
-				    html += '</div>';
+				    // html += '<div class="form-group row">';
+				    //   html += '<div class="input-group">';
+				    //     html += '<button type="button" name="developer" class="btn btn-success"><i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save']+'</button>';
+				    //   html += '</div>';
+				    // html += '</div>';
 						content.html(html);
 						content.find('select').select2({ theme: 'bootstrap4' });
 						content.find('button').each(function(){
@@ -265,9 +265,9 @@ API.Plugins.settings = {
 								switch($(this).attr('name')){
 									case'debug':
 										var data = {};
-										console.log(content.find('input:checked[name="debug"]').val());
-										data.debug = content.find('input:checked[name="debug"]').val();
-										settings.debug = content.find('input:checked[name="debug"]').val();
+										if(content.find('input:checked[name="debug"]').val() != undefined){ data.debug = true;settings.debug = true; }
+										else { data.debug = false;settings.debug = false; }
+										console.log(data.debug);
 										// API.request('settings','save',{data:data});
 										break;
 								}
