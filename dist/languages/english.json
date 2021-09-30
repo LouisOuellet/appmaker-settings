@@ -5,5 +5,6 @@
 		"Application updated successfully": "Application updated successfully",
 		"No updates available": "No updates available",
 		"Application not activated": "Application not activated",
-		"The Service executes in a loop on the host system": "The Service executes in a loop on the host system"
+		"The Service executes in a loop on the host system": "The Service executes in a loop on the host system",
+		"Use system cron service to call the cron.php file every 5 minutes.": "Use system cron service to call the cron.php file every 5 minutes. The cron.php needs to be executed by the web user."
 }

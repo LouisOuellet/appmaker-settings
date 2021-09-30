@@ -101,62 +101,62 @@ API.Plugins.settings = {
 								if(settings.background_jobs == 'cron'){ checked = 'checked'; } else { checked = ''; }
 		            html += '<input type="radio" id="background_jobs2" value="cron" name="background_jobs" '+checked+'>';
 		            html += '<label for="background_jobs2">'+API.Contents.Language['Cron']+'</label>';
-		            html += '<p class="text-muted" style="margin-left:30px;">'+API.Contents.Language['Use system cron service to call the cron.php file every 5 minutes. The cron.php needs to be executed by the system user']+'</p>';
+		            html += '<p class="text-muted" style="margin-left:30px;">'+API.Contents.Language['Use system cron service to call the cron.php file every 5 minutes.']+'</p>';
 		          html += '</div>';
 		        html += '</div>';
-						// html += '<hr>';
-						// html += '<h3>'+API.Contents.Language['Language']+'</h3>';
-						// html += '<div class="form-group row">';
-		        //   html += '<div class="input-group">';
-		        //     html += '<div class="input-group-prepend">';
-		        //       html += '<span class="input-group-text">';
-		        //         html += '<i class="fas fa-globe"></i>';
-		        //       html += '</span>';
-		        //     html += '</div>';
-		        //     html += '<select class="form-control" name="language">';
-						// 			for(var [key, language] of Object.entries(languages)){
-						// 				if(settings.language == language){
-						// 					html += '<option value="'+language+'" selected>'+API.Helper.ucfirst(language)+'</option>';
-						// 				} else { html += '<option value="'+language+'">'+API.Helper.ucfirst(language)+'</option>'; }
-						// 			}
-		        //     html += '</select>';
-		        //   html += '</div>';
-		        // html += '</div>';
-						// html += '<hr>';
-						// html += '<h3>'+API.Contents.Language['Timezone']+'</h3>';
-						// html += '<div class="form-group row">';
-		        //   html += '<div class="input-group">';
-		        //     html += '<div class="input-group-prepend">';
-		        //       html += '<span class="input-group-text">';
-		        //         html += '<i class="fas fa-clock"></i>';
-		        //       html += '</span>';
-		        //     html += '</div>';
-		        //     html += '<select class="form-control" name="timezone">';
-						// 			for(const [key, timezone] of Object.entries(timezones)){
-						// 				if(settings.timezone == timezone){
-						// 					html += '<option value="'+timezone+'" selected>'+timezone+'</option>';
-						// 				} else { html += '<option value="'+timezone+'">'+timezone+'</option>'; }
-						// 			}
-		        //     html += '</select>';
-		        //   html += '</div>';
-		        // html += '</div>';
-						// html += '<hr>';
-						// html += '<h3>'+API.Contents.Language['Landing Page']+'</h3>';
-						// html += '<div class="form-group row">';
-		        //   html += '<div class="input-group">';
-		        //     html += '<div class="input-group-prepend">';
-		        //       html += '<span class="input-group-text">';
-		        //         html += '<i class="fas fa-columns"></i>';
-		        //       html += '</span>';
-		        //     html += '</div>';
-		        //     html += '<select class="form-control" name="page">';
-						// 			for(const [key, page] of Object.entries(pages)){
-						// 				if(settings.page == page){ html += '<option value="'+page+'" selected>'+API.Helper.ucfirst(page)+'</option>'; }
-						// 				else { html += '<option value="'+page+'">'+API.Helper.ucfirst(page)+'</option>'; }
-						// 			}
-		        //     html += '</select>';
-		        //   html += '</div>';
-		        // html += '</div>';
+						html += '<hr>';
+						html += '<h3>'+API.Contents.Language['Language']+'</h3>';
+						html += '<div class="form-group row">';
+		          html += '<div class="input-group">';
+		            html += '<div class="input-group-prepend">';
+		              html += '<span class="input-group-text">';
+		                html += '<i class="fas fa-globe"></i>';
+		              html += '</span>';
+		            html += '</div>';
+		            html += '<select class="form-control" name="language">';
+									for(var [key, language] of Object.entries(languages)){
+										if(settings.language == language){
+											html += '<option value="'+language+'" selected>'+API.Helper.ucfirst(language)+'</option>';
+										} else { html += '<option value="'+language+'">'+API.Helper.ucfirst(language)+'</option>'; }
+									}
+		            html += '</select>';
+		          html += '</div>';
+		        html += '</div>';
+						html += '<hr>';
+						html += '<h3>'+API.Contents.Language['Timezone']+'</h3>';
+						html += '<div class="form-group row">';
+		          html += '<div class="input-group">';
+		            html += '<div class="input-group-prepend">';
+		              html += '<span class="input-group-text">';
+		                html += '<i class="fas fa-clock"></i>';
+		              html += '</span>';
+		            html += '</div>';
+		            html += '<select class="form-control" name="timezone">';
+									for(const [key, timezone] of Object.entries(timezones)){
+										if(settings.timezone == timezone){
+											html += '<option value="'+timezone+'" selected>'+timezone+'</option>';
+										} else { html += '<option value="'+timezone+'">'+timezone+'</option>'; }
+									}
+		            html += '</select>';
+		          html += '</div>';
+		        html += '</div>';
+						html += '<hr>';
+						html += '<h3>'+API.Contents.Language['Landing Page']+'</h3>';
+						html += '<div class="form-group row">';
+		          html += '<div class="input-group">';
+		            html += '<div class="input-group-prepend">';
+		              html += '<span class="input-group-text">';
+		                html += '<i class="fas fa-columns"></i>';
+		              html += '</span>';
+		            html += '</div>';
+		            html += '<select class="form-control" name="page">';
+									for(const [key, page] of Object.entries(pages)){
+										if(settings.page == page){ html += '<option value="'+page+'" selected>'+API.Helper.ucfirst(page)+'</option>'; }
+										else { html += '<option value="'+page+'">'+API.Helper.ucfirst(page)+'</option>'; }
+									}
+		            html += '</select>';
+		          html += '</div>';
+		        html += '</div>';
 		        html += '<div class="form-group row">';
 	            html += '<div class="input-group">';
                 html += '<button type="button" name="SaveCRON" class="btn btn-success">';
