@@ -140,23 +140,24 @@ API.Plugins.settings = {
 		            html += '</select>';
 		          html += '</div>';
 		        html += '</div>';
-						// html += '<hr>';
-						// html += '<h3>'+API.Contents.Language['Landing Page']+'</h3>';
-						// html += '<div class="form-group row">';
-		        //   html += '<div class="input-group">';
-		        //     html += '<div class="input-group-prepend">';
-		        //       html += '<span class="input-group-text">';
-		        //         html += '<i class="fas fa-columns"></i>';
-		        //       html += '</span>';
-		        //     html += '</div>';
-		        //     html += '<select class="form-control" name="page">';
-						// 			for(const [key, page] of Object.entries(pages)){
-						// 				if(settings.page == page){ html += '<option value="'+page+'" selected>'+API.Helper.ucfirst(page)+'</option>'; }
-						// 				else { html += '<option value="'+page+'">'+API.Helper.ucfirst(page)+'</option>'; }
-						// 			}
-		        //     html += '</select>';
-		        //   html += '</div>';
-		        // html += '</div>';
+						html += '<hr>';
+						html += '<h3>'+API.Contents.Language['Landing Page']+'</h3>';
+						html += '<div class="form-group row">';
+		          html += '<div class="input-group">';
+		            html += '<div class="input-group-prepend">';
+		              html += '<span class="input-group-text">';
+		                html += '<i class="fas fa-columns"></i>';
+		              html += '</span>';
+		            html += '</div>';
+		            html += '<select class="form-control" name="page">';
+									for(const [key, page] of Object.entries(pages)){
+										console.log(page);
+										// if(settings.page == page){ html += '<option value="'+page+'" selected>'+API.Helper.ucfirst(page)+'</option>'; }
+										// else { html += '<option value="'+page+'">'+API.Helper.ucfirst(page)+'</option>'; }
+									}
+		            html += '</select>';
+		          html += '</div>';
+		        html += '</div>';
 		        html += '<div class="form-group row">';
 	            html += '<div class="input-group">';
                 html += '<button type="button" name="SaveCRON" class="btn btn-success">';
