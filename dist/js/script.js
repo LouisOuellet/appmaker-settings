@@ -64,6 +64,8 @@ API.Plugins.settings = {
 						// 		html += '</div>';
 						// 	html += '</div>';
 						// }
+						console.log(content);
+						console.log(settings);
 						content.html(html);
 						content.find('button').each(function(){
 							$(this).off().click(function(){
