@@ -1,0 +1,11 @@
+{
+		"plugins": "extensions",
+		"Plugins": "Extensions",
+		"Plugin was activated": "Extension active",
+		"Plugin was deactivated": "Extension desactive",
+		"Plugin was updated": "Extension a ete mis a jour",
+		"Plugin was installed": "Extension installe",
+		"Plugin was uninstalled": "Extension desinstalle",
+		"Unable to install plugin": "Impossible d'installer l'extension",
+		"Unable to uninstall plugin": "Impossible d'desinstaller l'extension"
+}
