@@ -26,7 +26,7 @@ class settingsAPI extends API {
 		foreach($languages as $key => $language){ if(!is_file(dirname(__FILE__,3).'/dist/languages/'.$language)){ unset($languages[$key]); } else { $languages[$key] = str_replace('.json','',$language); } }
 
 		// Fetch Plugins
-		foreach($this->Plugins as $plugin => $conf){ if(is_file(dirname(__FILE__,3).'/plugins'.$plugin.'/src/views/index.php')){ $pages[] = $plugin; } }
+		foreach($this->Plugins as $plugin => $conf){ if(is_file(dirname(__FILE__,3).'/plugins/'.$plugin.'/src/views/index.php')){ $pages[] = $plugin; } }
 
 		// Return
 		return [
