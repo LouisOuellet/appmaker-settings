@@ -19,9 +19,11 @@ API.Plugins.settings = {
 						html += '<h3>'+API.Contents.Language['Security & Setup Warnings']+'</h3>';
 						html += '<ul>';
 						if(location.protocol !== 'https:'){ html += '<li>'+API.Contents.Language['HyperText Transfer Protocol Secure is currently not running.']+'</li>'; }
-						if(cron.status){
+						if(cron.status && settings.background_jobs == 'cron'){
 							html += '<li>';
 								html += API.Contents.Language['It has been']+' '+cron.age+' '+API.Contents.Language['since the last cron ran.']+'<br />';
+							html += '</li>';
+							html += '<li>';
 								html += API.Contents.Language['Make sure to setup your CRON as followed']+': <code>* * * * * php '+directory+'/cli.php --cron</code>';
 							html += '</li>';
 						}
