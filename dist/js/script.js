@@ -338,33 +338,33 @@ API.Plugins.settings = {
 				        html += '</button>';
 				      html += '</div>';
 				    html += '</div>';
-						html += '<hr>';
-						html += '<h3>'+API.Contents.Language['Import/Export']+'</h3>';
-						html += '<div class="form-group">';
-							html += '<div class="vertical-input-group">';
-								html += '<div class="input-group">';
-				          html += '<div class="input-group-prepend">';
-				            html += '<span class="input-group-text">';
-				              html += '<i class="fas fa-file-import mr-2"></i>'+API.Contents.Language['Import'];
-				            html += '</span>';
-				          html += '</div>';
-									html += '<div class="custom-file">';
-				            html += '<input type="file" class="custom-file-input" name="dbFile" id="dbFile">';
-				            html += '<label class="custom-file-label" for="dbFile">'+API.Contents.Language['Choose file']+'</label>';
-				          html += '</div>';
-								html += '</div>';
-								html += '<div class="input-group">';
-									html += '<div class="btn-group btn-block">';
-										html += '<button type="button" name="ExportDB" class="btn btn-primary">';
-											html += '<i class="fas fa-file-export mr-1"></i>'+API.Contents.Language['Export Database'];
-										html += '</button>';
-										html += '<button type="button" name="ImportDB" class="btn btn-success">';
-											html += '<i class="fas fa-file-import mr-1"></i>'+API.Contents.Language['Import Database'];
-										html += '</button>';
-									html += '</div>';
-								html += '</div>';
-							html += '</div>';
-						html += '</div>';
+						// html += '<hr>';
+						// html += '<h3>'+API.Contents.Language['Import/Export']+'</h3>';
+						// html += '<div class="form-group">';
+						// 	html += '<div class="vertical-input-group">';
+						// 		html += '<div class="input-group">';
+				    //       html += '<div class="input-group-prepend">';
+				    //         html += '<span class="input-group-text">';
+				    //           html += '<i class="fas fa-file-import mr-2"></i>'+API.Contents.Language['Import'];
+				    //         html += '</span>';
+				    //       html += '</div>';
+						// 			html += '<div class="custom-file">';
+				    //         html += '<input type="file" class="custom-file-input" name="dbFile" id="dbFile">';
+				    //         html += '<label class="custom-file-label" for="dbFile">'+API.Contents.Language['Choose file']+'</label>';
+				    //       html += '</div>';
+						// 		html += '</div>';
+						// 		html += '<div class="input-group">';
+						// 			html += '<div class="btn-group btn-block">';
+						// 				html += '<button type="button" name="ExportDB" class="btn btn-primary">';
+						// 					html += '<i class="fas fa-file-export mr-1"></i>'+API.Contents.Language['Export Database'];
+						// 				html += '</button>';
+						// 				html += '<button type="button" name="ImportDB" class="btn btn-success">';
+						// 					html += '<i class="fas fa-file-import mr-1"></i>'+API.Contents.Language['Import Database'];
+						// 				html += '</button>';
+						// 			html += '</div>';
+						// 		html += '</div>';
+						// 	html += '</div>';
+						// html += '</div>';
 						content.html(html);
 						content.find('button').each(function(){
 							$(this).off().click(function(){
@@ -387,68 +387,79 @@ API.Plugins.settings = {
 							});
 						});
 					});
-					// API.Plugins.settings.GUI.Tabs.add('SMTP',function(content, tab){
-					// 	var html = '', checkSSL = '', checkSTARTTLS = '';
-					// 	if(typeof settings.smtp === 'undefined'){
-					// 		settings.smtp = { host:'', port:'', username:'', password:'', encryption:'' };
-					// 	}
-					// 	if(typeof settings.smtp.host === 'undefined'){ settings.smtp.host = ''; }
-					// 	if(typeof settings.smtp.port === 'undefined'){ settings.smtp.port = ''; }
-					// 	if(typeof settings.smtp.username === 'undefined'){ settings.smtp.username = ''; }
-					// 	if(typeof settings.smtp.password === 'undefined'){ settings.smtp.password = ''; }
-					// 	if(typeof settings.smtp.encryption === 'undefined'){ settings.smtp.encryption = ''; }
-					// 	if(settings.smtp.encryption == 'SSL'){ checkSSL = 'selected' }
-					// 	if(settings.smtp.encryption == 'STARTTLS'){ checkSTARTTLS = 'selected' }
-					// 	html += '<h3>'+API.Contents.Language['SMTP']+'</h3>';
-					// 	html += '<div class="form-group row">';
-		      //     html += '<div class="input-group">';
-		      //       html += '<div class="input-group-prepend">';
-		      //         html += '<span class="input-group-text"><i class="fas fa-server"></i></span>';
-		      //       html += '</div>';
-		      //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Host']+'" name="host" value="'+settings.smtp.host+'">';
-		      //       html += '<div class="input-group-prepend">';
-		      //         html += '<span class="input-group-text"><i class="fas fa-key"></i></span>';
-		      //       html += '</div>';
-					// 			html += '<select name="encryption">';
-					// 				html += '<option value="SSL" '+checkSSL+'>'+API.Contents.Language['SSL']+'</option>';
-					// 				html += '<option value="STARTTLS" '+checkSTARTTLS+'>'+API.Contents.Language['STARTTLS']+'</option>';
-					// 			html += '</select>';
-		      //       html += '<div class="input-group-prepend">';
-		      //         html += '<span class="input-group-text"><i class="fas fa-ethernet"></i></span>';
-		      //       html += '</div>';
-		      //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Port']+'" name="port" value="'+settings.smtp.port+'">';
-		      //     html += '</div>';
-		      //   html += '</div>';
-					// 	html += '<div class="form-group row">';
-	        //     html += '<div class="input-group">';
-          //       html += '<div class="input-group-prepend">';
-          //         html += '<span class="input-group-text"><i class="fas fa-user"></i></span>';
-          //       html += '</div>';
-          //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Username']+'" name="username" value="'+settings.smtp.username+'">';
-          //       html += '<div class="input-group-prepend">';
-          //         html += '<span class="input-group-text"><i class="fas fa-user-lock"></i></span>';
-          //       html += '</div>';
-          //       html += '<input type="password" class="form-control" placeholder="'+API.Contents.Language['Password']+'" name="password" value="'+settings.smtp.password+'">';
-	        //     html += '</div>';
-		      //   html += '</div>';
-		      //   html += '<div class="form-group row">';
-	        //     html += '<div class="input-group">';
-          //       html += '<button type="button" name="SaveSMTP" class="btn btn-success">';
-          //         html += '<i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save'];
-          //       html += '</button>';
-	        //     html += '</div>';
-		      //   html += '</div>';
-					// 	content.html(html);
-					// 	content.find('button').click(function(){
-					// 		var settings = {smtp:{encryption:content.find('select').val()}};
-					// 		content.find('input').each(function(){
-					// 			var key = $(this).attr('name');
-					// 			settings.smtp[key] = content.find('input[name="'+key+'"]').val();
-					// 		});
-					// 		settings.customization = API.Contents.Settings.customization;
-					// 		API.request('settings','save',{data:{settings:settings}});
-					// 	});
-					// });
+					API.Plugins.settings.GUI.Tabs.add('SMTP',function(content, tab){
+						var html = '', checkSSL = '', checkSTARTTLS = '';
+						if(typeof settings.smtp === 'undefined'){
+							settings.smtp = { host:'', port:'', username:'', password:'', encryption:'' };
+						}
+						if(typeof settings.smtp.host === 'undefined'){ settings.smtp.host = ''; }
+						if(typeof settings.smtp.port === 'undefined'){ settings.smtp.port = ''; }
+						if(typeof settings.smtp.username === 'undefined'){ settings.smtp.username = ''; }
+						if(typeof settings.smtp.password === 'undefined'){ settings.smtp.password = ''; }
+						if(typeof settings.smtp.encryption === 'undefined'){ settings.smtp.encryption = ''; }
+						if(settings.smtp.encryption == 'SSL'){ checkSSL = 'selected' }
+						if(settings.smtp.encryption == 'STARTTLS'){ checkSTARTTLS = 'selected' }
+						html += '<h3>'+API.Contents.Language['SMTP']+'</h3>';
+						html += '<div class="form-group row">';
+		          html += '<div class="input-group">';
+		            html += '<div class="input-group-prepend">';
+		              html += '<span class="input-group-text"><i class="fas fa-server"></i></span>';
+		            html += '</div>';
+		            html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Host']+'" name="host" value="'+settings.smtp.host+'">';
+		            html += '<div class="input-group-prepend">';
+		              html += '<span class="input-group-text"><i class="fas fa-key"></i></span>';
+		            html += '</div>';
+								html += '<select name="encryption">';
+									html += '<option value="SSL" '+checkSSL+'>'+API.Contents.Language['SSL']+'</option>';
+									html += '<option value="STARTTLS" '+checkSTARTTLS+'>'+API.Contents.Language['STARTTLS']+'</option>';
+								html += '</select>';
+		            html += '<div class="input-group-prepend">';
+		              html += '<span class="input-group-text"><i class="fas fa-ethernet"></i></span>';
+		            html += '</div>';
+		            html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Port']+'" name="port" value="'+settings.smtp.port+'">';
+		          html += '</div>';
+		        html += '</div>';
+						html += '<div class="form-group row">';
+	            html += '<div class="input-group">';
+                html += '<div class="input-group-prepend">';
+                  html += '<span class="input-group-text"><i class="fas fa-user"></i></span>';
+                html += '</div>';
+                html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Username']+'" name="username" value="'+settings.smtp.username+'">';
+                html += '<div class="input-group-prepend">';
+                  html += '<span class="input-group-text"><i class="fas fa-user-lock"></i></span>';
+                html += '</div>';
+                html += '<input type="password" class="form-control" placeholder="'+API.Contents.Language['Password']+'" name="password" value="'+settings.smtp.password+'">';
+	            html += '</div>';
+		        html += '</div>';
+		        html += '<div class="form-group row">';
+	            html += '<div class="input-group">';
+                html += '<button type="button" name="SaveSMTP" class="btn btn-success">';
+                  html += '<i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save'];
+                html += '</button>';
+	            html += '</div>';
+		        html += '</div>';
+						content.html(html);
+						content.find('button').each(function(){
+							$(this).off().click(function(){
+								switch($(this).attr('name')){
+									case'SaveSMTP':
+										var data = {};
+										data.smtp.host = content.find('input[name="host"]').val();
+										settings.smtphost = content.find('input[name="host"]').val();
+										data.smtp.port = content.find('input[name="port"]').val();
+										settings.smtp.port = content.find('input[name="port"]').val();
+										data.smtp.username = content.find('input[name="username"]').val();
+										settings.smtp.username = content.find('input[name="username"]').val();
+										data.smtp.password = content.find('input[name="password"]').val();
+										settings.smtp.password = content.find('input[name="password"]').val();
+										data.smtp.encryption = content.find('select[name="encryption"]').val();
+										settings.smtp.encryption = content.find('select[name="encryption"]').val();
+										API.request('settings','save',{data:data});
+										break;
+								}
+							});
+						});
+					});
 					// API.Plugins.settings.GUI.Tabs.add('LDAP',function(content, tab){
 					// 	var html = '';
 					// 	if(typeof settings.ldap === 'undefined'){
