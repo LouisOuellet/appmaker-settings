@@ -104,24 +104,24 @@ API.Plugins.settings = {
 		            html += '<p class="text-muted" style="margin-left:30px;">'+API.Contents.Language['Use system cron service to call the cron.php file every 5 minutes.']+'</p>';
 		          html += '</div>';
 		        html += '</div>';
-						// html += '<hr>';
-						// html += '<h3>'+API.Contents.Language['Language']+'</h3>';
-						// html += '<div class="form-group row">';
-		        //   html += '<div class="input-group">';
-		        //     html += '<div class="input-group-prepend">';
-		        //       html += '<span class="input-group-text">';
-		        //         html += '<i class="fas fa-globe"></i>';
-		        //       html += '</span>';
-		        //     html += '</div>';
-		        //     html += '<select class="form-control" name="language">';
-						// 			for(var [key, language] of Object.entries(languages)){
-						// 				if(settings.language == language){
-						// 					html += '<option value="'+language+'" selected>'+API.Helper.ucfirst(language)+'</option>';
-						// 				} else { html += '<option value="'+language+'">'+API.Helper.ucfirst(language)+'</option>'; }
-						// 			}
-		        //     html += '</select>';
-		        //   html += '</div>';
-		        // html += '</div>';
+						html += '<hr>';
+						html += '<h3>'+API.Contents.Language['Language']+'</h3>';
+						html += '<div class="form-group row">';
+		          html += '<div class="input-group">';
+		            html += '<div class="input-group-prepend">';
+		              html += '<span class="input-group-text">';
+		                html += '<i class="fas fa-globe"></i>';
+		              html += '</span>';
+		            html += '</div>';
+		            html += '<select class="form-control" name="language">';
+									for(var [key, language] of Object.entries(languages)){
+										if(settings.language == language){
+											html += '<option value="'+language+'" selected>'+API.Helper.ucfirst(language)+'</option>';
+										} else { html += '<option value="'+language+'">'+API.Helper.ucfirst(language)+'</option>'; }
+									}
+		            html += '</select>';
+		          html += '</div>';
+		        html += '</div>';
 						// html += '<hr>';
 						// html += '<h3>'+API.Contents.Language['Timezone']+'</h3>';
 						// html += '<div class="form-group row">';
