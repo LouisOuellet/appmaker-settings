@@ -14,9 +14,6 @@ API.Plugins.settings = {
 					directory = json.output.directory;
 					settings = json.output.settings;
 					API.Plugins.settings.GUI.Tabs.add('overview',function(content, tab){
-						console.log(content);
-						console.log(json);
-						console.log(settings);
 						var html = '';
 						html += '<h3>'+API.Contents.Language['Security & Setup Warnings']+'</h3>';
 						html += '<ul>';
@@ -29,7 +26,6 @@ API.Plugins.settings = {
 						}
 						html += '</ul>';
 						html += '<hr>';
-						console.log("Adding update block");
 						html += '<h3>'+API.Contents.Language['Updates']+'</h3>';
 						html += '<div class="form-group">';
 							html += '<div class="input-group">';
@@ -39,10 +35,7 @@ API.Plugins.settings = {
 									html += '</span>';
 								html += '</div>';
 								html += '<select name="branch">';
-								console.log("Adding branches");
 								for(const [key, branch] of Object.entries(settings.repository.branches)){
-									console.log(branch);
-									console.log(settings.repository.branch);
 									if(branch != ''){
 										if(settings.repository.branch == branch){
 											html += '<option value="'+branch+'" selected>'+API.Helper.ucfirst(branch)+'</option>';
@@ -50,7 +43,6 @@ API.Plugins.settings = {
 									}
 								}
 								html += '</select>';
-								console.log("Adding save button");
 								html += '<div class="input-group-append">';
 									html += '<button type="button" name="ChangeBranch" class="btn btn-success">';
 			              html += '<i class="fas fa-save mr-1"></i></i>'+API.Contents.Language['Save'];
@@ -75,16 +67,16 @@ API.Plugins.settings = {
 						// 		html += '</div>';
 						// 	html += '</div>';
 						// }
-						console.log(content);
-						console.log(settings);
 						content.html(html);
+						content.find('select').select2({ theme: 'bootstrap4' });
 						content.find('button').each(function(){
 							$(this).off().click(function(){
 								switch($(this).attr('name')){
 									case'StartUpdate': API.request('settings','update');break;
 									case'ChangeBranch':
-										settings.repository.branch = content.find('select').val();
-										API.request('settings','save',{data:{repository:settings.repository}});
+										console.log(content.find('select').select2('val'));
+										// settings.repository.branch = content.find('select').select2('val');
+										// API.request('settings','save',{data:{repository:settings.repository}});
 										break;
 								}
 							});
