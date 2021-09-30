@@ -66,13 +66,15 @@ API.Plugins.settings = {
 						// }
 						content.html(html);
 						content.find('button').each(function(){
-							switch($(this).attr('name')){
-								case'': API.request('settings','updateAPP');break;
-								case'ChangeBranch':
-									settings.repository.branch = content.find('select').val();
-									API.request('settings','save',{data:{settings:{repository:settings.repository}}});
-									break;
-							}
+							$(this).off().click(function(){
+								switch($(this).attr('name')){
+									case'StartUpdate': API.request('settings','update');break;
+									case'ChangeBranch':
+										settings.repository.branch = content.find('select').val();
+										API.request('settings','save',{data:{repository:settings.repository}});
+										break;
+								}
+							});
 						});
 					});
 					// API.Plugins.settings.GUI.Tabs.add('basic',function(content, tab){

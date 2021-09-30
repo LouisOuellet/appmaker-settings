@@ -1,5 +1,5 @@
 <?php
-class settingsAPI extends APIextend {
+class settingsAPI extends API {
 
 	public function fetch(){
 		// Last Background Job
@@ -54,7 +54,7 @@ class settingsAPI extends APIextend {
 	public function save($request, $data){
 		if(isset($data)){
 			if(!is_array($data)){ $data = json_decode($data, true); }
-			return $this->SaveCfg($data['settings']);
+			return $this->SaveCfg($data);
 		}
 	}
 
