@@ -122,24 +122,24 @@ API.Plugins.settings = {
 		            html += '</select>';
 		          html += '</div>';
 		        html += '</div>';
-						// html += '<hr>';
-						// html += '<h3>'+API.Contents.Language['Timezone']+'</h3>';
-						// html += '<div class="form-group row">';
-		        //   html += '<div class="input-group">';
-		        //     html += '<div class="input-group-prepend">';
-		        //       html += '<span class="input-group-text">';
-		        //         html += '<i class="fas fa-clock"></i>';
-		        //       html += '</span>';
-		        //     html += '</div>';
-		        //     html += '<select class="form-control" name="timezone">';
-						// 			for(const [key, timezone] of Object.entries(timezones)){
-						// 				if(settings.timezone == timezone){
-						// 					html += '<option value="'+timezone+'" selected>'+timezone+'</option>';
-						// 				} else { html += '<option value="'+timezone+'">'+timezone+'</option>'; }
-						// 			}
-		        //     html += '</select>';
-		        //   html += '</div>';
-		        // html += '</div>';
+						html += '<hr>';
+						html += '<h3>'+API.Contents.Language['Timezone']+'</h3>';
+						html += '<div class="form-group row">';
+		          html += '<div class="input-group">';
+		            html += '<div class="input-group-prepend">';
+		              html += '<span class="input-group-text">';
+		                html += '<i class="fas fa-clock"></i>';
+		              html += '</span>';
+		            html += '</div>';
+		            html += '<select class="form-control" name="timezone">';
+									for(const [key, timezone] of Object.entries(timezones)){
+										if(settings.timezone == timezone){
+											html += '<option value="'+timezone+'" selected>'+timezone+'</option>';
+										} else { html += '<option value="'+timezone+'">'+timezone+'</option>'; }
+									}
+		            html += '</select>';
+		          html += '</div>';
+		        html += '</div>';
 						// html += '<hr>';
 						// html += '<h3>'+API.Contents.Language['Landing Page']+'</h3>';
 						// html += '<div class="form-group row">';
