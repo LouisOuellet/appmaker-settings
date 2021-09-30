@@ -212,63 +212,74 @@ API.Plugins.settings = {
 				        html += '<button type="button" name="debug" class="btn btn-success"><i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save']+'</button>';
 				      html += '</div>';
 				    html += '</div>';
-					  // html += '<hr>';
-						// html += '<h3>'+API.Contents.Language['Maintenance Mode']+'</h3>';
-						// html += '<p>';
-					  //   html += API.Contents.Language['This mode allows an administrator to perform some tasks such as updating the application.'];
-					  //   html += '<div class="alert alert-info">';
-					  //     html += '<h5><i class="icon fas fa-info"></i>'+API.Contents.Language['Info']+'</h5>';
-					  //     html += API.Contents.Language['Enabling maintenance mode will prevent users from accessing the application.'];
-					  //   html += '</div>';
-					  //   html += '<div class="alert alert-warning">';
-					  //     html += '<h5><i class="icon fas fa-exclamation-triangle"></i>'+API.Contents.Language['Warning']+'</h5>';
-					  //     html += API.Contents.Language['This may cause some data to be lost. Such as a completed form that was not yet submitted.'];
-					  //   html += '</div>';
-				    // html += '</p>';
-				    // html += '<div class="form-group clearfix">';
-				    //   html += '<div class="icheck-primary">';
-						// 		if(settings.maintenance){ checked = 'checked'; } else { checked = ''; }
-				    //     html += '<input type="checkbox" id="maintenance" name="maintenance" '+checked+'>';
-				    //     html += '<label for="maintenance">'+API.Contents.Language['Enable']+'</label>';
-				    //   html += '</div>';
-				    // html += '</div>';
-				    // html += '<div class="form-group row">';
-				    //   html += '<div class="input-group">';
-				    //     html += '<button type="button" name="maintenance" class="btn btn-success"><i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save']+'</button>';
-				    //   html += '</div>';
-				    // html += '</div>';
-					  // html += '<hr>';
-						// html += '<h3>'+API.Contents.Language['Developer Mode']+'</h3>';
-						// html += '<p>';
-					  //   html += API.Contents.Language['This mode allows a developer to perform some changes to the application.'];
-					  //   html += '<div class="alert alert-warning">';
-					  //     html += '<h5><i class="icon fas fa-exclamation-triangle"></i>'+API.Contents.Language['Warning']+'</h5>';
-					  //     html += API.Contents.Language['This may cause some data to be lost. Such as a completed form that was not yet submitted.'];
-					  //   html += '</div>';
-				    // html += '</p>';
-				    // html += '<div class="form-group clearfix">';
-				    //   html += '<div class="icheck-primary">';
-						// 		if(settings.developer){ checked = 'checked'; } else { checked = ''; }
-				    //     html += '<input type="checkbox" id="developer" name="developer" '+checked+'>';
-				    //     html += '<label for="developer">'+API.Contents.Language['Enable']+'</label>';
-				    //   html += '</div>';
-				    // html += '</div>';
-				    // html += '<div class="form-group row">';
-				    //   html += '<div class="input-group">';
-				    //     html += '<button type="button" name="developer" class="btn btn-success"><i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save']+'</button>';
-				    //   html += '</div>';
-				    // html += '</div>';
+					  html += '<hr>';
+						html += '<h3>'+API.Contents.Language['Maintenance Mode']+'</h3>';
+						html += '<p>';
+					    html += API.Contents.Language['This mode allows an administrator to perform some tasks such as updating the application.'];
+					    html += '<div class="alert alert-info">';
+					      html += '<h5><i class="icon fas fa-info"></i>'+API.Contents.Language['Info']+'</h5>';
+					      html += API.Contents.Language['Enabling maintenance mode will prevent users from accessing the application.'];
+					    html += '</div>';
+					    html += '<div class="alert alert-warning">';
+					      html += '<h5><i class="icon fas fa-exclamation-triangle"></i>'+API.Contents.Language['Warning']+'</h5>';
+					      html += API.Contents.Language['This may cause some data to be lost. Such as a completed form that was not yet submitted.'];
+					    html += '</div>';
+				    html += '</p>';
+				    html += '<div class="form-group clearfix">';
+				      html += '<div class="icheck-primary">';
+								if(typeof settings.maintenance !== 'undefined' && settings.maintenance){ checked = 'checked'; } else { checked = ''; }
+				        html += '<input type="checkbox" id="maintenance" name="maintenance" '+checked+'>';
+				        html += '<label for="maintenance">'+API.Contents.Language['Enable']+'</label>';
+				      html += '</div>';
+				    html += '</div>';
+				    html += '<div class="form-group row">';
+				      html += '<div class="input-group">';
+				        html += '<button type="button" name="maintenance" class="btn btn-success"><i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save']+'</button>';
+				      html += '</div>';
+				    html += '</div>';
+					  html += '<hr>';
+						html += '<h3>'+API.Contents.Language['Developer Mode']+'</h3>';
+						html += '<p>';
+					    html += API.Contents.Language['This mode allows a developer to perform some changes to the application.'];
+					    html += '<div class="alert alert-warning">';
+					      html += '<h5><i class="icon fas fa-exclamation-triangle"></i>'+API.Contents.Language['Warning']+'</h5>';
+					      html += API.Contents.Language['This may cause some data to be lost. Such as a completed form that was not yet submitted.'];
+					    html += '</div>';
+				    html += '</p>';
+				    html += '<div class="form-group clearfix">';
+				      html += '<div class="icheck-primary">';
+								if(typeof settings.developer !== 'undefined' && settings.developer){ checked = 'checked'; } else { checked = ''; }
+				        html += '<input type="checkbox" id="developer" name="developer" '+checked+'>';
+				        html += '<label for="developer">'+API.Contents.Language['Enable']+'</label>';
+				      html += '</div>';
+				    html += '</div>';
+				    html += '<div class="form-group row">';
+				      html += '<div class="input-group">';
+				        html += '<button type="button" name="developer" class="btn btn-success"><i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save']+'</button>';
+				      html += '</div>';
+				    html += '</div>';
 						content.html(html);
 						content.find('select').select2({ theme: 'bootstrap4' });
 						content.find('button').each(function(){
 							$(this).off().click(function(){
 								switch($(this).attr('name')){
+									case'developer':
+										var data = {};
+										if(content.find('input:checked[name="developer"]').val() != undefined){ data.developer = true;settings.developer = true; }
+										else { data.developer = false;settings.developer = false; }
+										API.request('settings','save',{data:data});
+										break;
+									case'maintenance':
+										var data = {};
+										if(content.find('input:checked[name="maintenance"]').val() != undefined){ data.maintenance = true;settings.maintenance = true; }
+										else { data.maintenance = false;settings.maintenance = false; }
+										API.request('settings','save',{data:data});
+										break;
 									case'debug':
 										var data = {};
 										if(content.find('input:checked[name="debug"]').val() != undefined){ data.debug = true;settings.debug = true; }
 										else { data.debug = false;settings.debug = false; }
-										console.log(data.debug);
-										// API.request('settings','save',{data:data});
+										API.request('settings','save',{data:data});
 										break;
 								}
 							});
