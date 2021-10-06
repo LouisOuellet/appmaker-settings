@@ -46,18 +46,6 @@ class settingsAPI extends API {
 				'pages' => $pages,
 			],
 		];
-		// $config = $this->Settings;
-		// // Langing Pages
-		// $pages = [];
-		// $plugins = scandir(dirname(__FILE__,3).'/plugins/'); foreach($plugins as $plugin) {
-		// 	if(("$plugin" != "..") and ("$plugin" != ".")){ $file = dirname(__FILE__,3)."/plugins/".$plugin."/src/views/index.php";
-		// 		if(is_file($file)){ array_push($pages,$plugin); }
-		// 	}
-		// }
-		// 	'whoami' => exec('whoami'),
-		// 	'pages' => $pages,
-		// ];
-		// return $config;
 	}
 
 	public function save($request, $data){
