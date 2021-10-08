@@ -807,7 +807,9 @@ API.Plugins.settings = {
 								settings.customization[key].type = API.Contents.Settings.customization[key].type;
 							});
 							console.log(settings);
-							// API.request('settings','save',{data:{settings}});
+							// API.request('settings','save',{data:{settings}},function(result){
+							// 	json = JSON.parse(result);
+							// });
 						});
 					});
 				});
