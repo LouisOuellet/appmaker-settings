@@ -17,13 +17,6 @@ API.Plugins.settings = {
 					languages = json.output.languages;
 					timezones = json.output.timezones;
 					pages = json.output.pages;
-					console.log(cron);
-					console.log(directory);
-					console.log(settings);
-					console.log(manifest);
-					console.log(languages);
-					console.log(timezones);
-					console.log(pages);
 					API.Plugins.settings.GUI.Tabs.add('overview',function(content, tab){
 						var html = '';
 						html += '<h3>'+API.Contents.Language['Security & Setup Warnings']+'</h3>';
@@ -685,12 +678,12 @@ API.Plugins.settings = {
 					// });
 					API.Plugins.settings.GUI.Tabs.add('customization',function(content, tab){
 						var html = '', checked = '';
-						if(API.Helper.isSet(settings,['customization','pace','value'])){ settings.customization.pace.value = 'primary'; }
-						if(API.Helper.isSet(settings,['customization','logobg','value'])){ settings.customization.logobg.value = 'dark'; }
-						if(API.Helper.isSet(settings,['customization','nav','value'])){ settings.customization.nav.value = 'warning'; }
-						if(API.Helper.isSet(settings,['customization','navmode','value'])){ settings.customization.navmode.value = 'light'; }
-						if(API.Helper.isSet(settings,['customization','sidenav','value'])){ settings.customization.sidenav.value = 'primary'; }
-						if(API.Helper.isSet(settings,['customization','sidenavmode','value'])){ settings.customization.sidenavmode.value = 'light'; }
+						if(!API.Helper.isSet(settings,['customization','pace','value'])){ settings.customization.pace.value = 'primary'; }
+						if(!API.Helper.isSet(settings,['customization','logobg','value'])){ settings.customization.logobg.value = 'dark'; }
+						if(!API.Helper.isSet(settings,['customization','nav','value'])){ settings.customization.nav.value = 'info'; }
+						if(!API.Helper.isSet(settings,['customization','navmode','value'])){ settings.customization.navmode.value = 'dark'; }
+						if(!API.Helper.isSet(settings,['customization','sidenav','value'])){ settings.customization.sidenav.value = 'info'; }
+						if(!API.Helper.isSet(settings,['customization','sidenavmode','value'])){ settings.customization.sidenavmode.value = 'dark'; }
 						html += '<h3>'+API.Contents.Language['Customization']+'</h3>';
 						html += '<div class="row">';
 						html += '<div class="col-md-6 py-2">';
