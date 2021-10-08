@@ -801,16 +801,16 @@ API.Plugins.settings = {
 						content.find('select').select2({ theme: 'bootstrap4' });
 						content.find('button').off().click(function(){
 							var customization = {};
-							customization.customization = API.Contents.Settings.customization;
+							customization = API.Contents.Settings.customization;
 							content.find('select').each(function(){
 								var key = $(this).attr('name');
-								customization.customization[key].value = $(this).select2('val');
-								customization.customization[key].type = API.Contents.Settings.customization[key].type;
+								customization[key].value = $(this).select2('val');
+								customization[key].type = API.Contents.Settings.customization[key].type;
 							});
 							content.find('input').each(function(){
 								var key = $(this).attr('name');
-								customization.customization[key].value = $(this).val();
-								customization.customization[key].type = API.Contents.Settings.customization[key].type;
+								customization[key].value = $(this).val();
+								customization[key].type = API.Contents.Settings.customization[key].type;
 							});
 							API.request('settings','save',{data:{customization}},function(result){
 								json = JSON.parse(result);
