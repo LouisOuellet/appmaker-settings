@@ -694,7 +694,6 @@ API.Plugins.settings = {
 			              html += '</span>';
 			            html += '</div>';
 			            html += '<select class="form-control" name="pace">';
-										console.log(settings.customization.pace.value);
 										for(var [key, value] of Object.entries(["primary","secondary","info","success","warning","danger"])){
 											if(settings.customization.pace.value == value){
 												html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
@@ -711,7 +710,6 @@ API.Plugins.settings = {
 			              html += '</span>';
 			            html += '</div>';
 			            html += '<select class="form-control" name="logobg">';
-										console.log(settings.customization.logobg.value);
 										for(var [key, value] of Object.entries(["light","dark"])){
 											if(settings.customization.logobg.value == value){
 												html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
@@ -728,7 +726,6 @@ API.Plugins.settings = {
 			              html += '</span>';
 			            html += '</div>';
 			            html += '<select class="form-control" name="nav">';
-										console.log(settings.customization.nav.value);
 										for(var [key, value] of Object.entries(["primary","secondary","info","success","warning","danger"])){
 											if(settings.customization.nav.value == value){
 												html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
@@ -745,7 +742,6 @@ API.Plugins.settings = {
 			              html += '</span>';
 			            html += '</div>';
 			            html += '<select class="form-control" name="navmode">';
-										console.log(settings.customization.navmode.value);
 										for(var [key, value] of Object.entries(["light","dark"])){
 											if(settings.customization.navmode.value == value){
 												html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
@@ -762,7 +758,6 @@ API.Plugins.settings = {
 			              html += '</span>';
 			            html += '</div>';
 			            html += '<select class="form-control" name="sidenav">';
-										console.log(settings.customization.sidenav.value);
 										for(var [key, value] of Object.entries(["primary","secondary","info","success","warning","danger"])){
 											if(settings.customization.sidenav.value == value){
 												html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
@@ -779,7 +774,6 @@ API.Plugins.settings = {
 			              html += '</span>';
 			            html += '</div>';
 			            html += '<select class="form-control" name="sidenavmode">';
-										console.log(settings.customization.sidenavmode.value);
 										for(var [key, value] of Object.entries(["light","dark"])){
 											if(settings.customization.sidenavmode.value == value){
 												html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
@@ -816,6 +810,8 @@ API.Plugins.settings = {
 								json = JSON.parse(result);
 								if(json.success != undefined){
 									console.log(json);
+									API.Contents.Settings.customization = json.output.settings.customization;
+									settings = API.Contents.Settings;
 								}
 							});
 						});
