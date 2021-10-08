@@ -812,10 +812,9 @@ API.Plugins.settings = {
 								settings.customization[key].value = $(this).val();
 								settings.customization[key].type = API.Contents.Settings.customization[key].type;
 							});
-							console.log(settings);
-							// API.request('settings','save',{data:{settings}},function(result){
-							// 	json = JSON.parse(result);
-							// });
+							API.request('settings','save',{data:{settings}},function(result){
+								json = JSON.parse(result);
+							});
 						});
 					});
 				});
