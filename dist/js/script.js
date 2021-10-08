@@ -676,139 +676,139 @@ API.Plugins.settings = {
 					// 		API.request('settings','save',{data:{settings:settings}});
 					// 	});
 					// });
-					// API.Plugins.settings.GUI.Tabs.add('customization',function(content, tab){
-					// 	var html = '', checked = '';
-					// 	if(API.Helper.isSet(settings,['customization','pace','value'])){ settings.customization.pace.value = 'primary'; }
-					// 	if(API.Helper.isSet(settings,['customization','logobg','value'])){ settings.customization.logobg.value = 'dark'; }
-					// 	if(API.Helper.isSet(settings,['customization','nav','value'])){ settings.customization.nav.value = 'warning'; }
-					// 	if(API.Helper.isSet(settings,['customization','navmode','value'])){ settings.customization.navmode.value = 'light'; }
-					// 	if(API.Helper.isSet(settings,['customization','sidenav','value'])){ settings.customization.sidenav.value = 'primary'; }
-					// 	if(API.Helper.isSet(settings,['customization','sidenavmode','value'])){ settings.customization.sidenavmode.value = 'light'; }
-					// 	html += '<h3>'+API.Contents.Language['Customization']+'</h3>';
-					// 	html += '<div class="row">';
-					// 	html += '<div class="col-md-6 py-2">';
-					// 			html += '<div class="input-group">';
-			    //         html += '<div class="input-group-prepend">';
-			    //           html += '<span class="input-group-text">';
-			    //             html += '<i class="fas fa-paint-brush mr-2"></i>Pace';
-			    //           html += '</span>';
-			    //         html += '</div>';
-			    //         html += '<select class="form-control" name="pace">';
-					// 					for(var [key, value] of Object.entries(["primary","secondary","info","success","warning","danger"])){
-					// 						if(settings.customization.pace.value == value){
-					// 							html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
-					// 						} else { html += '<option value="'+value+'">'+API.Helper.ucfirst(value)+'</option>'; }
-					// 					}
-			    //         html += '</select>';
-			    //       html += '</div>';
-					// 		html += '</div>';
-					// 		html += '<div class="col-md-6 py-2">';
-					// 			html += '<div class="input-group">';
-			    //         html += '<div class="input-group-prepend">';
-			    //           html += '<span class="input-group-text">';
-			    //             html += '<i class="fas fa-moon mr-2"></i>Logo Background';
-			    //           html += '</span>';
-			    //         html += '</div>';
-			    //         html += '<select class="form-control" name="logobg">';
-					// 					for(var [key, value] of Object.entries(["light","dark"])){
-					// 						if(settings.customization.logobg.value == value){
-					// 							html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
-					// 						} else { html += '<option value="'+value+'">'+API.Helper.ucfirst(value)+'</option>'; }
-					// 					}
-			    //         html += '</select>';
-			    //       html += '</div>';
-					// 		html += '</div>';
-					// 		html += '<div class="col-md-6 py-2">';
-					// 			html += '<div class="input-group">';
-			    //         html += '<div class="input-group-prepend">';
-			    //           html += '<span class="input-group-text">';
-			    //             html += '<i class="fas fa-paint-brush mr-2"></i>Nav';
-			    //           html += '</span>';
-			    //         html += '</div>';
-			    //         html += '<select class="form-control" name="nav">';
-					// 					for(var [key, value] of Object.entries(["primary","secondary","info","success","warning","danger"])){
-					// 						if(settings.customization.nav.value == value){
-					// 							html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
-					// 						} else { html += '<option value="'+value+'">'+API.Helper.ucfirst(value)+'</option>'; }
-					// 					}
-			    //         html += '</select>';
-			    //       html += '</div>';
-					// 		html += '</div>';
-					// 		html += '<div class="col-md-6 py-2">';
-					// 			html += '<div class="input-group">';
-			    //         html += '<div class="input-group-prepend">';
-			    //           html += '<span class="input-group-text">';
-			    //             html += '<i class="fas fa-moon mr-2"></i>Nav Mode';
-			    //           html += '</span>';
-			    //         html += '</div>';
-			    //         html += '<select class="form-control" name="navmode">';
-					// 					for(var [key, value] of Object.entries(["light","dark"])){
-					// 						if(settings.customization.navmode.value == value){
-					// 							html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
-					// 						} else { html += '<option value="'+value+'">'+API.Helper.ucfirst(value)+'</option>'; }
-					// 					}
-			    //         html += '</select>';
-			    //       html += '</div>';
-					// 		html += '</div>';
-					// 		html += '<div class="col-md-6 py-2">';
-					// 			html += '<div class="input-group">';
-			    //         html += '<div class="input-group-prepend">';
-			    //           html += '<span class="input-group-text">';
-			    //             html += '<i class="fas fa-paint-brush mr-2"></i>Side Nav';
-			    //           html += '</span>';
-			    //         html += '</div>';
-			    //         html += '<select class="form-control" name="sidenav">';
-					// 					for(var [key, value] of Object.entries(["primary","secondary","info","success","warning","danger"])){
-					// 						if(settings.customization.sidenav.value == value){
-					// 							html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
-					// 						} else { html += '<option value="'+value+'">'+API.Helper.ucfirst(value)+'</option>'; }
-					// 					}
-			    //         html += '</select>';
-			    //       html += '</div>';
-					// 		html += '</div>';
-					// 		html += '<div class="col-md-6 py-2">';
-					// 			html += '<div class="input-group">';
-			    //         html += '<div class="input-group-prepend">';
-			    //           html += '<span class="input-group-text">';
-			    //             html += '<i class="fas fa-moon mr-2"></i>Side Nav Mode';
-			    //           html += '</span>';
-			    //         html += '</div>';
-			    //         html += '<select class="form-control" name="sidenavmode">';
-					// 					for(var [key, value] of Object.entries(["light","dark"])){
-					// 						if(settings.customization.sidenavmode.value == value){
-					// 							html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
-					// 						} else { html += '<option value="'+value+'">'+API.Helper.ucfirst(value)+'</option>'; }
-					// 					}
-			    //         html += '</select>';
-			    //       html += '</div>';
-					// 		html += '</div>';
-					// 		html += '<div class="col-md-12 py-2">';
-					// 			html += '<hr>';
-					// 			html += '<div class="input-group">';
-					// 				html += '<button type="button" name="SaveApp" class="btn btn-success">';
-					// 					html += '<i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save'];
-					// 				html += '</button>';
-					// 			html += '</div>';
-					// 		html += '</div>';
-					// 	html += '</div>';
-					// 	content.html(html);
-					// 	content.find('select').select2({ theme: 'bootstrap4' });
-					// 	content.find('button').click(function(){
-					// 		var settings = {};
-					// 		settings.customization = API.Contents.Settings.customization;
-					// 		content.find('select').each(function(){
-					// 			var key = $(this).attr('name');
-					// 			settings.customization[key].value = $(this).select2('val');
-					// 			settings.customization[key].type = API.Contents.Settings.customization[key].type;
-					// 		});
-					// 		content.find('input').each(function(){
-					// 			var key = $(this).attr('name');
-					// 			settings.customization[key].value = $(this).val();
-					// 			settings.customization[key].type = API.Contents.Settings.customization[key].type;
-					// 		});
-					// 		API.request('settings','save',{data:{settings:settings}});
-					// 	});
-					// });
+					API.Plugins.settings.GUI.Tabs.add('customization',function(content, tab){
+						var html = '', checked = '';
+						if(API.Helper.isSet(settings,['customization','pace','value'])){ settings.customization.pace.value = 'primary'; }
+						if(API.Helper.isSet(settings,['customization','logobg','value'])){ settings.customization.logobg.value = 'dark'; }
+						if(API.Helper.isSet(settings,['customization','nav','value'])){ settings.customization.nav.value = 'warning'; }
+						if(API.Helper.isSet(settings,['customization','navmode','value'])){ settings.customization.navmode.value = 'light'; }
+						if(API.Helper.isSet(settings,['customization','sidenav','value'])){ settings.customization.sidenav.value = 'primary'; }
+						if(API.Helper.isSet(settings,['customization','sidenavmode','value'])){ settings.customization.sidenavmode.value = 'light'; }
+						html += '<h3>'+API.Contents.Language['Customization']+'</h3>';
+						html += '<div class="row">';
+						html += '<div class="col-md-6 py-2">';
+								html += '<div class="input-group">';
+			            html += '<div class="input-group-prepend">';
+			              html += '<span class="input-group-text">';
+			                html += '<i class="fas fa-paint-brush mr-2"></i>Pace';
+			              html += '</span>';
+			            html += '</div>';
+			            html += '<select class="form-control" name="pace">';
+										for(var [key, value] of Object.entries(["primary","secondary","info","success","warning","danger"])){
+											if(settings.customization.pace.value == value){
+												html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
+											} else { html += '<option value="'+value+'">'+API.Helper.ucfirst(value)+'</option>'; }
+										}
+			            html += '</select>';
+			          html += '</div>';
+							html += '</div>';
+							html += '<div class="col-md-6 py-2">';
+								html += '<div class="input-group">';
+			            html += '<div class="input-group-prepend">';
+			              html += '<span class="input-group-text">';
+			                html += '<i class="fas fa-moon mr-2"></i>Logo Background';
+			              html += '</span>';
+			            html += '</div>';
+			            html += '<select class="form-control" name="logobg">';
+										for(var [key, value] of Object.entries(["light","dark"])){
+											if(settings.customization.logobg.value == value){
+												html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
+											} else { html += '<option value="'+value+'">'+API.Helper.ucfirst(value)+'</option>'; }
+										}
+			            html += '</select>';
+			          html += '</div>';
+							html += '</div>';
+							html += '<div class="col-md-6 py-2">';
+								html += '<div class="input-group">';
+			            html += '<div class="input-group-prepend">';
+			              html += '<span class="input-group-text">';
+			                html += '<i class="fas fa-paint-brush mr-2"></i>Nav';
+			              html += '</span>';
+			            html += '</div>';
+			            html += '<select class="form-control" name="nav">';
+										for(var [key, value] of Object.entries(["primary","secondary","info","success","warning","danger"])){
+											if(settings.customization.nav.value == value){
+												html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
+											} else { html += '<option value="'+value+'">'+API.Helper.ucfirst(value)+'</option>'; }
+										}
+			            html += '</select>';
+			          html += '</div>';
+							html += '</div>';
+							html += '<div class="col-md-6 py-2">';
+								html += '<div class="input-group">';
+			            html += '<div class="input-group-prepend">';
+			              html += '<span class="input-group-text">';
+			                html += '<i class="fas fa-moon mr-2"></i>Nav Mode';
+			              html += '</span>';
+			            html += '</div>';
+			            html += '<select class="form-control" name="navmode">';
+										for(var [key, value] of Object.entries(["light","dark"])){
+											if(settings.customization.navmode.value == value){
+												html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
+											} else { html += '<option value="'+value+'">'+API.Helper.ucfirst(value)+'</option>'; }
+										}
+			            html += '</select>';
+			          html += '</div>';
+							html += '</div>';
+							html += '<div class="col-md-6 py-2">';
+								html += '<div class="input-group">';
+			            html += '<div class="input-group-prepend">';
+			              html += '<span class="input-group-text">';
+			                html += '<i class="fas fa-paint-brush mr-2"></i>Side Nav';
+			              html += '</span>';
+			            html += '</div>';
+			            html += '<select class="form-control" name="sidenav">';
+										for(var [key, value] of Object.entries(["primary","secondary","info","success","warning","danger"])){
+											if(settings.customization.sidenav.value == value){
+												html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
+											} else { html += '<option value="'+value+'">'+API.Helper.ucfirst(value)+'</option>'; }
+										}
+			            html += '</select>';
+			          html += '</div>';
+							html += '</div>';
+							html += '<div class="col-md-6 py-2">';
+								html += '<div class="input-group">';
+			            html += '<div class="input-group-prepend">';
+			              html += '<span class="input-group-text">';
+			                html += '<i class="fas fa-moon mr-2"></i>Side Nav Mode';
+			              html += '</span>';
+			            html += '</div>';
+			            html += '<select class="form-control" name="sidenavmode">';
+										for(var [key, value] of Object.entries(["light","dark"])){
+											if(settings.customization.sidenavmode.value == value){
+												html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
+											} else { html += '<option value="'+value+'">'+API.Helper.ucfirst(value)+'</option>'; }
+										}
+			            html += '</select>';
+			          html += '</div>';
+							html += '</div>';
+							html += '<div class="col-md-12 py-2">';
+								html += '<hr>';
+								html += '<div class="input-group">';
+									html += '<button type="button" name="SaveApp" class="btn btn-success">';
+										html += '<i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save'];
+									html += '</button>';
+								html += '</div>';
+							html += '</div>';
+						html += '</div>';
+						content.html(html);
+						content.find('select').select2({ theme: 'bootstrap4' });
+						content.find('button').off().click(function(){
+							var settings = {};
+							settings.customization = API.Contents.Settings.customization;
+							content.find('select').each(function(){
+								var key = $(this).attr('name');
+								settings.customization[key].value = $(this).select2('val');
+								settings.customization[key].type = API.Contents.Settings.customization[key].type;
+							});
+							content.find('input').each(function(){
+								var key = $(this).attr('name');
+								settings.customization[key].value = $(this).val();
+								settings.customization[key].type = API.Contents.Settings.customization[key].type;
+							});
+							API.request('settings','save',{data:{settings:settings}});
+						});
+					});
 				});
 			},
 			add:function(name, options = {}, callback = null){
