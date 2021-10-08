@@ -806,7 +806,8 @@ API.Plugins.settings = {
 								settings.customization[key].value = $(this).val();
 								settings.customization[key].type = API.Contents.Settings.customization[key].type;
 							});
-							API.request('settings','save',{data:{settings}});
+							console.log(settings);
+							// API.request('settings','save',{data:{settings}});
 						});
 					});
 				});
