@@ -8,7 +8,7 @@ API.Plugins.settings = {
 	GUI:{
 		Tabs:{
 			init:function(){
-				API.request('settings','fetch',function(result){
+				API.request('settings','fetch',{data:[]},function(result){
 					json = JSON.parse(result);
 					cron = json.output.cron;
 					directory = json.output.directory;
