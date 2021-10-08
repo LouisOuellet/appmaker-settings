@@ -17,6 +17,13 @@ API.Plugins.settings = {
 					languages = json.output.languages;
 					timezones = json.output.timezones;
 					pages = json.output.pages;
+					console.log(cron);
+					console.log(directory);
+					console.log(settings);
+					console.log(manifest);
+					console.log(languages);
+					console.log(timezones);
+					console.log(pages);
 					API.Plugins.settings.GUI.Tabs.add('overview',function(content, tab){
 						var html = '';
 						html += '<h3>'+API.Contents.Language['Security & Setup Warnings']+'</h3>';
