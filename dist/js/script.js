@@ -817,6 +817,10 @@ API.Plugins.settings = {
 									brand.removeClass('navbar-'+API.Contents.Settings.customization.logobg.value,'bg-'+API.Contents.Settings.customization.logobg.value);
 									navbar.removeClass('navbar-'+API.Contents.Settings.customization.nav.value,'navbar-'+API.Contents.Settings.customization.navmode.value);
 									sidebar.removeClass('sidebar-'+API.Contents.Settings.customization.sidenavmode.value+'-'+API.Contents.Settings.customization.sidenav.value);
+									console.log(pace);
+									console.log(brand);
+									console.log(navbar);
+									console.log(sidebar);
 									API.Contents.Settings.customization = json.output.settings.customization;
 									settings = API.Contents.Settings;
 									pace.addClass('pace-'+API.Contents.Settings.customization.pace.value);
