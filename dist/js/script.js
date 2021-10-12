@@ -840,7 +840,7 @@ API.Plugins.settings = {
 									settings = API.Contents.Settings;
 									// pace.addClass('pace-'+API.Contents.Settings.customization.pace.value);
 									// brand.addClass('navbar-'+API.Contents.Settings.customization.logobg.value,'bg-'+API.Contents.Settings.customization.logobg.value);
-									navbar.addClass('navbar-'+json.output.settings.customization.nav.value,'navbar-'+json.output.settings.customization.navmode.value);
+									navbar.addClass('navbar-expand','navbar-'+json.output.settings.customization.nav.value,'navbar-'+json.output.settings.customization.navmode.value);
 									// sidebar.addClass('sidebar-'+API.Contents.Settings.customization.sidenavmode.value+'-'+API.Contents.Settings.customization.sidenav.value);
 									// console.log(pace[0].className);
 									// console.log(brand[0].className);
