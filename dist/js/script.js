@@ -809,9 +809,20 @@ API.Plugins.settings = {
 							API.request('settings','save',{data:{customization}},function(result){
 								json = JSON.parse(result);
 								if(json.success != undefined){
-									console.log(json);
+									var pace = $('body');
+									var brand = $('a.brand-link');
+									var navbar = $('nav.main-header.navbar');
+									var sidebar = $('aside.main-sidebar');
+									pace.removeClass('pace-'+API.Contents.Settings.customization.pace.value);
+									brand.removeClass('navbar-'+API.Contents.Settings.customization.logobg.value,'bg-'+API.Contents.Settings.customization.logobg.value);
+									navbar.removeClass('navbar-'+API.Contents.Settings.customization.nav.value,'navbar-'+API.Contents.Settings.customization.navmode.value);
+									sidebar.removeClass('sidebar-'+API.Contents.Settings.customization.sidenavemode.value+'-'+API.Contents.Settings.customization.sidenave.value);
 									API.Contents.Settings.customization = json.output.settings.customization;
 									settings = API.Contents.Settings;
+									pace.addClass('pace-'+API.Contents.Settings.customization.pace.value);
+									brand.addClass('navbar-'+API.Contents.Settings.customization.logobg.value,'bg-'+API.Contents.Settings.customization.logobg.value);
+									navbar.addClass('navbar-'+json.output.settings.customization.nav.value,'navbar-'+json.output.settings.customization.navmode.value);
+									sidebar.addClass('sidebar-'+API.Contents.Settings.customization.sidenavemode.value+'-'+API.Contents.Settings.customization.sidenave.value);
 								}
 							});
 						});
