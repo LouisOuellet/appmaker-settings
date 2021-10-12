@@ -813,20 +813,39 @@ API.Plugins.settings = {
 									var brand = $('a.brand-link');
 									var navbar = $('nav.main-header.navbar');
 									var sidebar = $('aside.main-sidebar');
-									pace.removeClass('pace-'+API.Contents.Settings.customization.pace.value);
-									brand.removeClass('navbar-'+API.Contents.Settings.customization.logobg.value,'bg-'+API.Contents.Settings.customization.logobg.value);
-									navbar.removeClass('navbar-'+API.Contents.Settings.customization.nav.value,'navbar-'+API.Contents.Settings.customization.navmode.value);
-									sidebar.removeClass('sidebar-'+API.Contents.Settings.customization.sidenavmode.value+'-'+API.Contents.Settings.customization.sidenav.value);
-									console.log(pace);
-									console.log(brand);
-									console.log(navbar);
-									console.log(sidebar);
+									console.log(pace.className);
+									console.log(brand.className);
+									console.log(navbar.className);
+									console.log(sidebar.className);
+									pace.removeClass(function (index, className) {
+								    return (className.match (/\bpace-\S+/g) || []).join(' ');
+									});
+									brand.removeClass(function (index, className) {
+								    return (className.match (/\bnavbar-\S+/g) || []).join(' ');
+									});
+									brand.removeClass(function (index, className) {
+								    return (className.match (/\bbg-\S+/g) || []).join(' ');
+									});
+									navbar.removeClass(function (index, className) {
+								    return (className.match (/\bnavbar-\S+/g) || []).join(' ');
+									});
+									sidebar.removeClass(function (index, className) {
+								    return (className.match (/\bsidebar-\S+/g) || []).join(' ');
+									});
+									console.log(pace.className);
+									console.log(brand.className);
+									console.log(navbar.className);
+									console.log(sidebar.className);
 									API.Contents.Settings.customization = json.output.settings.customization;
 									settings = API.Contents.Settings;
 									pace.addClass('pace-'+API.Contents.Settings.customization.pace.value);
 									brand.addClass('navbar-'+API.Contents.Settings.customization.logobg.value,'bg-'+API.Contents.Settings.customization.logobg.value);
 									navbar.addClass('navbar-'+json.output.settings.customization.nav.value,'navbar-'+json.output.settings.customization.navmode.value);
 									sidebar.addClass('sidebar-'+API.Contents.Settings.customization.sidenavmode.value+'-'+API.Contents.Settings.customization.sidenav.value);
+									console.log(pace.className);
+									console.log(brand.className);
+									console.log(navbar.className);
+									console.log(sidebar.className);
 								}
 							});
 						});
