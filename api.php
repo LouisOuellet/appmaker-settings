@@ -68,7 +68,7 @@ class settingsAPI extends API {
 	public function send($request, $data){
 		if(isset($data)){
 			if(!is_array($data)){ $data = json_decode($data, true); }
-			if(isset($this->Settings['stmp'],$this->Settings['stmp']['username'],$this->Settings['stmp']['password'],$this->Settings['stmp']['host'],$this->Settings['stmp']['port'],$this->Settings['stmp']['encryption'])){
+			if(isset($this->Settings['smtp'],$this->Settings['smtp']['username'],$this->Settings['smtp']['password'],$this->Settings['smtp']['host'],$this->Settings['smtp']['port'],$this->Settings['smtp']['encryption'])){
 				return [
 					"success" => $this->Language->Field["Email sent!"],
 					"request" => $request,
