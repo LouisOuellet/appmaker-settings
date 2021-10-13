@@ -68,14 +68,22 @@ class settingsAPI extends API {
 	public function send($request, $data){
 		if(isset($data)){
 			if(!is_array($data)){ $data = json_decode($data, true); }
-			return [
-				"success" => $this->Language->Field["Settings Saved"],
-				"request" => $request,
-				"data" => $data,
-				"output" => [
-					'smtp' => $this->Auth->Mail->send($this->Auth->User['email'],"If you are receiving this message, your SMTP settings are working.",['extra' => ['subject' => $this->Settings['title']." - SMTP Test Email"]]),
-				],
-			];
+			if(isset($this->Settings['stmp'],$this->Settings['stmp']['username'],$this->Settings['stmp']['password'],$this->Settings['stmp']['host'],$this->Settings['stmp']['port'],$this->Settings['stmp']['encryption'])){
+				return [
+					"success" => $this->Language->Field["Email sent!"],
+					"request" => $request,
+					"data" => $data,
+					"output" => [
+						'smtp' => $this->Auth->Mail->send($this->Auth->User['email'],"If you are receiving this message, your SMTP settings are working.",['extra' => ['subject' => $this->Settings['title']." - SMTP Test Email"]]),
+					],
+				];
+			} else {
+				return [
+					"error" => $this->Language->Field["SMTP Server not configured"],
+					"request" => $request,
+					"data" => $data,
+				];
+			}
 		}
 	}
 
