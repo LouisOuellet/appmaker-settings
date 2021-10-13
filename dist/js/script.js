@@ -434,14 +434,16 @@ API.Plugins.settings = {
 		        html += '</div>';
 		        html += '<div class="form-group row">';
 	            html += '<div class="input-group">';
-                html += '<button type="button" name="SaveSMTP" class="btn btn-success">';
-                  html += '<i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save'];
-                html += '</button>';
-                html += '<button type="button" name="testSMTP" class="btn btn-info">';
-                  html += '<i class="fas fa-paper-plane mr-1"></i>'+API.Contents.Language['Test'];
-                html += '</button>';
-	            html += '</div>';
-		        html += '</div>';
+		            html += '<div class="btn-group">';
+	                html += '<button type="button" name="SaveSMTP" class="btn btn-success">';
+	                  html += '<i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save'];
+	                html += '</button>';
+	                html += '<button type="button" name="testSMTP" class="btn btn-info">';
+	                  html += '<i class="fas fa-paper-plane mr-1"></i>'+API.Contents.Language['Test'];
+	                html += '</button>';
+		            html += '</div>';
+			        html += '</div>';
+						html += '</div>';
 						content.html(html);
 						content.find('button').each(function(){
 							$(this).off().click(function(){
