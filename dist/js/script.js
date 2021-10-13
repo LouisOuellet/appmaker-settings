@@ -464,7 +464,7 @@ API.Plugins.settings = {
 										API.request('settings','save',{data:data});
 										break;
 									case'testSMTP':
-										API.request('settings','send',{data:{}});
+										API.request('settings','send',{data:""});
 										break;
 								}
 							});
