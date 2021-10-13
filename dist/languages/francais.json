@@ -1,10 +1,11 @@
 {
-		"settings": "parametres",
-		"Settings": "Parametres",
-		"Settings Saved": "Parametres Enregistre",
-		"Application updated successfully": "Application mis a jours avec succes",
-		"No updates available": "Aucune mise a jour disponible",
-		"Application not activated": "L'application n'est pas active",
-		"The Service executes in aloop on the host system": "The Service executes in aloop on the host system",
-		"Use system cron service to call the cron.php file every 5 minutes.": "Use system cron service to call the cron.php file every 5 minutes. The cron.php needs to be executed by the web user."
+		"settings": "settings",
+		"Settings": "Settings",
+		"Settings Saved": "Settings Saved",
+		"Application updated successfully": "Application updated successfully",
+		"No updates available": "No updates available",
+		"Application not activated": "Application not activated",
+		"The Service executes in a loop on the host system": "The Service executes in a loop on the host system",
+		"Use system cron service to call the cron.php file every 5 minutes.": "Use system cron service to call the cron.php file every 5 minutes. The cron.php needs to be executed by the web user.",
+		"Test": "Test"
 }
