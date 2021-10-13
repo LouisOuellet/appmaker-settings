@@ -463,6 +463,8 @@ API.Plugins.settings = {
 										settings.smtp.encryption = content.find('select[name="encryption"]').val();
 										API.request('settings','save',{data:data});
 										break;
+									case'testSMTP':
+										break;
 								}
 							});
 						});
