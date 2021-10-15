@@ -9,5 +9,7 @@
 		"Use system cron service to call the cron.php file every 5 minutes.": "Use system cron service to call the cron.php file every 5 minutes. The cron.php needs to be executed by the web user.",
 		"Test": "Test",
 		"SMTP Server not configured": "SMTP Server not configured",
-		"Email sent!": "Email sent!"
+		"Email sent!": "Email sent!",
+		"Brand": "Brand",
+		"Branding": "Branding"
 }

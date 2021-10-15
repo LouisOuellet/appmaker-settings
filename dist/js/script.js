@@ -692,9 +692,32 @@ API.Plugins.settings = {
 						if(!API.Helper.isSet(settings,['customization','navmode','value'])){ settings.customization.navmode.value = 'dark'; }
 						if(!API.Helper.isSet(settings,['customization','sidenav','value'])){ settings.customization.sidenav.value = 'info'; }
 						if(!API.Helper.isSet(settings,['customization','sidenavmode','value'])){ settings.customization.sidenavmode.value = 'dark'; }
+						html += '<h3>'+API.Contents.Language['Branding']+'</h3>';
+						html += '<div class="row">';
+							html += '<div class="col-md-6 py-2">';
+								html += '<div class="input-group">';
+			            html += '<div class="input-group-prepend">';
+			              html += '<span class="input-group-text">';
+			                html += '<i class="fas fa-copyright mr-2"></i>Brand';
+			              html += '</span>';
+			            html += '</div>';
+									html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Brand']+'" name="brand" value="'+settings.title+'">';
+			          html += '</div>';
+							html += '</div>';
+							html += '<div class="col-md-6 py-2">';
+								html += '<div class="input-group">';
+			            html += '<div class="input-group-prepend">';
+			              html += '<span class="input-group-text">';
+			                html += '<i class="fas fa-copyright mr-2"></i>Brand';
+			              html += '</span>';
+			            html += '</div>';
+									html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Brand']+'" name="brand" value="'+settings.title+'">';
+			          html += '</div>';
+							html += '</div>';
+						html += '</div>';
 						html += '<h3>'+API.Contents.Language['Customization']+'</h3>';
 						html += '<div class="row">';
-						html += '<div class="col-md-6 py-2">';
+							html += '<div class="col-md-6 py-2">';
 								html += '<div class="input-group">';
 			            html += '<div class="input-group-prepend">';
 			              html += '<span class="input-group-text">';
