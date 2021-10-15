@@ -708,10 +708,10 @@ API.Plugins.settings = {
 								html += '<div class="input-group">';
 			            html += '<div class="input-group-prepend">';
 			              html += '<span class="input-group-text">';
-			                html += '<i class="fas fa-copyright mr-2"></i>Brand';
+			                html += '<i class="fas fa-file mr-2"></i>Logo';
 			              html += '</span>';
 			            html += '</div>';
-									html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Brand']+'" name="brand" value="'+settings.title+'">';
+									html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Logo']+'" name="logo" value="'+settings.logo+'">';
 			          html += '</div>';
 							html += '</div>';
 						html += '</div>';
