@@ -840,42 +840,43 @@ API.Plugins.settings = {
 								customization[key].value = $(this).val();
 								customization[key].type = API.Contents.Settings.customization[key].type;
 							});
-							API.request('settings','save',{data:{customization}},function(result){
-								json = JSON.parse(result);
-								if(json.success != undefined){
-									var pace = $('body');
-									var brand = $('a.brand-link');
-									var navbar = $('nav.main-header.navbar');
-									var sidebar = $('aside.main-sidebar');
-									console.log(sidebar[0].className);
-									pace.removeClass(function (index, className) {
-								    return (className.match (/\bpace-\S+/g) || []).join(' ');
-									});
-									brand.removeClass(function (index, className) {
-								    return (className.match (/\bnavbar-\S+/g) || []).join(' ');
-									});
-									brand.removeClass(function (index, className) {
-								    return (className.match (/\bbg-\S+/g) || []).join(' ');
-									});
-									navbar.removeClass(function (index, className) {
-								    return (className.match (/\bnavbar-\S+/g) || []).join(' ');
-									});
-									sidebar.removeClass(function (index, className) {
-								    return (className.match (/\bsidebar-\S+/g) || []).join(' ');
-									});
-									console.log(sidebar[0].className);
-									API.Contents.Settings.customization = json.output.settings.customization;
-									settings = API.Contents.Settings;
-									pace.addClass('pace-'+API.Contents.Settings.customization.pace.value);
-									brand.addClass('navbar-'+API.Contents.Settings.customization.logobg.value);
-									brand.addClass('bg-'+API.Contents.Settings.customization.logobg.value);
-									navbar.addClass('navbar-expand');
-									navbar.addClass('navbar-'+json.output.settings.customization.nav.value);
-									navbar.addClass('navbar-'+json.output.settings.customization.navmode.value);
-									sidebar.addClass('sidebar-'+API.Contents.Settings.customization.sidenavmode.value+'-'+API.Contents.Settings.customization.sidenav.value);
-									console.log(sidebar[0].className);
-								}
-							});
+							console.log(customization);
+							// API.request('settings','save',{data:{customization}},function(result){
+							// 	json = JSON.parse(result);
+							// 	if(json.success != undefined){
+							// 		var pace = $('body');
+							// 		var brand = $('a.brand-link');
+							// 		var navbar = $('nav.main-header.navbar');
+							// 		var sidebar = $('aside.main-sidebar');
+							// 		console.log(sidebar[0].className);
+							// 		pace.removeClass(function (index, className) {
+							// 	    return (className.match (/\bpace-\S+/g) || []).join(' ');
+							// 		});
+							// 		brand.removeClass(function (index, className) {
+							// 	    return (className.match (/\bnavbar-\S+/g) || []).join(' ');
+							// 		});
+							// 		brand.removeClass(function (index, className) {
+							// 	    return (className.match (/\bbg-\S+/g) || []).join(' ');
+							// 		});
+							// 		navbar.removeClass(function (index, className) {
+							// 	    return (className.match (/\bnavbar-\S+/g) || []).join(' ');
+							// 		});
+							// 		sidebar.removeClass(function (index, className) {
+							// 	    return (className.match (/\bsidebar-\S+/g) || []).join(' ');
+							// 		});
+							// 		console.log(sidebar[0].className);
+							// 		API.Contents.Settings.customization = json.output.settings.customization;
+							// 		settings = API.Contents.Settings;
+							// 		pace.addClass('pace-'+API.Contents.Settings.customization.pace.value);
+							// 		brand.addClass('navbar-'+API.Contents.Settings.customization.logobg.value);
+							// 		brand.addClass('bg-'+API.Contents.Settings.customization.logobg.value);
+							// 		navbar.addClass('navbar-expand');
+							// 		navbar.addClass('navbar-'+json.output.settings.customization.nav.value);
+							// 		navbar.addClass('navbar-'+json.output.settings.customization.navmode.value);
+							// 		sidebar.addClass('sidebar-'+API.Contents.Settings.customization.sidenavmode.value+'-'+API.Contents.Settings.customization.sidenav.value);
+							// 		console.log(sidebar[0].className);
+							// 	}
+							// });
 						});
 					});
 				});

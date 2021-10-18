@@ -53,6 +53,8 @@ class settingsAPI extends API {
 	public function save($request, $data){
 		if(isset($data)){
 			if(!is_array($data)){ $data = json_decode($data, true); }
+			if(isset($data['customization']['brand']['value'])){ $data['title'] = $data['customization']['brand']['value']; unset($data['customization']['brand']); }
+			if(isset($data['customization']['logo']['value'])){ unset($data['customization']['logo']); }
 			$this->Settings = $this->SaveCfg($data);
 			return [
 				"success" => $this->Language->Field["Settings Saved"],
