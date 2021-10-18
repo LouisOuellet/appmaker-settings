@@ -55,10 +55,9 @@ class settingsAPI extends API {
 			if(!is_array($data)){ $data = json_decode($data, true); }
 			if(isset($data['customization']['brand']['value'])){ $data['title'] = $data['customization']['brand']['value']; unset($data['customization']['brand']); }
 			if(isset($data['customization']['logo']['value'])){
-				echo dirname(__FILE__,3).'/dist/img/custom-logo.png';
-				// $logo = fopen(dirname(__FILE__,3).'/dist/img/custom-logo.png', 'w');
-				// fwrite($logo, base64_decode($data['customization']['logo']['value']));
-				// fclose($logo);
+				$logo = fopen(dirname(__FILE__,3).'/dist/img/custom-logo.png', 'w');
+				fwrite($logo, base64_decode($data['customization']['logo']['value']));
+				fclose($logo);
 				unset($data['customization']['logo']);
 			}
 			$this->Settings = $this->SaveCfg($data);
