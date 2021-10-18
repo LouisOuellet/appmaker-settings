@@ -842,14 +842,14 @@ API.Plugins.settings = {
 									customization[key].value = $(this).val();
 									customization[key].type = API.Contents.Settings.customization[key].type;
 								} else {
-									console.log($(this).prop('files'));
-									if(typeof $(this).prop('files')[0] !== "undefined"){
+									if($(this).prop('files').length > 0){
 										if($(this).prop('files')[0].type == "image/png"){
 											customization[key].type = $(this).prop('files')[0].type;
 											console.log($(this).val());
 											console.log($(this).prop('files'));
 											// customization[key].value = $(this).val();
 										} else {
+											console.log($(this).prop('files'));
 											alert("Logo must be PNG");
 										}
 									}
