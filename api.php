@@ -50,9 +50,10 @@ class settingsAPI extends API {
 		}
 	}
 
-	public function removeLogo($request, $data = null){
+	public function removeLogo($request, $data){
 		if(isset($data)){
 			if(!is_array($data)){ $data = json_decode($data, true); }
+			echo "executor";
 			if(unlink(dirname(__FILE__,3).'/dist/img/custom-logo.png')){
 				return [
 					"success" => $this->Language->Field["Custom logo was removed"],
