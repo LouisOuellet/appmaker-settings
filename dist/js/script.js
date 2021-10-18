@@ -837,10 +837,14 @@ API.Plugins.settings = {
 							});
 							content.find('input').each(function(){
 								var key = $(this).attr('name');
-								customization[key].value = $(this).val();
-								customization[key].type = API.Contents.Settings.customization[key].type;
+								console.log(key);
+								if(key != "logo"){
+									customization[key].value = $(this).val();
+									customization[key].type = API.Contents.Settings.customization[key].type;
+								} else {
+									console.log($(this));
+								}
 							});
-							console.log(customization);
 							// API.request('settings','save',{data:{customization}},function(result){
 							// 	json = JSON.parse(result);
 							// 	if(json.success != undefined){
