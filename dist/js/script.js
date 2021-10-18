@@ -837,14 +837,15 @@ API.Plugins.settings = {
 							});
 							content.find('input').each(function(){
 								var key = $(this).attr('name');
-								console.log($(this).attr('name'));
+								if(typeof customization[key] === "undefined"){ customization[key] = {}; }
 								if(key != "logo"){
-									if(typeof customization[key] === "undefined"){ customization[key] = {}; }
 									customization[key].value = $(this).val();
 									customization[key].type = API.Contents.Settings.customization[key].type;
 								} else {
 									console.log($(this).val());
-									console.log($(this));
+									console.log($(this).prop('files'););
+									// customization[key].value = $(this).val();
+									// customization[key].type = API.Contents.Settings.customization[key].type;
 								}
 							});
 							// API.request('settings','save',{data:{customization}},function(result){
