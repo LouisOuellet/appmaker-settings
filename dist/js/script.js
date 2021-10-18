@@ -845,16 +845,18 @@ API.Plugins.settings = {
 									if($(this).prop('files').length > 0){
 										if($(this).prop('files')[0].type == "image/png"){
 											customization[key].type = $(this).prop('files')[0].type;
-											console.log($(this).val());
-											console.log($(this).prop('files'));
-											// customization[key].value = $(this).val();
+											var fileReader = new FileReader();
+									    fileReader.onload = function () {
+									      customization[key].value = fileReader.result;  // data <-- in this var you have the file data in Base64 format
+									    };
+									    fileReader.readAsDataURL($('#fileInput').prop('files')[0]);
 										} else {
-											console.log($(this).prop('files'));
 											alert("Logo must be PNG");
 										}
 									}
 								}
 							});
+							console.log(customization);
 							// API.request('settings','save',{data:{customization}},function(result){
 							// 	json = JSON.parse(result);
 							// 	if(json.success != undefined){
