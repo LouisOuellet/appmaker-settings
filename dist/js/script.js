@@ -713,9 +713,7 @@ API.Plugins.settings = {
 			            html += '</div>';
 									html += '<div class="custom-file">';
 										html += '<input type="file" class="custom-file-input" name="logo" id="logo">';
-										html += '<label class="custom-file-label" for="logo">';
-											// html += API.Contents.Language['Choose file'];
-										html += '</label>';
+										html += '<label class="custom-file-label" for="logo"></label>';
 									html += '</div>';
 			          html += '</div>';
 							html += '</div>';
