@@ -706,6 +706,9 @@ API.Plugins.settings = {
 							html += '</div>';
 							html += '<div class="col-md-16 py-2">';
 								html += '<div class="custom-file">';
+									html += '<label class="custom-file-label" for="logo">';
+										html += '<i class="fas fa-file mr-2"></i>Logo';
+									html += '</label>';
 									html += '<input type="file" class="custom-file-input" name="logo" id="logo">';
 									html += '<label class="custom-file-label" for="logo">';
 										html += API.Contents.Language['Choose file'];
