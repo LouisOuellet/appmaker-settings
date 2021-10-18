@@ -713,7 +713,7 @@ API.Plugins.settings = {
 			            html += '</div>';
 									html += '<div class="custom-file pointer">';
 										html += '<input type="file" class="custom-file-input pointer" name="logo" id="logo">';
-										// html += '<label class="custom-file-label" for="logo"></label>';
+										html += '<label class="custom-file-label pointer" for="logo"></label>';
 									html += '</div>';
 			            html += '<div class="input-group-append">';
 			              html += '<a data-action="remove" class="btn btn-danger pointer">';
