@@ -838,12 +838,12 @@ API.Plugins.settings = {
 							content.find('input').each(function(){
 								var key = $(this).attr('name');
 								console.log($(this).attr('name'));
-								console.log($(this).val());
-								console.log($(this));
 								if(key != "logo"){
+									if(typeof customization[key] === "undefined"){ customization[key] = {}; }
 									customization[key].value = $(this).val();
 									customization[key].type = API.Contents.Settings.customization[key].type;
 								} else {
+									console.log($(this).val());
 									console.log($(this));
 								}
 							});
