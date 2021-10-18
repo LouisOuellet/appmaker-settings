@@ -51,24 +51,18 @@ class settingsAPI extends API {
 	}
 
 	public function removeLogo($request, $data){
-		echo "executor";
-		if(isset($data)){
-			echo "executor";
-			if(!is_array($data)){ $data = json_decode($data, true); }
-			echo "executor";
-			if(unlink(dirname(__FILE__,3).'/dist/img/custom-logo.png')){
-				return [
-					"success" => $this->Language->Field["Custom logo was removed"],
-					"request" => $request,
-					"data" => $data,
-				];
-			} else {
-				return [
-					"error" => $this->Language->Field["Unable to remove the custom logo"],
-					"request" => $request,
-					"data" => $data,
-				];
-			}
+		if(unlink(dirname(__FILE__,3).'/dist/img/custom-logo.png')){
+			return [
+				"success" => $this->Language->Field["Custom logo was removed"],
+				"request" => $request,
+				"data" => $data,
+			];
+		} else {
+			return [
+				"error" => $this->Language->Field["Unable to remove the custom logo"],
+				"request" => $request,
+				"data" => $data,
+			];
 		}
 	}
 
