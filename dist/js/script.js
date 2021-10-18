@@ -843,7 +843,7 @@ API.Plugins.settings = {
 									customization[key].type = API.Contents.Settings.customization[key].type;
 								} else {
 									console.log($(this).val());
-									console.log($(this).prop('files'););
+									console.log($(this).prop('files'));
 									// customization[key].value = $(this).val();
 									// customization[key].type = API.Contents.Settings.customization[key].type;
 								}
