@@ -711,12 +711,12 @@ API.Plugins.settings = {
 			                html += '<i class="fas fa-file mr-2"></i>Logo';
 			              html += '</span>';
 			            html += '</div>';
-									html += '<div class="custom-file">';
+									html += '<div class="custom-file pointer">';
 										html += '<input type="file" class="custom-file-input" name="logo" id="logo">';
 										html += '<label class="custom-file-label" for="logo"></label>';
 									html += '</div>';
 			            html += '<div class="input-group-append">';
-			              html += '<a class="btn btn-danger pointer">';
+			              html += '<a data-action="remove" class="btn btn-danger pointer">';
 			                html += '<i class="fas fa-trash-alt mr-2"></i>Remove';
 			              html += '</a>';
 			            html += '</div>';
@@ -831,6 +831,9 @@ API.Plugins.settings = {
 							html += '</div>';
 						html += '</div>';
 						content.html(html);
+						content.find('a[data-action="remove"]').off().click(function(){
+							API.request('settings','removeLogo');
+						});
 						content.find('select').select2({ theme: 'bootstrap4' });
 						content.find('button').off().click(function(){
 							var run = true;

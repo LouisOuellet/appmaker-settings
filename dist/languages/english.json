@@ -11,5 +11,7 @@
 		"SMTP Server not configured": "SMTP Server not configured",
 		"Email sent!": "Email sent!",
 		"Brand": "Brand",
-		"Branding": "Branding"
+		"Branding": "Branding",
+		"Custom logo was removed": "Custom logo was removed",
+		"Unable to remove the custom logo": "Unable to remove the custom logo"
 }
