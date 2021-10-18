@@ -849,7 +849,7 @@ API.Plugins.settings = {
 									    fileReader.onload = function () {
 									      customization[key].value = fileReader.result;  // data <-- in this var you have the file data in Base64 format
 									    };
-									    fileReader.readAsDataURL($('#fileInput').prop('files')[0]);
+									    fileReader.readAsDataURL($(this).prop('files')[0]);
 										} else {
 											alert("Logo must be PNG");
 										}
