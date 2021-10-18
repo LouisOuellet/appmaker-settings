@@ -715,6 +715,11 @@ API.Plugins.settings = {
 										html += '<input type="file" class="custom-file-input" name="logo" id="logo">';
 										html += '<label class="custom-file-label" for="logo"></label>';
 									html += '</div>';
+			            html += '<div class="input-group-append">';
+			              html += '<a class="btn btn-danger pointer">';
+			                html += '<i class="fas fa-trash-alt mr-2"></i>Remove';
+			              html += '</a>';
+			            html += '</div>';
 			          html += '</div>';
 							html += '</div>';
 						html += '</div>';
