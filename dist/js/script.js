@@ -847,6 +847,8 @@ API.Plugins.settings = {
 											customization[key].type = $(this).prop('files')[0].type;
 											var fileReader = new FileReader();
 									    fileReader.onload = function () {
+												console.log(fileReader.result);
+												console.log(fileReader.result.split(','));
 									      customization[key].value = fileReader.result;  // data <-- in this var you have the file data in Base64 format
 									    };
 									    fileReader.readAsDataURL($(this).prop('files')[0]);
