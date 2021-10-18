@@ -51,7 +51,9 @@ class settingsAPI extends API {
 	}
 
 	public function removeLogo($request, $data){
+		echo "executor";
 		if(isset($data)){
+			echo "executor";
 			if(!is_array($data)){ $data = json_decode($data, true); }
 			echo "executor";
 			if(unlink(dirname(__FILE__,3).'/dist/img/custom-logo.png')){
