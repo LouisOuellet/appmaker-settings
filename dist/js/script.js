@@ -686,13 +686,13 @@ API.Plugins.settings = {
 									API.request('settings','save',{data:conf});
 									break;
 								case"GenerateStructure":
-									API.request('lsp','generate',{data:{type:"structure"}});
+									API.request('settings','generate',{data:{type:"structure"}});
 									break;
 								case"GenerateSkeleton":
-									API.request('lsp','generate',{data:{type:"skeleton"}});
+									API.request('settings','generate',{data:{type:"skeleton"}});
 									break;
 								case"GenerateSample":
-									API.request('lsp','generate',{data:{type:"sample"}});
+									API.request('settings','generate',{data:{type:"sample"}});
 									break;
 							}
 						});

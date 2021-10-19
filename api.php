@@ -1,6 +1,25 @@
 <?php
 class settingsAPI extends API {
 
+	public function generate($request, $data){
+		if(isset($data)){
+			if(!is_array($data)){ $data = json_decode($data, true); }
+			if(isset($data['type'])){
+				switch($data['type']){
+					case"structure":
+						return $this->LSP->createStructure(dirname(__FILE__,3).'/dist/data/structure.json');
+						break;
+					case"skeleton":
+						return $this->LSP->createRecords(dirname(__FILE__,3).'/dist/data/skeleton.json',["tables" => ['users','groups','roles','permissions','relationships','priorities','statuses','categories','sub_categories'], "maxID" => 99999]);
+						break;
+					case"sample":
+						return $this->LSP->createRecords(dirname(__FILE__,3).'/dist/data/sample.json');
+						break;
+				}
+			}
+		}
+	}
+
 	public function fetch($request, $data){
 		if(isset($data)){
 			if(!is_array($data)){ $data = json_decode($data, true); }
