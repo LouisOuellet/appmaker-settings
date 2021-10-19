@@ -688,9 +688,9 @@ API.Plugins.settings = {
 										var key = $(this).attr('name');
 										var type = $(this).attr('type');
 										if(type == "checkbox"){
-											settings[key] = content.find('input[name="'+key+'"]')[0].checked;
+											conf[key] = content.find('input[name="'+key+'"]')[0].checked;
 										} else {
-											settings[key] = content.find('input[name="'+key+'"]').val();
+											conf[key] = content.find('input[name="'+key+'"]').val();
 										}
 									});
 									settings.customization = API.Contents.Settings.customization;
