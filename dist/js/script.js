@@ -50,7 +50,7 @@ API.Plugins.settings = {
 								}
 								html += '</select>';
 								html += '<div class="input-group-append">';
-									html += '<button type="button" name="ChangeBranch" class="btn btn-success ml-2">';
+									html += '<button type="button" name="ChangeBranch" class="btn btn-success">';
 			              html += '<i class="fas fa-save mr-1"></i></i>'+API.Contents.Language['Save'];
 			            html += '</button>';
 								html += '</div>';
@@ -90,7 +90,7 @@ API.Plugins.settings = {
 					API.Plugins.settings.GUI.Tabs.add('basic',function(content, tab){
 						var html = '', checked = '';
 						html += '<h3>'+API.Contents.Language['Background Jobs']+'</h3>';
-						html += '<div class="form-group clearfix">';
+						html += '<div class="form-group clearfix pl-2">';
 		          html += '<div class="icheck-primary">';
 								if(settings.background_jobs == 'service'){ checked = 'checked'; } else { checked = ''; }
 		            html += '<input type="radio" id="background_jobs1" value="service" name="background_jobs" '+checked+'>';
@@ -106,7 +106,7 @@ API.Plugins.settings = {
 		        html += '</div>';
 						html += '<hr>';
 						html += '<h3>'+API.Contents.Language['Language']+'</h3>';
-						html += '<div class="form-group row">';
+						html += '<div class="form-group row pl-2">';
 		          html += '<div class="input-group">';
 		            html += '<div class="input-group-prepend">';
 		              html += '<span class="input-group-text">';
@@ -124,7 +124,7 @@ API.Plugins.settings = {
 		        html += '</div>';
 						html += '<hr>';
 						html += '<h3>'+API.Contents.Language['Timezone']+'</h3>';
-						html += '<div class="form-group row">';
+						html += '<div class="form-group row pl-2">';
 		          html += '<div class="input-group">';
 		            html += '<div class="input-group-prepend">';
 		              html += '<span class="input-group-text">';
@@ -142,7 +142,7 @@ API.Plugins.settings = {
 		        html += '</div>';
 						html += '<hr>';
 						html += '<h3>'+API.Contents.Language['Landing Page']+'</h3>';
-						html += '<div class="form-group row">';
+						html += '<div class="form-group row pl-2">';
 		          html += '<div class="input-group">';
 		            html += '<div class="input-group-prepend">';
 		              html += '<span class="input-group-text">';
@@ -200,7 +200,7 @@ API.Plugins.settings = {
 					    html += '</div>';
 					    html += API.Contents.Language['Please use this option carefully.'];
 				    html += '</p>';
-				    html += '<div class="form-group clearfix">';
+				    html += '<div class="form-group clearfix pl-2">';
 				      html += '<div class="icheck-primary">';
 								if(typeof settings.debug !== 'undefined' && settings.debug){ checked = 'checked'; } else { checked = ''; }
 				        html += '<input type="checkbox" id="debug" name="debug" '+checked+'>';
@@ -225,7 +225,7 @@ API.Plugins.settings = {
 					      html += API.Contents.Language['This may cause some data to be lost. Such as a completed form that was not yet submitted.'];
 					    html += '</div>';
 				    html += '</p>';
-				    html += '<div class="form-group clearfix">';
+				    html += '<div class="form-group clearfix pl-2">';
 				      html += '<div class="icheck-primary">';
 								if(typeof settings.maintenance !== 'undefined' && settings.maintenance){ checked = 'checked'; } else { checked = ''; }
 				        html += '<input type="checkbox" id="maintenance" name="maintenance" '+checked+'>';
@@ -246,7 +246,7 @@ API.Plugins.settings = {
 					      html += API.Contents.Language['This may cause some data to be lost. Such as a completed form that was not yet submitted.'];
 					    html += '</div>';
 				    html += '</p>';
-				    html += '<div class="form-group clearfix">';
+				    html += '<div class="form-group clearfix pl-2">';
 				      html += '<div class="icheck-primary">';
 								if(typeof settings.developer !== 'undefined' && settings.developer){ checked = 'checked'; } else { checked = ''; }
 				        html += '<input type="checkbox" id="developer" name="developer" '+checked+'>';
@@ -287,7 +287,7 @@ API.Plugins.settings = {
 					API.Plugins.settings.GUI.Tabs.add('SQL',function(content, tab){
 						var html = '';
 						html += '<h3>'+API.Contents.Language['SQL Database']+'</h3>';
-						html += '<div class="form-group row">';
+						html += '<div class="form-group row pl-2">';
 				      html += '<div class="input-group">';
 				        html += '<div class="input-group-prepend">';
 				          html += '<span class="input-group-text">';
@@ -303,7 +303,7 @@ API.Plugins.settings = {
 				        html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Database']+'" name="database" value="'+settings.sql.database+'">';
 				      html += '</div>';
 				    html += '</div>';
-				    html += '<div class="form-group row">';
+				    html += '<div class="form-group row pl-2">';
 				      html += '<div class="input-group">';
 				        html += '<div class="input-group-prepend">';
 				          html += '<span class="input-group-text">';
@@ -321,7 +321,7 @@ API.Plugins.settings = {
 				    html += '</div>';
 						html += '<hr>';
 						html += '<h3>'+API.Contents.Language['SQL Result Limit']+'</h3>';
-						html += '<div class="form-group row">';
+						html += '<div class="form-group row pl-2">';
 				      html += '<div class="input-group">';
 				        html += '<div class="input-group-prepend">';
 				          html += '<span class="input-group-text">';
@@ -401,7 +401,7 @@ API.Plugins.settings = {
 						if(settings.smtp.encryption == 'SSL'){ checkSSL = 'selected' }
 						if(settings.smtp.encryption == 'STARTTLS'){ checkSTARTTLS = 'selected' }
 						html += '<h3>'+API.Contents.Language['SMTP']+'</h3>';
-						html += '<div class="form-group row">';
+						html += '<div class="form-group row pl-2">';
 		          html += '<div class="input-group">';
 		            html += '<div class="input-group-prepend">';
 		              html += '<span class="input-group-text"><i class="fas fa-server"></i></span>';
@@ -420,7 +420,7 @@ API.Plugins.settings = {
 		            html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Port']+'" name="port" value="'+settings.smtp.port+'">';
 		          html += '</div>';
 		        html += '</div>';
-						html += '<div class="form-group row">';
+						html += '<div class="form-group row pl-2">';
 	            html += '<div class="input-group">';
                 html += '<div class="input-group-prepend">';
                   html += '<span class="input-group-text"><i class="fas fa-user"></i></span>';
@@ -630,7 +630,7 @@ API.Plugins.settings = {
 						if(typeof settings.registration === 'undefined'){ settings.registration = false; }
 						if(typeof settings.forgot === 'undefined'){ settings.forgot = false; }
 						html += '<h3>'+API.Contents.Language['Application Details']+'</h3>';
-						html += '<div class="form-group row">';
+						html += '<div class="form-group row pl-2">';
 							html += '<div class="input-group">';
 								html += '<div class="input-group-prepend">';
 									html += '<span class="input-group-text"><i class="fas fa-heading"></i></span>';
@@ -638,14 +638,14 @@ API.Plugins.settings = {
 								html += '<input type="text" class="form-control" name="title" placeholder="'+API.Contents.Language['Title']+'" value="'+settings.title+'">';
 							html += '</div>';
 						html += '</div>';
-			      html += '<div class="form-group clearfix">';
+			      html += '<div class="form-group clearfix pl-2">';
 			        html += '<div class="icheck-primary">';
 								if(settings.registration){ checked = 'checked'; } else { checked = ''; }
 			          html += '<input type="checkbox" id="registration" name="registration" '+checked+'>';
 			          html += '<label for="registration">'+API.Contents.Language['Allow user registration']+'</label>';
 			        html += '</div>';
 			      html += '</div>';
-			      html += '<div class="form-group clearfix">';
+			      html += '<div class="form-group clearfix pl-2">';
 			        html += '<div class="icheck-primary">';
 								if(settings.forgot){ checked = 'checked'; } else { checked = ''; }
 			          html += '<input type="checkbox" id="forgot" name="forgot" '+checked+'>';
@@ -728,7 +728,7 @@ API.Plugins.settings = {
 						if(!API.Helper.isSet(settings,['customization','sidenav','value'])){ settings.customization.sidenav.value = 'info'; }
 						if(!API.Helper.isSet(settings,['customization','sidenavmode','value'])){ settings.customization.sidenavmode.value = 'dark'; }
 						html += '<h3>'+API.Contents.Language['Branding']+'</h3>';
-						html += '<div class="row">';
+						html += '<div class="row pl-2">';
 							html += '<div class="col-md-6 py-2">';
 								html += '<div class="input-group">';
 			            html += '<div class="input-group-prepend">';
@@ -759,7 +759,7 @@ API.Plugins.settings = {
 							html += '</div>';
 						html += '</div>';
 						html += '<h3>'+API.Contents.Language['Customization']+'</h3>';
-						html += '<div class="row">';
+						html += '<div class="row pl-2">';
 							html += '<div class="col-md-6 py-2">';
 								html += '<div class="input-group">';
 			            html += '<div class="input-group-prepend">';
