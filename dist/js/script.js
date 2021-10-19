@@ -628,7 +628,6 @@ API.Plugins.settings = {
 					// });
 					API.Plugins.settings.GUI.Tabs.add('developper',function(content, tab){
 						var html = '', checked = '';
-						console.log(settings);
 						if(typeof settings.title === 'undefined'){ settings.title = ''; }
 						if(typeof settings.registration === 'undefined'){ settings.registration = false; }
 						if(typeof settings.forgot === 'undefined'){ settings.forgot = false; }
@@ -693,8 +692,7 @@ API.Plugins.settings = {
 											conf[key] = content.find('input[name="'+key+'"]').val();
 										}
 									});
-									settings.customization = API.Contents.Settings.customization;
-									API.request('settings','save',{data:{settings:conf}});
+									API.request('settings','save',{data:conf});
 									break;
 								case"GenerateStructure":
 									API.request('lsp','generate',{data:{type:"structure"}});
@@ -707,20 +705,6 @@ API.Plugins.settings = {
 									break;
 							}
 						});
-						// content.find('button').off().click(function(){
-							var conf = {};
-							content.find('input').each(function(){
-								var key = $(this).attr('name');
-								var type = $(this).attr('type');
-								if(type == "checkbox"){
-									conf[key] = content.find('input[name="'+key+'"]')[0].checked;
-								} else {
-									conf[key] = content.find('input[name="'+key+'"]').val();
-								}
-							});
-							conf.customization = API.Contents.Settings.customization;
-							API.request('settings','save',{data:{settings:conf}});
-						// });
 					});
 					API.Plugins.settings.GUI.Tabs.add('customization',function(content, tab){
 						var html = '', checked = '';
