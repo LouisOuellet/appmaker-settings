@@ -628,18 +628,9 @@ API.Plugins.settings = {
 					// });
 					API.Plugins.settings.GUI.Tabs.add('developper',function(content, tab){
 						var html = '', checked = '';
-						if(typeof settings.title === 'undefined'){ settings.title = ''; }
 						if(typeof settings.registration === 'undefined'){ settings.registration = false; }
 						if(typeof settings.forgot === 'undefined'){ settings.forgot = false; }
 						html += '<h3>'+API.Contents.Language['Application Details']+'</h3>';
-						html += '<div class="form-group row px-2">';
-							html += '<div class="input-group">';
-								html += '<div class="input-group-prepend">';
-									html += '<span class="input-group-text"><i class="fas fa-heading"></i></span>';
-								html += '</div>';
-								html += '<input type="text" class="form-control" name="title" placeholder="'+API.Contents.Language['Title']+'" value="'+settings.title+'">';
-							html += '</div>';
-						html += '</div>';
 			      html += '<div class="form-group clearfix px-2">';
 			        html += '<div class="icheck-primary">';
 								if(settings.registration){ checked = 'checked'; } else { checked = ''; }
