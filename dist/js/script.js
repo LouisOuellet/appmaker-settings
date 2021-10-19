@@ -623,67 +623,67 @@ API.Plugins.settings = {
 					// 		}
 					// 	});
 					// });
-					// API.Plugins.settings.GUI.Tabs.add('developper',function(content, tab){
-					// 	var html = '', checked = '';
-					// 	if(typeof settings.version === 'undefined'){ settings.version = ''; }
-					// 	if(typeof settings.title === 'undefined'){ settings.title = ''; }
-					// 	if(typeof settings.registration === 'undefined'){ settings.registration = false; }
-					// 	if(typeof settings.forgot === 'undefined'){ settings.forgot = false; }
-					// 	html += '<h3>'+API.Contents.Language['Application Details']+'</h3>';
-					// 	html += '<div class="form-group row">';
-					// 		html += '<div class="input-group">';
-					// 			html += '<div class="input-group-prepend">';
-					// 				html += '<span class="input-group-text"><i class="fas fa-code-branch"></i></span>';
-					// 			html += '</div>';
-					// 			html += '<input type="text" class="form-control" name="version" placeholder="'+API.Contents.Language['Version']+'" value="'+settings.version+'">';
-					// 		html += '</div>';
-					// 	html += '</div>';
-					// 	html += '<div class="form-group row">';
-					// 		html += '<div class="input-group">';
-					// 			html += '<div class="input-group-prepend">';
-					// 				html += '<span class="input-group-text"><i class="fas fa-heading"></i></span>';
-					// 			html += '</div>';
-					// 			html += '<input type="text" class="form-control" name="title" placeholder="'+API.Contents.Language['Title']+'" value="'+settings.title+'">';
-					// 		html += '</div>';
-					// 	html += '</div>';
-			    //   html += '<div class="form-group clearfix">';
-			    //     html += '<div class="icheck-primary">';
-					// 			if(settings.registration){ checked = 'checked'; } else { checked = ''; }
-			    //       html += '<input type="checkbox" id="registration" name="registration" '+checked+'>';
-			    //       html += '<label for="registration">'+API.Contents.Language['Allow user registration']+'</label>';
-			    //     html += '</div>';
-			    //   html += '</div>';
-			    //   html += '<div class="form-group clearfix">';
-			    //     html += '<div class="icheck-primary">';
-					// 			if(settings.forgot){ checked = 'checked'; } else { checked = ''; }
-			    //       html += '<input type="checkbox" id="forgot" name="forgot" '+checked+'>';
-			    //       html += '<label for="forgot">'+API.Contents.Language['Allow user to reset their password from the login page']+'</label>';
-			    //     html += '</div>';
-			    //   html += '</div>';
-					// 	html += '<hr>';
-					// 	html += '<div class="form-group row">';
-					// 		html += '<div class="input-group">';
-					// 			html += '<button type="button" name="SaveApp" class="btn btn-success">';
-					// 				html += '<i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save'];
-					// 			html += '</button>';
-					// 		html += '</div>';
-					// 	html += '</div>';
-					// 	content.html(html);
-					// 	content.find('button').click(function(){
-					// 		var settings = {};
-					// 		content.find('input').each(function(){
-					// 			var key = $(this).attr('name');
-					// 			var type = $(this).attr('type');
-					// 			if(type == "checkbox"){
-					// 				settings[key] = content.find('input[name="'+key+'"]')[0].checked;
-					// 			} else {
-					// 				settings[key] = content.find('input[name="'+key+'"]').val();
-					// 			}
-					// 		});
-					// 		settings.customization = API.Contents.Settings.customization;
-					// 		API.request('settings','save',{data:{settings:settings}});
-					// 	});
-					// });
+					API.Plugins.settings.GUI.Tabs.add('developper',function(content, tab){
+						var html = '', checked = '';
+						if(typeof settings.version === 'undefined'){ settings.version = ''; }
+						if(typeof settings.title === 'undefined'){ settings.title = ''; }
+						if(typeof settings.registration === 'undefined'){ settings.registration = false; }
+						if(typeof settings.forgot === 'undefined'){ settings.forgot = false; }
+						html += '<h3>'+API.Contents.Language['Application Details']+'</h3>';
+						html += '<div class="form-group row">';
+							html += '<div class="input-group">';
+								html += '<div class="input-group-prepend">';
+									html += '<span class="input-group-text"><i class="fas fa-code-branch"></i></span>';
+								html += '</div>';
+								html += '<input type="text" class="form-control" name="version" placeholder="'+API.Contents.Language['Version']+'" value="'+settings.version+'">';
+							html += '</div>';
+						html += '</div>';
+						html += '<div class="form-group row">';
+							html += '<div class="input-group">';
+								html += '<div class="input-group-prepend">';
+									html += '<span class="input-group-text"><i class="fas fa-heading"></i></span>';
+								html += '</div>';
+								html += '<input type="text" class="form-control" name="title" placeholder="'+API.Contents.Language['Title']+'" value="'+settings.title+'">';
+							html += '</div>';
+						html += '</div>';
+			      html += '<div class="form-group clearfix">';
+			        html += '<div class="icheck-primary">';
+								if(settings.registration){ checked = 'checked'; } else { checked = ''; }
+			          html += '<input type="checkbox" id="registration" name="registration" '+checked+'>';
+			          html += '<label for="registration">'+API.Contents.Language['Allow user registration']+'</label>';
+			        html += '</div>';
+			      html += '</div>';
+			      html += '<div class="form-group clearfix">';
+			        html += '<div class="icheck-primary">';
+								if(settings.forgot){ checked = 'checked'; } else { checked = ''; }
+			          html += '<input type="checkbox" id="forgot" name="forgot" '+checked+'>';
+			          html += '<label for="forgot">'+API.Contents.Language['Allow user to reset their password from the login page']+'</label>';
+			        html += '</div>';
+			      html += '</div>';
+						html += '<hr>';
+						html += '<div class="form-group row">';
+							html += '<div class="input-group">';
+								html += '<button type="button" name="SaveApp" class="btn btn-success">';
+									html += '<i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save'];
+								html += '</button>';
+							html += '</div>';
+						html += '</div>';
+						content.html(html);
+						content.find('button').click(function(){
+							var settings = {};
+							content.find('input').each(function(){
+								var key = $(this).attr('name');
+								var type = $(this).attr('type');
+								if(type == "checkbox"){
+									settings[key] = content.find('input[name="'+key+'"]')[0].checked;
+								} else {
+									settings[key] = content.find('input[name="'+key+'"]').val();
+								}
+							});
+							settings.customization = API.Contents.Settings.customization;
+							API.request('settings','save',{data:{settings:settings}});
+						});
+					});
 					API.Plugins.settings.GUI.Tabs.add('customization',function(content, tab){
 						var html = '', checked = '';
 						if(!API.Helper.isSet(settings,['customization','pace','value'])){ settings.customization.pace.value = 'primary'; }
