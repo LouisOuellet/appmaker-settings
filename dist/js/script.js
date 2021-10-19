@@ -50,7 +50,7 @@ API.Plugins.settings = {
 								}
 								html += '</select>';
 								html += '<div class="input-group-append">';
-									html += '<button type="button" name="ChangeBranch" class="btn btn-success">';
+									html += '<button type="button" name="ChangeBranch" class="btn btn-success ml-2">';
 			              html += '<i class="fas fa-save mr-1"></i></i>'+API.Contents.Language['Save'];
 			            html += '</button>';
 								html += '</div>';
@@ -159,7 +159,7 @@ API.Plugins.settings = {
 		        html += '</div>';
 		        html += '<div class="form-group row">';
 	            html += '<div class="input-group">';
-                html += '<button type="button" name="SaveCRON" class="btn btn-success">';
+                html += '<button type="button" name="SaveCRON" class="btn btn-success ml-2">';
                   html += '<i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save'];
                 html += '</button>';
 	            html += '</div>';
@@ -209,7 +209,7 @@ API.Plugins.settings = {
 				    html += '</div>';
 				    html += '<div class="form-group row">';
 				      html += '<div class="input-group">';
-				        html += '<button type="button" name="debug" class="btn btn-success"><i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save']+'</button>';
+				        html += '<button type="button" name="debug" class="btn btn-success ml-2"><i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save']+'</button>';
 				      html += '</div>';
 				    html += '</div>';
 					  html += '<hr>';
@@ -234,7 +234,7 @@ API.Plugins.settings = {
 				    html += '</div>';
 				    html += '<div class="form-group row">';
 				      html += '<div class="input-group">';
-				        html += '<button type="button" name="maintenance" class="btn btn-success"><i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save']+'</button>';
+				        html += '<button type="button" name="maintenance" class="btn btn-success ml-2"><i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save']+'</button>';
 				      html += '</div>';
 				    html += '</div>';
 					  html += '<hr>';
@@ -255,7 +255,7 @@ API.Plugins.settings = {
 				    html += '</div>';
 				    html += '<div class="form-group row">';
 				      html += '<div class="input-group">';
-				        html += '<button type="button" name="developer" class="btn btn-success"><i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save']+'</button>';
+				        html += '<button type="button" name="developer" class="btn btn-success ml-2"><i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save']+'</button>';
 				      html += '</div>';
 				    html += '</div>';
 						content.html(html);
@@ -333,7 +333,7 @@ API.Plugins.settings = {
 				    html += '</div>';
 				    html += '<div class="form-group row">';
 				      html += '<div class="input-group">';
-				        html += '<button type="button" name="SaveSQL" class="btn btn-success">';
+				        html += '<button type="button" name="SaveSQL" class="btn btn-success ml-2">';
 				          html += '<i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save'];
 				        html += '</button>';
 				      html += '</div>';
@@ -358,7 +358,7 @@ API.Plugins.settings = {
 						// 				html += '<button type="button" name="ExportDB" class="btn btn-primary">';
 						// 					html += '<i class="fas fa-file-export mr-1"></i>'+API.Contents.Language['Export Database'];
 						// 				html += '</button>';
-						// 				html += '<button type="button" name="ImportDB" class="btn btn-success">';
+						// 				html += '<button type="button" name="ImportDB" class="btn btn-success ml-2">';
 						// 					html += '<i class="fas fa-file-import mr-1"></i>'+API.Contents.Language['Import Database'];
 						// 				html += '</button>';
 						// 			html += '</div>';
@@ -435,7 +435,7 @@ API.Plugins.settings = {
 		        html += '<div class="form-group row">';
 	            html += '<div class="input-group">';
 		            html += '<div class="btn-group">';
-	                html += '<button type="button" name="SaveSMTP" class="btn btn-success">';
+	                html += '<button type="button" name="SaveSMTP" class="btn btn-success ml-2">';
 	                  html += '<i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save'];
 	                html += '</button>';
 	                html += '<button type="button" name="testSMTP" class="btn btn-info">';
@@ -530,7 +530,7 @@ API.Plugins.settings = {
 		      //   html += '</div>';
 					// 	html += '<div class="form-group row">';
 		      //     html += '<div class="input-group">';
-		      //       html += '<button type="button" name="SaveLDAP" class="btn btn-success">';
+		      //       html += '<button type="button" name="SaveLDAP" class="btn btn-success ml-2">';
 		      //         html += '<i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save'];
 		      //       html += '</button>';
 		      //     html += '</div>';
@@ -584,7 +584,7 @@ API.Plugins.settings = {
 					// 	html += '<hr>';
 					// 	html += '<div class="form-group row">';
 					// 		html += '<div class="input-group">';
-					// 			html += '<button type="button" name="SaveLSP" class="btn btn-success">';
+					// 			html += '<button type="button" name="SaveLSP" class="btn btn-success ml-2">';
 					// 				html += '<i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save'];
 					// 			html += '</button>';
 					// 			html += '<button type="button" name="GenerateStructure" class="btn btn-primary ml-2">';
@@ -655,7 +655,7 @@ API.Plugins.settings = {
 						html += '<hr>';
 						html += '<div class="form-group row">';
 							html += '<div class="input-group">';
-								html += '<button type="button" name="SaveApp" class="btn btn-success">';
+								html += '<button type="button" name="SaveApp" class="btn btn-success ml-2">';
 									html += '<i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save'];
 								html += '</button>';
 							html += '</div>';
@@ -859,7 +859,7 @@ API.Plugins.settings = {
 							html += '<div class="col-md-12 py-2">';
 								html += '<hr>';
 								html += '<div class="input-group">';
-									html += '<button type="button" name="SaveApp" class="btn btn-success">';
+									html += '<button type="button" name="SaveApp" class="btn btn-success ml-2">';
 										html += '<i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save'];
 									html += '</button>';
 								html += '</div>';
