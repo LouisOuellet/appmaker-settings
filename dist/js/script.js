@@ -679,7 +679,7 @@ API.Plugins.settings = {
 							var btn = $(this).attr('name');
 							switch(btn){
 								case"SaveApp":
-									var settings = {};
+									var conf = {};
 									content.find('input').each(function(){
 										var key = $(this).attr('name');
 										var type = $(this).attr('type');
@@ -690,7 +690,7 @@ API.Plugins.settings = {
 										}
 									});
 									settings.customization = API.Contents.Settings.customization;
-									API.request('settings','save',{data:{settings:settings}});
+									API.request('settings','save',{data:{settings:conf}});
 									break;
 								case"GenerateStructure":
 									API.request('lsp','generate',{data:{type:"structure"}});
@@ -704,18 +704,18 @@ API.Plugins.settings = {
 							}
 						});
 						// content.find('button').off().click(function(){
-							var settings = {};
+							var conf = {};
 							content.find('input').each(function(){
 								var key = $(this).attr('name');
 								var type = $(this).attr('type');
 								if(type == "checkbox"){
-									settings[key] = content.find('input[name="'+key+'"]')[0].checked;
+									conf[key] = content.find('input[name="'+key+'"]')[0].checked;
 								} else {
-									settings[key] = content.find('input[name="'+key+'"]').val();
+									conf[key] = content.find('input[name="'+key+'"]').val();
 								}
 							});
-							settings.customization = API.Contents.Settings.customization;
-							API.request('settings','save',{data:{settings:settings}});
+							conf.customization = API.Contents.Settings.customization;
+							API.request('settings','save',{data:{settings:conf}});
 						// });
 					});
 					API.Plugins.settings.GUI.Tabs.add('customization',function(content, tab){
