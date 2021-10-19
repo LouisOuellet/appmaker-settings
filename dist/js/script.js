@@ -625,6 +625,10 @@ API.Plugins.settings = {
 					// });
 					API.Plugins.settings.GUI.Tabs.add('developper',function(content, tab){
 						var html = '', checked = '';
+						console.log(settings);
+						if(typeof settings.title === 'undefined'){ settings.title = ''; }
+						if(typeof settings.registration === 'undefined'){ settings.registration = false; }
+						if(typeof settings.forgot === 'undefined'){ settings.forgot = false; }
 						html += '<h3>'+API.Contents.Language['Application Details']+'</h3>';
 						html += '<div class="form-group row">';
 							html += '<div class="input-group">';
