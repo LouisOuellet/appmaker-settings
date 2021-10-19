@@ -660,6 +660,7 @@ API.Plugins.settings = {
 								html += '</button>';
 							html += '</div>';
 						html += '</div>';
+						html += '<h3>'+API.Contents.Language['Compile Application']+'</h3>';
 						html += '<hr>';
 						html += '<div class="form-group row">';
 							html += '<div class="input-group">';
