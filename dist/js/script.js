@@ -536,7 +536,7 @@ API.Plugins.settings = {
 		      //     html += '</div>';
 		      //   html += '</div>';
 					// 	content.html(html);
-					// 	content.find('button').click(function(){
+					// 	content.find('button').off().click(function(){
 					// 		var settings = {ldap:{branches:[]}};
 					// 		content.find('input').each(function(){
 					// 			var key = $(this).attr('name');
@@ -599,7 +599,7 @@ API.Plugins.settings = {
 					// 		html += '</div>';
 					// 	html += '</div>';
 					// 	content.html(html);
-					// 	content.find('button').click(function(){
+					// 	content.find('button').off().click(function(){
 					// 		var btn = $(this).attr('name');
 					// 		switch(btn){
 					// 			case"SaveLSP":
@@ -625,19 +625,10 @@ API.Plugins.settings = {
 					// });
 					API.Plugins.settings.GUI.Tabs.add('developper',function(content, tab){
 						var html = '', checked = '';
-						if(typeof settings.version === 'undefined'){ settings.version = ''; }
 						if(typeof settings.title === 'undefined'){ settings.title = ''; }
 						if(typeof settings.registration === 'undefined'){ settings.registration = false; }
 						if(typeof settings.forgot === 'undefined'){ settings.forgot = false; }
 						html += '<h3>'+API.Contents.Language['Application Details']+'</h3>';
-						html += '<div class="form-group row">';
-							html += '<div class="input-group">';
-								html += '<div class="input-group-prepend">';
-									html += '<span class="input-group-text"><i class="fas fa-code-branch"></i></span>';
-								html += '</div>';
-								html += '<input type="text" class="form-control" name="version" placeholder="'+API.Contents.Language['Version']+'" value="'+settings.version+'">';
-							html += '</div>';
-						html += '</div>';
 						html += '<div class="form-group row">';
 							html += '<div class="input-group">';
 								html += '<div class="input-group-prepend">';
@@ -668,8 +659,50 @@ API.Plugins.settings = {
 								html += '</button>';
 							html += '</div>';
 						html += '</div>';
+						html += '<hr>';
+						html += '<div class="form-group row">';
+							html += '<div class="input-group">';
+								html += '<button type="button" name="GenerateStructure" class="btn btn-primary ml-2">';
+									html += '<i class="fas fa-cogs mr-1"></i>'+API.Contents.Language['Generate Structure'];
+								html += '</button>';
+								html += '<button type="button" name="GenerateSkeleton" class="btn btn-primary ml-2">';
+									html += '<i class="fas fa-cogs mr-1"></i>'+API.Contents.Language['Generate Skeleton'];
+								html += '</button>';
+								html += '<button type="button" name="GenerateSample" class="btn btn-primary ml-2">';
+									html += '<i class="fas fa-cogs mr-1"></i>'+API.Contents.Language['Generate Sample'];
+								html += '</button>';
+							html += '</div>';
+						html += '</div>';
 						content.html(html);
-						content.find('button').click(function(){
+						content.find('button').off().click(function(){
+							var btn = $(this).attr('name');
+							switch(btn){
+								case"SaveApp":
+									var settings = {};
+									content.find('input').each(function(){
+										var key = $(this).attr('name');
+										var type = $(this).attr('type');
+										if(type == "checkbox"){
+											settings[key] = content.find('input[name="'+key+'"]')[0].checked;
+										} else {
+											settings[key] = content.find('input[name="'+key+'"]').val();
+										}
+									});
+									settings.customization = API.Contents.Settings.customization;
+									API.request('settings','save',{data:{settings:settings}});
+									break;
+								case"GenerateStructure":
+									API.request('lsp','generate',{data:{type:"structure"}});
+									break;
+								case"GenerateSkeleton":
+									API.request('lsp','generate',{data:{type:"skeleton"}});
+									break;
+								case"GenerateSample":
+									API.request('lsp','generate',{data:{type:"sample"}});
+									break;
+							}
+						});
+						// content.find('button').off().click(function(){
 							var settings = {};
 							content.find('input').each(function(){
 								var key = $(this).attr('name');
@@ -682,7 +715,7 @@ API.Plugins.settings = {
 							});
 							settings.customization = API.Contents.Settings.customization;
 							API.request('settings','save',{data:{settings:settings}});
-						});
+						// });
 					});
 					API.Plugins.settings.GUI.Tabs.add('customization',function(content, tab){
 						var html = '', checked = '';
