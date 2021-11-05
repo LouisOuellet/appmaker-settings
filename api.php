@@ -10,7 +10,7 @@ class settingsAPI extends API {
 						return $this->LSP->createStructure(dirname(__FILE__,3).'/dist/data/structure.json');
 						break;
 					case"skeleton":
-						return $this->LSP->createRecords(dirname(__FILE__,3).'/dist/data/skeleton.json',["tables" => ['users','groups','roles','permissions','relationships','priorities','statuses','categories','sub_categories'], "maxID" => 99999]);
+						return $this->LSP->createRecords(dirname(__FILE__,3).'/dist/data/skeleton.json',["tables" => ['users','groups','roles','permissions','relationships','priorities','statuses','services','issues','categories','sub_categories'], "maxID" => 99999]);
 						break;
 					case"sample":
 						return $this->LSP->createRecords(dirname(__FILE__,3).'/dist/data/sample.json');
