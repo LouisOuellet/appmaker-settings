@@ -1,14 +1,14 @@
-API.Plugins.settings = {
+Engine.Plugins.settings = {
 	init:function(){
-		API.GUI.Sidebar.Nav.add('Settings', 'administration');
+		Engine.GUI.Sidebar.Nav.add('Settings', 'administration');
 	},
 	load:{
-		index:function(){ API.Plugins.settings.GUI.Tabs.init(); },
+		index:function(){ Engine.Plugins.settings.GUI.Tabs.init(); },
 	},
 	GUI:{
 		Tabs:{
 			init:function(){
-				API.request('settings','fetch',{data:[]},function(result){
+				Engine.request('settings','fetch',{data:[]},function(result){
 					json = JSON.parse(result);
 					cron = json.output.cron;
 					directory = json.output.directory;
@@ -17,41 +17,41 @@ API.Plugins.settings = {
 					languages = json.output.languages;
 					timezones = json.output.timezones;
 					pages = json.output.pages;
-					API.Plugins.settings.GUI.Tabs.add('overview',function(content, tab){
+					Engine.Plugins.settings.GUI.Tabs.add('overview',function(content, tab){
 						var html = '';
-						html += '<h3>'+API.Contents.Language['Security & Setup Warnings']+'</h3>';
+						html += '<h3>'+Engine.Contents.Language['Security & Setup Warnings']+'</h3>';
 						html += '<ul>';
-						if(location.protocol !== 'https:'){ html += '<li>'+API.Contents.Language['HyperText Transfer Protocol Secure is currently not running.']+'</li>'; }
+						if(location.protocol !== 'https:'){ html += '<li>'+Engine.Contents.Language['HyperText Transfer Protocol Secure is currently not running.']+'</li>'; }
 						if(cron.status && settings.background_jobs == 'cron'){
 							html += '<li>';
-								html += API.Contents.Language['It has been']+' '+cron.age+' '+API.Contents.Language['since the last cron ran.']+'<br />';
+								html += Engine.Contents.Language['It has been']+' '+cron.age+' '+Engine.Contents.Language['since the last cron ran.']+'<br />';
 							html += '</li>';
 							html += '<li>';
-								html += API.Contents.Language['Make sure to setup your CRON as followed']+': <code>* * * * * php '+directory+'/cli.php --cron</code>';
+								html += Engine.Contents.Language['Make sure to setup your CRON as followed']+': <code>* * * * * php '+directory+'/cli.php --cron</code>';
 							html += '</li>';
 						}
 						html += '</ul>';
 						html += '<hr>';
-						html += '<h3>'+API.Contents.Language['Updates']+'</h3>';
+						html += '<h3>'+Engine.Contents.Language['Updates']+'</h3>';
 						html += '<div class="form-group">';
 							html += '<div class="input-group">';
 								html += '<div class="input-group-prepend">';
 									html += '<span class="input-group-text">';
-										html += '<i class="fas fa-code-branch mr-1"></i>'+API.Contents.Language['Branch'];
+										html += '<i class="fas fa-code-branch mr-1"></i>'+Engine.Contents.Language['Branch'];
 									html += '</span>';
 								html += '</div>';
 								html += '<select name="branch">';
 								for(const [key, branch] of Object.entries(settings.repository.branches)){
 									if(branch != ''){
 										if(settings.repository.branch == branch){
-											html += '<option value="'+branch+'" selected>'+API.Helper.ucfirst(branch)+'</option>';
-										} else { html += '<option value="'+branch+'">'+API.Helper.ucfirst(branch)+'</option>'; }
+											html += '<option value="'+branch+'" selected>'+Engine.Helper.ucfirst(branch)+'</option>';
+										} else { html += '<option value="'+branch+'">'+Engine.Helper.ucfirst(branch)+'</option>'; }
 									}
 								}
 								html += '</select>';
 								html += '<div class="input-group-append">';
 									html += '<button type="button" name="ChangeBranch" class="btn btn-success">';
-			              html += '<i class="fas fa-save mr-1"></i></i>'+API.Contents.Language['Save'];
+			              html += '<i class="fas fa-save mr-1"></i></i>'+Engine.Contents.Language['Save'];
 			            html += '</button>';
 								html += '</div>';
 							html += '</div>';
@@ -61,13 +61,13 @@ API.Plugins.settings = {
 								html += '<div class="input-group">';
 									html += '<div class="input-group-prepend">';
 										html += '<span class="input-group-text">';
-											html += '<i class="fas fa-exclamation-circle mr-1"></i>'+API.Contents.Language['A new version is available'];
+											html += '<i class="fas fa-exclamation-circle mr-1"></i>'+Engine.Contents.Language['A new version is available'];
 											html += '<i class="fas fa-chevron-right ml-1"></i>';
 										html += '</span>';
 									html += '</div>';
 									html += '<div class="input-group-append">';
 				            html += '<button type="button" name="StartUpdate" class="btn btn-primary">';
-				              html += '<i class="fas fa-cloud-download-alt mr-1"></i></i>'+API.Contents.Language['Update'];
+				              html += '<i class="fas fa-cloud-download-alt mr-1"></i></i>'+Engine.Contents.Language['Update'];
 				            html += '</button>';
 									html += '</div>';
 								html += '</div>';
@@ -78,34 +78,34 @@ API.Plugins.settings = {
 						content.find('button').each(function(){
 							$(this).off().click(function(){
 								switch($(this).attr('name')){
-									case'StartUpdate': API.request('settings','update',{data:[]});break;
+									case'StartUpdate': Engine.request('settings','update',{data:[]});break;
 									case'ChangeBranch':
 										settings.repository.branch = content.find('select').select2('val');
-										API.request('settings','save',{data:{repository:settings.repository}});
+										Engine.request('settings','save',{data:{repository:settings.repository}});
 										break;
 								}
 							});
 						});
 					});
-					API.Plugins.settings.GUI.Tabs.add('basic',function(content, tab){
+					Engine.Plugins.settings.GUI.Tabs.add('basic',function(content, tab){
 						var html = '', checked = '';
-						html += '<h3>'+API.Contents.Language['Background Jobs']+'</h3>';
+						html += '<h3>'+Engine.Contents.Language['Background Jobs']+'</h3>';
 						html += '<div class="form-group clearfix px-2">';
 		          html += '<div class="icheck-primary">';
 								if(settings.background_jobs == 'service'){ checked = 'checked'; } else { checked = ''; }
 		            html += '<input type="radio" id="background_jobs1" value="service" name="background_jobs" '+checked+'>';
-		            html += '<label for="background_jobs1">'+API.Contents.Language['Service']+'</label>';
-		            html += '<p class="text-muted" style="margin-left:30px;">'+API.Contents.Language['The Service executes in a loop on the host system']+'</p>';
+		            html += '<label for="background_jobs1">'+Engine.Contents.Language['Service']+'</label>';
+		            html += '<p class="text-muted" style="margin-left:30px;">'+Engine.Contents.Language['The Service executes in a loop on the host system']+'</p>';
 		          html += '</div>';
 		          html += '<div class="icheck-primary">';
 								if(settings.background_jobs == 'cron'){ checked = 'checked'; } else { checked = ''; }
 		            html += '<input type="radio" id="background_jobs2" value="cron" name="background_jobs" '+checked+'>';
-		            html += '<label for="background_jobs2">'+API.Contents.Language['Cron']+'</label>';
-		            html += '<p class="text-muted" style="margin-left:30px;">'+API.Contents.Language['Use system cron service to call the cron.php file every 5 minutes.']+'</p>';
+		            html += '<label for="background_jobs2">'+Engine.Contents.Language['Cron']+'</label>';
+		            html += '<p class="text-muted" style="margin-left:30px;">'+Engine.Contents.Language['Use system cron service to call the cron.php file every 5 minutes.']+'</p>';
 		          html += '</div>';
 		        html += '</div>';
 						html += '<hr>';
-						html += '<h3>'+API.Contents.Language['Language']+'</h3>';
+						html += '<h3>'+Engine.Contents.Language['Language']+'</h3>';
 						html += '<div class="form-group row px-2">';
 		          html += '<div class="input-group">';
 		            html += '<div class="input-group-prepend">';
@@ -116,14 +116,14 @@ API.Plugins.settings = {
 		            html += '<select class="form-control" name="language">';
 									for(var [key, language] of Object.entries(languages)){
 										if(settings.language == language){
-											html += '<option value="'+language+'" selected>'+API.Helper.ucfirst(language)+'</option>';
-										} else { html += '<option value="'+language+'">'+API.Helper.ucfirst(language)+'</option>'; }
+											html += '<option value="'+language+'" selected>'+Engine.Helper.ucfirst(language)+'</option>';
+										} else { html += '<option value="'+language+'">'+Engine.Helper.ucfirst(language)+'</option>'; }
 									}
 		            html += '</select>';
 		          html += '</div>';
 		        html += '</div>';
 						html += '<hr>';
-						html += '<h3>'+API.Contents.Language['Timezone']+'</h3>';
+						html += '<h3>'+Engine.Contents.Language['Timezone']+'</h3>';
 						html += '<div class="form-group row px-2">';
 		          html += '<div class="input-group">';
 		            html += '<div class="input-group-prepend">';
@@ -141,7 +141,7 @@ API.Plugins.settings = {
 		          html += '</div>';
 		        html += '</div>';
 						html += '<hr>';
-						html += '<h3>'+API.Contents.Language['Landing Page']+'</h3>';
+						html += '<h3>'+Engine.Contents.Language['Landing Page']+'</h3>';
 						html += '<div class="form-group row px-2">';
 		          html += '<div class="input-group">';
 		            html += '<div class="input-group-prepend">';
@@ -151,8 +151,8 @@ API.Plugins.settings = {
 		            html += '</div>';
 		            html += '<select class="form-control" name="page">';
 									for(const [key, page] of Object.entries(pages)){
-										if(settings.page == page){ html += '<option value="'+page+'" selected>'+API.Helper.ucfirst(page)+'</option>'; }
-										else { html += '<option value="'+page+'">'+API.Helper.ucfirst(page)+'</option>'; }
+										if(settings.page == page){ html += '<option value="'+page+'" selected>'+Engine.Helper.ucfirst(page)+'</option>'; }
+										else { html += '<option value="'+page+'">'+Engine.Helper.ucfirst(page)+'</option>'; }
 									}
 		            html += '</select>';
 		          html += '</div>';
@@ -161,7 +161,7 @@ API.Plugins.settings = {
 		        html += '<div class="form-group row">';
 	            html += '<div class="input-group">';
                 html += '<button type="button" name="SaveCRON" class="btn btn-success ml-2">';
-                  html += '<i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save'];
+                  html += '<i class="fas fa-save mr-1"></i>'+Engine.Contents.Language['Save'];
                 html += '</button>';
 	            html += '</div>';
 		        html += '</div>';
@@ -180,83 +180,83 @@ API.Plugins.settings = {
 										settings.timezone = content.find('select[name="timezone"]').select2('val');
 										data.page = content.find('select[name="page"]').select2('val');
 										settings.page = content.find('select[name="page"]').select2('val');
-										API.request('settings','save',{data:data});
+										Engine.request('settings','save',{data:data});
 										break;
 								}
 							});
 						});
 					});
-					API.Plugins.settings.GUI.Tabs.add('advanced',function(content, tab){
+					Engine.Plugins.settings.GUI.Tabs.add('advanced',function(content, tab){
 						var html = '', checked = '';
-						html += '<h3>'+API.Contents.Language['Debug Mode']+'</h3>';
+						html += '<h3>'+Engine.Contents.Language['Debug Mode']+'</h3>';
 				    html += '<p>';
-					    html += API.Contents.Language['Enabling debug mode will activate PHP error reporting. Along with the display of Debug data.'];
+					    html += Engine.Contents.Language['Enabling debug mode will activate PHP error reporting. Along with the display of Debug data.'];
 					    html += '<div class="alert alert-info">';
-					        html += '<h5><i class="icon fas fa-info"></i>'+API.Contents.Language['Info']+'</h5>';
-					        html += API.Contents.Language['This may cause some problems when navigating the application.'];
+					        html += '<h5><i class="icon fas fa-info"></i>'+Engine.Contents.Language['Info']+'</h5>';
+					        html += Engine.Contents.Language['This may cause some problems when navigating the application.'];
 					    html += '</div>';
 					    html += '<div class="alert alert-warning">';
-					        html += '<h5><i class="icon fas fa-exclamation-triangle"></i>'+API.Contents.Language['Warning']+'</h5>';
-					        html += API.Contents.Language['This may cause some protected data to be exposed unintentionally.'];
+					        html += '<h5><i class="icon fas fa-exclamation-triangle"></i>'+Engine.Contents.Language['Warning']+'</h5>';
+					        html += Engine.Contents.Language['This may cause some protected data to be exposed unintentionally.'];
 					    html += '</div>';
-					    html += API.Contents.Language['Please use this option carefully.'];
+					    html += Engine.Contents.Language['Please use this option carefully.'];
 				    html += '</p>';
 				    html += '<div class="form-group clearfix px-2">';
 				      html += '<div class="icheck-primary">';
 								if(typeof settings.debug !== 'undefined' && settings.debug){ checked = 'checked'; } else { checked = ''; }
 				        html += '<input type="checkbox" id="debug" name="debug" '+checked+'>';
-				        html += '<label for="debug">'+API.Contents.Language['Enable']+'</label>';
+				        html += '<label for="debug">'+Engine.Contents.Language['Enable']+'</label>';
 				      html += '</div>';
 				    html += '</div>';
 				    html += '<div class="form-group row">';
 				      html += '<div class="input-group">';
-				        html += '<button type="button" name="debug" class="btn btn-success ml-2"><i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save']+'</button>';
+				        html += '<button type="button" name="debug" class="btn btn-success ml-2"><i class="fas fa-save mr-1"></i>'+Engine.Contents.Language['Save']+'</button>';
 				      html += '</div>';
 				    html += '</div>';
 					  html += '<hr>';
-						html += '<h3>'+API.Contents.Language['Maintenance Mode']+'</h3>';
+						html += '<h3>'+Engine.Contents.Language['Maintenance Mode']+'</h3>';
 						html += '<p>';
-					    html += API.Contents.Language['This mode allows an administrator to perform some tasks such as updating the application.'];
+					    html += Engine.Contents.Language['This mode allows an administrator to perform some tasks such as updating the application.'];
 					    html += '<div class="alert alert-info">';
-					      html += '<h5><i class="icon fas fa-info"></i>'+API.Contents.Language['Info']+'</h5>';
-					      html += API.Contents.Language['Enabling maintenance mode will prevent users from accessing the application.'];
+					      html += '<h5><i class="icon fas fa-info"></i>'+Engine.Contents.Language['Info']+'</h5>';
+					      html += Engine.Contents.Language['Enabling maintenance mode will prevent users from accessing the application.'];
 					    html += '</div>';
 					    html += '<div class="alert alert-warning">';
-					      html += '<h5><i class="icon fas fa-exclamation-triangle"></i>'+API.Contents.Language['Warning']+'</h5>';
-					      html += API.Contents.Language['This may cause some data to be lost. Such as a completed form that was not yet submitted.'];
+					      html += '<h5><i class="icon fas fa-exclamation-triangle"></i>'+Engine.Contents.Language['Warning']+'</h5>';
+					      html += Engine.Contents.Language['This may cause some data to be lost. Such as a completed form that was not yet submitted.'];
 					    html += '</div>';
 				    html += '</p>';
 				    html += '<div class="form-group clearfix px-2">';
 				      html += '<div class="icheck-primary">';
 								if(typeof settings.maintenance !== 'undefined' && settings.maintenance){ checked = 'checked'; } else { checked = ''; }
 				        html += '<input type="checkbox" id="maintenance" name="maintenance" '+checked+'>';
-				        html += '<label for="maintenance">'+API.Contents.Language['Enable']+'</label>';
+				        html += '<label for="maintenance">'+Engine.Contents.Language['Enable']+'</label>';
 				      html += '</div>';
 				    html += '</div>';
 				    html += '<div class="form-group row">';
 				      html += '<div class="input-group">';
-				        html += '<button type="button" name="maintenance" class="btn btn-success ml-2"><i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save']+'</button>';
+				        html += '<button type="button" name="maintenance" class="btn btn-success ml-2"><i class="fas fa-save mr-1"></i>'+Engine.Contents.Language['Save']+'</button>';
 				      html += '</div>';
 				    html += '</div>';
 					  html += '<hr>';
-						html += '<h3>'+API.Contents.Language['Developer Mode']+'</h3>';
+						html += '<h3>'+Engine.Contents.Language['Developer Mode']+'</h3>';
 						html += '<p>';
-					    html += API.Contents.Language['This mode allows a developer to perform some changes to the application.'];
+					    html += Engine.Contents.Language['This mode allows a developer to perform some changes to the application.'];
 					    html += '<div class="alert alert-warning">';
-					      html += '<h5><i class="icon fas fa-exclamation-triangle"></i>'+API.Contents.Language['Warning']+'</h5>';
-					      html += API.Contents.Language['This may cause some data to be lost. Such as a completed form that was not yet submitted.'];
+					      html += '<h5><i class="icon fas fa-exclamation-triangle"></i>'+Engine.Contents.Language['Warning']+'</h5>';
+					      html += Engine.Contents.Language['This may cause some data to be lost. Such as a completed form that was not yet submitted.'];
 					    html += '</div>';
 				    html += '</p>';
 				    html += '<div class="form-group clearfix px-2">';
 				      html += '<div class="icheck-primary">';
 								if(typeof settings.developer !== 'undefined' && settings.developer){ checked = 'checked'; } else { checked = ''; }
 				        html += '<input type="checkbox" id="developer" name="developer" '+checked+'>';
-				        html += '<label for="developer">'+API.Contents.Language['Enable']+'</label>';
+				        html += '<label for="developer">'+Engine.Contents.Language['Enable']+'</label>';
 				      html += '</div>';
 				    html += '</div>';
 				    html += '<div class="form-group row">';
 				      html += '<div class="input-group">';
-				        html += '<button type="button" name="developer" class="btn btn-success ml-2"><i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save']+'</button>';
+				        html += '<button type="button" name="developer" class="btn btn-success ml-2"><i class="fas fa-save mr-1"></i>'+Engine.Contents.Language['Save']+'</button>';
 				      html += '</div>';
 				    html += '</div>';
 						content.html(html);
@@ -267,27 +267,27 @@ API.Plugins.settings = {
 										var data = {};
 										if(content.find('input:checked[name="developer"]').val() != undefined){ data.developer = true;settings.developer = true; }
 										else { data.developer = false;settings.developer = false; }
-										API.request('settings','save',{data:data});
+										Engine.request('settings','save',{data:data});
 										break;
 									case'maintenance':
 										var data = {};
 										if(content.find('input:checked[name="maintenance"]').val() != undefined){ data.maintenance = true;settings.maintenance = true; }
 										else { data.maintenance = false;settings.maintenance = false; }
-										API.request('settings','save',{data:data});
+										Engine.request('settings','save',{data:data});
 										break;
 									case'debug':
 										var data = {};
 										if(content.find('input:checked[name="debug"]').val() != undefined){ data.debug = true;settings.debug = true; }
 										else { data.debug = false;settings.debug = false; }
-										API.request('settings','save',{data:data});
+										Engine.request('settings','save',{data:data});
 										break;
 								}
 							});
 						});
 					});
-					API.Plugins.settings.GUI.Tabs.add('SQL',function(content, tab){
+					Engine.Plugins.settings.GUI.Tabs.add('SQL',function(content, tab){
 						var html = '';
-						html += '<h3>'+API.Contents.Language['SQL Database']+'</h3>';
+						html += '<h3>'+Engine.Contents.Language['SQL Database']+'</h3>';
 						html += '<div class="form-group row px-2">';
 				      html += '<div class="input-group">';
 				        html += '<div class="input-group-prepend">';
@@ -295,13 +295,13 @@ API.Plugins.settings = {
 				            html += '<i class="fas fa-server"></i>';
 				          html += '</span>';
 				        html += '</div>';
-				        html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Host']+'" name="host" value="'+settings.sql.host+'">';
+				        html += '<input type="text" class="form-control" placeholder="'+Engine.Contents.Language['Host']+'" name="host" value="'+settings.sql.host+'">';
 								html += '<div class="input-group-prepend">';
 				          html += '<span class="input-group-text">';
 				            html += '<i class="fas fa-database"></i>';
 				          html += '</span>';
 				        html += '</div>';
-				        html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Database']+'" name="database" value="'+settings.sql.database+'">';
+				        html += '<input type="text" class="form-control" placeholder="'+Engine.Contents.Language['Database']+'" name="database" value="'+settings.sql.database+'">';
 				      html += '</div>';
 				    html += '</div>';
 				    html += '<div class="form-group row px-2">';
@@ -311,17 +311,17 @@ API.Plugins.settings = {
 				            html += '<i class="fas fa-user"></i>';
 				          html += '</span>';
 				        html += '</div>';
-				        html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Username']+'" name="username" value="'+settings.sql.username+'">';
+				        html += '<input type="text" class="form-control" placeholder="'+Engine.Contents.Language['Username']+'" name="username" value="'+settings.sql.username+'">';
 				        html += '<div class="input-group-prepend">';
 				          html += '<span class="input-group-text">';
 				            html += '<i class="fas fa-user-lock"></i>';
 				          html += '</span>';
 				        html += '</div>';
-				        html += '<input type="password" class="form-control" placeholder="'+API.Contents.Language['Password']+'" name="password" value="'+settings.sql.password+'">';
+				        html += '<input type="password" class="form-control" placeholder="'+Engine.Contents.Language['Password']+'" name="password" value="'+settings.sql.password+'">';
 				      html += '</div>';
 				    html += '</div>';
 						html += '<hr>';
-						html += '<h3>'+API.Contents.Language['SQL Result Limit']+'</h3>';
+						html += '<h3>'+Engine.Contents.Language['SQL Result Limit']+'</h3>';
 						html += '<div class="form-group row px-2">';
 				      html += '<div class="input-group">';
 				        html += '<div class="input-group-prepend">';
@@ -329,39 +329,39 @@ API.Plugins.settings = {
 				            html += '<i class="fab fa-slack-hash"></i>';
 				          html += '</span>';
 				        html += '</div>';
-				        html += '<input type="number" class="form-control" name="SQLlimit" placeholder="'+API.Contents.Language['SQL Result Limit']+'" value="'+settings.SQLlimit+'">';
+				        html += '<input type="number" class="form-control" name="SQLlimit" placeholder="'+Engine.Contents.Language['SQL Result Limit']+'" value="'+settings.SQLlimit+'">';
 				      html += '</div>';
 				    html += '</div>';
 						html += '<hr>';
 				    html += '<div class="form-group row">';
 				      html += '<div class="input-group">';
 				        html += '<button type="button" name="SaveSQL" class="btn btn-success ml-2">';
-				          html += '<i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save'];
+				          html += '<i class="fas fa-save mr-1"></i>'+Engine.Contents.Language['Save'];
 				        html += '</button>';
 				      html += '</div>';
 				    html += '</div>';
 						// html += '<hr>';
-						// html += '<h3>'+API.Contents.Language['Import/Export']+'</h3>';
+						// html += '<h3>'+Engine.Contents.Language['Import/Export']+'</h3>';
 						// html += '<div class="form-group">';
 						// 	html += '<div class="vertical-input-group">';
 						// 		html += '<div class="input-group">';
 				    //       html += '<div class="input-group-prepend">';
 				    //         html += '<span class="input-group-text">';
-				    //           html += '<i class="fas fa-file-import mr-2"></i>'+API.Contents.Language['Import'];
+				    //           html += '<i class="fas fa-file-import mr-2"></i>'+Engine.Contents.Language['Import'];
 				    //         html += '</span>';
 				    //       html += '</div>';
 						// 			html += '<div class="custom-file">';
 				    //         html += '<input type="file" class="custom-file-input" name="dbFile" id="dbFile">';
-				    //         html += '<label class="custom-file-label" for="dbFile">'+API.Contents.Language['Choose file']+'</label>';
+				    //         html += '<label class="custom-file-label" for="dbFile">'+Engine.Contents.Language['Choose file']+'</label>';
 				    //       html += '</div>';
 						// 		html += '</div>';
 						// 		html += '<div class="input-group">';
 						// 			html += '<div class="btn-group btn-block">';
 						// 				html += '<button type="button" name="ExportDB" class="btn btn-primary">';
-						// 					html += '<i class="fas fa-file-export mr-1"></i>'+API.Contents.Language['Export Database'];
+						// 					html += '<i class="fas fa-file-export mr-1"></i>'+Engine.Contents.Language['Export Database'];
 						// 				html += '</button>';
 						// 				html += '<button type="button" name="ImportDB" class="btn btn-success ml-2">';
-						// 					html += '<i class="fas fa-file-import mr-1"></i>'+API.Contents.Language['Import Database'];
+						// 					html += '<i class="fas fa-file-import mr-1"></i>'+Engine.Contents.Language['Import Database'];
 						// 				html += '</button>';
 						// 			html += '</div>';
 						// 		html += '</div>';
@@ -384,13 +384,13 @@ API.Plugins.settings = {
 										settings.sql.password = content.find('input[name="password"]').val();
 										data.SQLlimit = content.find('input[name="SQLlimit"]').val();
 										settings.SQLlimit = content.find('input[name="SQLlimit"]').val();
-										API.request('settings','save',{data:data});
+										Engine.request('settings','save',{data:data});
 										break;
 								}
 							});
 						});
 					});
-					API.Plugins.settings.GUI.Tabs.add('SMTP',function(content, tab){
+					Engine.Plugins.settings.GUI.Tabs.add('SMTP',function(content, tab){
 						var html = '', checkSSL = '', checkSTARTTLS = '';
 						if(typeof settings.smtp === 'undefined'){
 							settings.smtp = { host:'', port:'', username:'', password:'', encryption:'' };
@@ -402,24 +402,24 @@ API.Plugins.settings = {
 						if(typeof settings.smtp.encryption === 'undefined'){ settings.smtp.encryption = ''; }
 						if(settings.smtp.encryption == 'SSL'){ checkSSL = 'selected' }
 						if(settings.smtp.encryption == 'STARTTLS'){ checkSTARTTLS = 'selected' }
-						html += '<h3>'+API.Contents.Language['SMTP']+'</h3>';
+						html += '<h3>'+Engine.Contents.Language['SMTP']+'</h3>';
 						html += '<div class="form-group row px-2">';
 		          html += '<div class="input-group">';
 		            html += '<div class="input-group-prepend">';
 		              html += '<span class="input-group-text"><i class="fas fa-server"></i></span>';
 		            html += '</div>';
-		            html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Host']+'" name="host" value="'+settings.smtp.host+'">';
+		            html += '<input type="text" class="form-control" placeholder="'+Engine.Contents.Language['Host']+'" name="host" value="'+settings.smtp.host+'">';
 		            html += '<div class="input-group-prepend">';
 		              html += '<span class="input-group-text"><i class="fas fa-key"></i></span>';
 		            html += '</div>';
 								html += '<select name="encryption">';
-									html += '<option value="SSL" '+checkSSL+'>'+API.Contents.Language['SSL']+'</option>';
-									html += '<option value="STARTTLS" '+checkSTARTTLS+'>'+API.Contents.Language['STARTTLS']+'</option>';
+									html += '<option value="SSL" '+checkSSL+'>'+Engine.Contents.Language['SSL']+'</option>';
+									html += '<option value="STARTTLS" '+checkSTARTTLS+'>'+Engine.Contents.Language['STARTTLS']+'</option>';
 								html += '</select>';
 		            html += '<div class="input-group-prepend">';
 		              html += '<span class="input-group-text"><i class="fas fa-ethernet"></i></span>';
 		            html += '</div>';
-		            html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Port']+'" name="port" value="'+settings.smtp.port+'">';
+		            html += '<input type="text" class="form-control" placeholder="'+Engine.Contents.Language['Port']+'" name="port" value="'+settings.smtp.port+'">';
 		          html += '</div>';
 		        html += '</div>';
 						html += '<div class="form-group row px-2">';
@@ -427,11 +427,11 @@ API.Plugins.settings = {
                 html += '<div class="input-group-prepend">';
                   html += '<span class="input-group-text"><i class="fas fa-user"></i></span>';
                 html += '</div>';
-                html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Username']+'" name="username" value="'+settings.smtp.username+'">';
+                html += '<input type="text" class="form-control" placeholder="'+Engine.Contents.Language['Username']+'" name="username" value="'+settings.smtp.username+'">';
                 html += '<div class="input-group-prepend">';
                   html += '<span class="input-group-text"><i class="fas fa-user-lock"></i></span>';
                 html += '</div>';
-                html += '<input type="password" class="form-control" placeholder="'+API.Contents.Language['Password']+'" name="password" value="'+settings.smtp.password+'">';
+                html += '<input type="password" class="form-control" placeholder="'+Engine.Contents.Language['Password']+'" name="password" value="'+settings.smtp.password+'">';
 	            html += '</div>';
 		        html += '</div>';
 						html += '<hr>';
@@ -439,10 +439,10 @@ API.Plugins.settings = {
 	            html += '<div class="input-group">';
 		            html += '<div class="btn-group">';
 	                html += '<button type="button" name="SaveSMTP" class="btn btn-success ml-2">';
-	                  html += '<i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save'];
+	                  html += '<i class="fas fa-save mr-1"></i>'+Engine.Contents.Language['Save'];
 	                html += '</button>';
 	                html += '<button type="button" name="testSMTP" class="btn btn-info">';
-	                  html += '<i class="fas fa-paper-plane mr-1"></i>'+API.Contents.Language['Test'];
+	                  html += '<i class="fas fa-paper-plane mr-1"></i>'+Engine.Contents.Language['Test'];
 	                html += '</button>';
 		            html += '</div>';
 			        html += '</div>';
@@ -464,16 +464,16 @@ API.Plugins.settings = {
 										settings.smtp.password = content.find('input[name="password"]').val();
 										data.smtp.encryption = content.find('select[name="encryption"]').val();
 										settings.smtp.encryption = content.find('select[name="encryption"]').val();
-										API.request('settings','save',{data:data});
+										Engine.request('settings','save',{data:data});
 										break;
 									case'testSMTP':
-										API.request('settings','send',{data:""});
+										Engine.request('settings','send',{data:""});
 										break;
 								}
 							});
 						});
 					});
-					// API.Plugins.settings.GUI.Tabs.add('LDAP',function(content, tab){
+					// Engine.Plugins.settings.GUI.Tabs.add('LDAP',function(content, tab){
 					// 	var html = '';
 					// 	if(typeof settings.ldap === 'undefined'){
 					// 		settings.ldap = { host:'', port:'', username:'', password:'', domain:'', base:'', branches:'' };
@@ -485,17 +485,17 @@ API.Plugins.settings = {
 					// 	if(typeof settings.ldap.domain === 'undefined'){ settings.ldap.domain = ''; }
 					// 	if(typeof settings.ldap.base === 'undefined'){ settings.ldap.base = ''; }
 					// 	if(typeof settings.ldap.branches === 'undefined'){ settings.ldap.branches = ''; }
-					// 	html += '<h3>'+API.Contents.Language['LDAP Database']+'</h3>';
+					// 	html += '<h3>'+Engine.Contents.Language['LDAP Database']+'</h3>';
 					// 	html += '<div class="form-group row">';
 	        //     html += '<div class="input-group">';
           //       html += '<div class="input-group-prepend">';
           //         html += '<span class="input-group-text"><i class="fas fa-server"></i></span>';
           //       html += '</div>';
-          //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Host']+'" name="host" value="'+settings.ldap.host+'">';
+          //       html += '<input type="text" class="form-control" placeholder="'+Engine.Contents.Language['Host']+'" name="host" value="'+settings.ldap.host+'">';
           //       html += '<div class="input-group-prepend">';
           //         html += '<span class="input-group-text"><i class="fas fa-ethernet"></i></span>';
           //       html += '</div>';
-          //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Port']+'" name="port" value="'+settings.ldap.port+'">';
+          //       html += '<input type="text" class="form-control" placeholder="'+Engine.Contents.Language['Port']+'" name="port" value="'+settings.ldap.port+'">';
 	        //     html += '</div>';
 		      //   html += '</div>';
 					// 	html += '<div class="form-group row">';
@@ -503,11 +503,11 @@ API.Plugins.settings = {
 		      //       html += '<div class="input-group-prepend">';
 		      //         html += '<span class="input-group-text"><i class="fas fa-database"></i></span>';
 		      //       html += '</div>';
-		      //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Domain']+'" name="domain" value="'+settings.ldap.domain+'">';
+		      //       html += '<input type="text" class="form-control" placeholder="'+Engine.Contents.Language['Domain']+'" name="domain" value="'+settings.ldap.domain+'">';
 		      //       html += '<div class="input-group-prepend">';
 		      //         html += '<span class="input-group-text"><i class="fas fa-code-branch"></i></span>';
 		      //       html += '</div>';
-		      //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Base DN']+'" name="base" value="'+settings.ldap.base+'">';
+		      //       html += '<input type="text" class="form-control" placeholder="'+Engine.Contents.Language['Base DN']+'" name="base" value="'+settings.ldap.base+'">';
 		      //     html += '</div>';
 		      //   html += '</div>';
 					// 	html += '<div class="form-group row">';
@@ -515,11 +515,11 @@ API.Plugins.settings = {
 		      //       html += '<div class="input-group-prepend">';
 		      //         html += '<span class="input-group-text"><i class="fas fa-user"></i></span>';
 		      //       html += '</div>';
-		      //       html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Username']+'" name="username" value="'+settings.ldap.username+'">';
+		      //       html += '<input type="text" class="form-control" placeholder="'+Engine.Contents.Language['Username']+'" name="username" value="'+settings.ldap.username+'">';
 		      //       html += '<div class="input-group-prepend">';
 		      //         html += '<span class="input-group-text"><i class="fas fa-user-lock"></i></span>';
 		      //       html += '</div>';
-		      //       html += '<input type="password" class="form-control" placeholder="'+API.Contents.Language['Password']+'" name="password" value="'+settings.ldap.password+'">';
+		      //       html += '<input type="password" class="form-control" placeholder="'+Engine.Contents.Language['Password']+'" name="password" value="'+settings.ldap.password+'">';
 		      //     html += '</div>';
 		      //   html += '</div>';
 					// 	html += '<div class="form-group row">';
@@ -528,13 +528,13 @@ API.Plugins.settings = {
 		      //         html += '<span class="input-group-text"><i class="fas fa-code-branch"></i></span>';
 		      //       html += '</div>';
 					// 			var branches = '';for(const [key, branch] of Object.entries(settings.ldap.branches)){ branches += branch+"\n"; }
-		      //       html += '<textarea class="form-control" rows="6" placeholder="'+API.Contents.Language['One LDAP branch per line...']+'" style="resize: none;" name="branches">'+branches+'</textarea>';
+		      //       html += '<textarea class="form-control" rows="6" placeholder="'+Engine.Contents.Language['One LDAP branch per line...']+'" style="resize: none;" name="branches">'+branches+'</textarea>';
 		      //     html += '</div>';
 		      //   html += '</div>';
 					// 	html += '<div class="form-group row">';
 		      //     html += '<div class="input-group">';
 		      //       html += '<button type="button" name="SaveLDAP" class="btn btn-success ml-2">';
-		      //         html += '<i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save'];
+		      //         html += '<i class="fas fa-save mr-1"></i>'+Engine.Contents.Language['Save'];
 		      //       html += '</button>';
 		      //     html += '</div>';
 		      //   html += '</div>';
@@ -546,11 +546,11 @@ API.Plugins.settings = {
 					// 			settings.ldap[key] = content.find('input[name="'+key+'"]').val();
 					// 		});
 					// 		for(var [key, branch] of Object.entries(content.find('textarea').val().split("\n"))){ settings.ldap.branches.push(branch); }
-					// 		settings.customization = API.Contents.Settings.customization;
-					// 		API.request('settings','save',{data:{settings:settings}});
+					// 		settings.customization = Engine.Contents.Settings.customization;
+					// 		Engine.request('settings','save',{data:{settings:settings}});
 					// 	});
 					// });
-					// API.Plugins.settings.GUI.Tabs.add('LSP',function(content, tab){
+					// Engine.Plugins.settings.GUI.Tabs.add('LSP',function(content, tab){
 					// 	var html = '';
 					// 	if(typeof settings.lsp === 'undefined'){
 					// 		settings.lsp = { host:'', application:'', token:'' };
@@ -559,13 +559,13 @@ API.Plugins.settings = {
 					// 	if(typeof settings.lsp.application === 'undefined'){ settings.lsp.application = ''; }
 					// 	if(typeof settings.lsp.token === 'undefined'){ settings.lsp.token = ''; }
 					// 	if(typeof settings.license === 'undefined'){ settings.license = ''; }
-					// 	html += '<h3>'+API.Contents.Language['Licensing Server']+'</h3>';
+					// 	html += '<h3>'+Engine.Contents.Language['Licensing Server']+'</h3>';
 					// 	html += '<div class="form-group row">';
 					// 		html += '<div class="input-group">';
 					// 			html += '<div class="input-group-prepend">';
 					// 				html += '<span class="input-group-text"><i class="fas fa-server"></i></span>';
 					// 			html += '</div>';
-					// 			html += '<input type="text" class="form-control" name="host" placeholder="'+API.Contents.Language['Host']+'" value="'+settings.lsp.host+'">';
+					// 			html += '<input type="text" class="form-control" name="host" placeholder="'+Engine.Contents.Language['Host']+'" value="'+settings.lsp.host+'">';
 					// 		html += '</div>';
 					// 	html += '</div>';
 					// 	html += '<div class="form-group row">';
@@ -573,7 +573,7 @@ API.Plugins.settings = {
 					// 			html += '<div class="input-group-prepend">';
 					// 				html += '<span class="input-group-text"><i class="fas fa-archive"></i></span>';
 					// 			html += '</div>';
-					// 			html += '<input type="text" class="form-control" name="application" placeholder="'+API.Contents.Language['Application']+'" value="'+settings.lsp.application+'">';
+					// 			html += '<input type="text" class="form-control" name="application" placeholder="'+Engine.Contents.Language['Application']+'" value="'+settings.lsp.application+'">';
 					// 		html += '</div>';
 					// 	html += '</div>';
 					// 	html += '<div class="form-group row">';
@@ -581,23 +581,23 @@ API.Plugins.settings = {
 					// 			html += '<div class="input-group-prepend">';
 					// 				html += '<span class="input-group-text"><i class="fas fa-ticket-alt"></i></span>';
 					// 			html += '</div>';
-					// 			html += '<input type="password" class="form-control" name="token" placeholder="'+API.Contents.Language['Token']+'" value="'+settings.lsp.token+'">';
+					// 			html += '<input type="password" class="form-control" name="token" placeholder="'+Engine.Contents.Language['Token']+'" value="'+settings.lsp.token+'">';
 					// 		html += '</div>';
 					// 	html += '</div>';
 					// 	html += '<hr>';
 					// 	html += '<div class="form-group row">';
 					// 		html += '<div class="input-group">';
 					// 			html += '<button type="button" name="SaveLSP" class="btn btn-success ml-2">';
-					// 				html += '<i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save'];
+					// 				html += '<i class="fas fa-save mr-1"></i>'+Engine.Contents.Language['Save'];
 					// 			html += '</button>';
 					// 			html += '<button type="button" name="GenerateStructure" class="btn btn-primary ml-2">';
-					// 				html += '<i class="fas fa-cogs mr-1"></i>'+API.Contents.Language['Generate Structure'];
+					// 				html += '<i class="fas fa-cogs mr-1"></i>'+Engine.Contents.Language['Generate Structure'];
 					// 			html += '</button>';
 					// 			html += '<button type="button" name="GenerateSkeleton" class="btn btn-primary ml-2">';
-					// 				html += '<i class="fas fa-cogs mr-1"></i>'+API.Contents.Language['Generate Skeleton'];
+					// 				html += '<i class="fas fa-cogs mr-1"></i>'+Engine.Contents.Language['Generate Skeleton'];
 					// 			html += '</button>';
 					// 			html += '<button type="button" name="GenerateSample" class="btn btn-primary ml-2">';
-					// 				html += '<i class="fas fa-cogs mr-1"></i>'+API.Contents.Language['Generate Sample'];
+					// 				html += '<i class="fas fa-cogs mr-1"></i>'+Engine.Contents.Language['Generate Sample'];
 					// 			html += '</button>';
 					// 		html += '</div>';
 					// 	html += '</div>';
@@ -611,61 +611,61 @@ API.Plugins.settings = {
 					// 					var key = $(this).attr('name');
 					// 					settings.lsp[key] = content.find('input[name="'+key+'"]').val();
 					// 				});
-					// 				settings.customization = API.Contents.Settings.customization;
-					// 				API.request('settings','save',{data:{settings:settings}});
+					// 				settings.customization = Engine.Contents.Settings.customization;
+					// 				Engine.request('settings','save',{data:{settings:settings}});
 					// 				break;
 					// 			case"GenerateStructure":
-					// 				API.request('lsp','generate',{data:{type:"structure"}});
+					// 				Engine.request('lsp','generate',{data:{type:"structure"}});
 					// 				break;
 					// 			case"GenerateSkeleton":
-					// 				API.request('lsp','generate',{data:{type:"skeleton"}});
+					// 				Engine.request('lsp','generate',{data:{type:"skeleton"}});
 					// 				break;
 					// 			case"GenerateSample":
-					// 				API.request('lsp','generate',{data:{type:"sample"}});
+					// 				Engine.request('lsp','generate',{data:{type:"sample"}});
 					// 				break;
 					// 		}
 					// 	});
 					// });
 					if(settings.developer){
-						API.Plugins.settings.GUI.Tabs.add('developper',function(content, tab){
+						Engine.Plugins.settings.GUI.Tabs.add('developper',function(content, tab){
 							var html = '', checked = '';
 							if(typeof settings.registration === 'undefined'){ settings.registration = false; }
 							if(typeof settings.forgot === 'undefined'){ settings.forgot = false; }
-							html += '<h3>'+API.Contents.Language['Application Details']+'</h3>';
+							html += '<h3>'+Engine.Contents.Language['Application Details']+'</h3>';
 				      html += '<div class="form-group clearfix px-2">';
 				        html += '<div class="icheck-primary">';
 									if(settings.registration){ checked = 'checked'; } else { checked = ''; }
 				          html += '<input type="checkbox" id="registration" name="registration" '+checked+'>';
-				          html += '<label for="registration">'+API.Contents.Language['Allow user registration']+'</label>';
+				          html += '<label for="registration">'+Engine.Contents.Language['Allow user registration']+'</label>';
 				        html += '</div>';
 				      html += '</div>';
 				      html += '<div class="form-group clearfix px-2">';
 				        html += '<div class="icheck-primary">';
 									if(settings.forgot){ checked = 'checked'; } else { checked = ''; }
 				          html += '<input type="checkbox" id="forgot" name="forgot" '+checked+'>';
-				          html += '<label for="forgot">'+API.Contents.Language['Allow user to reset their password from the login page']+'</label>';
+				          html += '<label for="forgot">'+Engine.Contents.Language['Allow user to reset their password from the login page']+'</label>';
 				        html += '</div>';
 				      html += '</div>';
 							html += '<hr>';
 							html += '<div class="form-group row">';
 								html += '<div class="input-group">';
 									html += '<button type="button" name="SaveApp" class="btn btn-success ml-2">';
-										html += '<i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save'];
+										html += '<i class="fas fa-save mr-1"></i>'+Engine.Contents.Language['Save'];
 									html += '</button>';
 								html += '</div>';
 							html += '</div>';
-							html += '<h3>'+API.Contents.Language['Compile Application']+'</h3>';
+							html += '<h3>'+Engine.Contents.Language['Compile Application']+'</h3>';
 							html += '<hr>';
 							html += '<div class="form-group row">';
 								html += '<div class="input-group">';
 									html += '<button type="button" name="GenerateStructure" class="btn btn-primary ml-2">';
-										html += '<i class="fas fa-cogs mr-1"></i>'+API.Contents.Language['Generate Structure'];
+										html += '<i class="fas fa-cogs mr-1"></i>'+Engine.Contents.Language['Generate Structure'];
 									html += '</button>';
 									html += '<button type="button" name="GenerateSkeleton" class="btn btn-primary ml-2">';
-										html += '<i class="fas fa-cogs mr-1"></i>'+API.Contents.Language['Generate Skeleton'];
+										html += '<i class="fas fa-cogs mr-1"></i>'+Engine.Contents.Language['Generate Skeleton'];
 									html += '</button>';
 									html += '<button type="button" name="GenerateSample" class="btn btn-primary ml-2">';
-										html += '<i class="fas fa-cogs mr-1"></i>'+API.Contents.Language['Generate Sample'];
+										html += '<i class="fas fa-cogs mr-1"></i>'+Engine.Contents.Language['Generate Sample'];
 									html += '</button>';
 								html += '</div>';
 							html += '</div>';
@@ -684,30 +684,30 @@ API.Plugins.settings = {
 												conf[key] = content.find('input[name="'+key+'"]').val();
 											}
 										});
-										API.request('settings','save',{data:conf});
+										Engine.request('settings','save',{data:conf});
 										break;
 									case"GenerateStructure":
-										API.request('settings','generate',{data:{type:"structure"}});
+										Engine.request('settings','generate',{data:{type:"structure"}});
 										break;
 									case"GenerateSkeleton":
-										API.request('settings','generate',{data:{type:"skeleton"}});
+										Engine.request('settings','generate',{data:{type:"skeleton"}});
 										break;
 									case"GenerateSample":
-										API.request('settings','generate',{data:{type:"sample"}});
+										Engine.request('settings','generate',{data:{type:"sample"}});
 										break;
 								}
 							});
 						});
 					}
-					API.Plugins.settings.GUI.Tabs.add('customization',function(content, tab){
+					Engine.Plugins.settings.GUI.Tabs.add('customization',function(content, tab){
 						var html = '', checked = '';
-						if(!API.Helper.isSet(settings,['customization','pace','value'])){ settings.customization.pace.value = 'primary'; }
-						if(!API.Helper.isSet(settings,['customization','logobg','value'])){ settings.customization.logobg.value = 'dark'; }
-						if(!API.Helper.isSet(settings,['customization','nav','value'])){ settings.customization.nav.value = 'info'; }
-						if(!API.Helper.isSet(settings,['customization','navmode','value'])){ settings.customization.navmode.value = 'dark'; }
-						if(!API.Helper.isSet(settings,['customization','sidenav','value'])){ settings.customization.sidenav.value = 'info'; }
-						if(!API.Helper.isSet(settings,['customization','sidenavmode','value'])){ settings.customization.sidenavmode.value = 'dark'; }
-						html += '<h3>'+API.Contents.Language['Branding']+'</h3>';
+						if(!Engine.Helper.isSet(settings,['customization','pace','value'])){ settings.customization.pace.value = 'primary'; }
+						if(!Engine.Helper.isSet(settings,['customization','logobg','value'])){ settings.customization.logobg.value = 'dark'; }
+						if(!Engine.Helper.isSet(settings,['customization','nav','value'])){ settings.customization.nav.value = 'info'; }
+						if(!Engine.Helper.isSet(settings,['customization','navmode','value'])){ settings.customization.navmode.value = 'dark'; }
+						if(!Engine.Helper.isSet(settings,['customization','sidenav','value'])){ settings.customization.sidenav.value = 'info'; }
+						if(!Engine.Helper.isSet(settings,['customization','sidenavmode','value'])){ settings.customization.sidenavmode.value = 'dark'; }
+						html += '<h3>'+Engine.Contents.Language['Branding']+'</h3>';
 						html += '<div class="row px-2">';
 							html += '<div class="col-md-6 py-2">';
 								html += '<div class="input-group">';
@@ -716,7 +716,7 @@ API.Plugins.settings = {
 			                html += '<i class="fas fa-copyright mr-2"></i>Brand';
 			              html += '</span>';
 			            html += '</div>';
-									html += '<input type="text" class="form-control" placeholder="'+API.Contents.Language['Brand']+'" name="brand" value="'+settings.title+'">';
+									html += '<input type="text" class="form-control" placeholder="'+Engine.Contents.Language['Brand']+'" name="brand" value="'+settings.title+'">';
 			          html += '</div>';
 							html += '</div>';
 							html += '<div class="col-md-6 py-2">';
@@ -738,7 +738,7 @@ API.Plugins.settings = {
 			          html += '</div>';
 							html += '</div>';
 						html += '</div>';
-						html += '<h3>'+API.Contents.Language['Customization']+'</h3>';
+						html += '<h3>'+Engine.Contents.Language['Customization']+'</h3>';
 						html += '<div class="row px-2">';
 							html += '<div class="col-md-6 py-2">';
 								html += '<div class="input-group">';
@@ -750,8 +750,8 @@ API.Plugins.settings = {
 			            html += '<select class="form-control" name="pace">';
 										for(var [key, value] of Object.entries(["primary","secondary","info","success","warning","danger"])){
 											if(settings.customization.pace.value == value){
-												html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
-											} else { html += '<option value="'+value+'">'+API.Helper.ucfirst(value)+'</option>'; }
+												html += '<option value="'+value+'" selected>'+Engine.Helper.ucfirst(value)+'</option>';
+											} else { html += '<option value="'+value+'">'+Engine.Helper.ucfirst(value)+'</option>'; }
 										}
 			            html += '</select>';
 			          html += '</div>';
@@ -766,8 +766,8 @@ API.Plugins.settings = {
 			            html += '<select class="form-control" name="logobg">';
 										for(var [key, value] of Object.entries(["light","dark"])){
 											if(settings.customization.logobg.value == value){
-												html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
-											} else { html += '<option value="'+value+'">'+API.Helper.ucfirst(value)+'</option>'; }
+												html += '<option value="'+value+'" selected>'+Engine.Helper.ucfirst(value)+'</option>';
+											} else { html += '<option value="'+value+'">'+Engine.Helper.ucfirst(value)+'</option>'; }
 										}
 			            html += '</select>';
 			          html += '</div>';
@@ -782,8 +782,8 @@ API.Plugins.settings = {
 			            html += '<select class="form-control" name="nav">';
 										for(var [key, value] of Object.entries(["primary","secondary","info","success","warning","danger"])){
 											if(settings.customization.nav.value == value){
-												html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
-											} else { html += '<option value="'+value+'">'+API.Helper.ucfirst(value)+'</option>'; }
+												html += '<option value="'+value+'" selected>'+Engine.Helper.ucfirst(value)+'</option>';
+											} else { html += '<option value="'+value+'">'+Engine.Helper.ucfirst(value)+'</option>'; }
 										}
 			            html += '</select>';
 			          html += '</div>';
@@ -798,8 +798,8 @@ API.Plugins.settings = {
 			            html += '<select class="form-control" name="navmode">';
 										for(var [key, value] of Object.entries(["light","dark"])){
 											if(settings.customization.navmode.value == value){
-												html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
-											} else { html += '<option value="'+value+'">'+API.Helper.ucfirst(value)+'</option>'; }
+												html += '<option value="'+value+'" selected>'+Engine.Helper.ucfirst(value)+'</option>';
+											} else { html += '<option value="'+value+'">'+Engine.Helper.ucfirst(value)+'</option>'; }
 										}
 			            html += '</select>';
 			          html += '</div>';
@@ -814,8 +814,8 @@ API.Plugins.settings = {
 			            html += '<select class="form-control" name="sidenav">';
 										for(var [key, value] of Object.entries(["primary","secondary","info","success","warning","danger"])){
 											if(settings.customization.sidenav.value == value){
-												html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
-											} else { html += '<option value="'+value+'">'+API.Helper.ucfirst(value)+'</option>'; }
+												html += '<option value="'+value+'" selected>'+Engine.Helper.ucfirst(value)+'</option>';
+											} else { html += '<option value="'+value+'">'+Engine.Helper.ucfirst(value)+'</option>'; }
 										}
 			            html += '</select>';
 			          html += '</div>';
@@ -830,8 +830,8 @@ API.Plugins.settings = {
 			            html += '<select class="form-control" name="sidenavmode">';
 										for(var [key, value] of Object.entries(["light","dark"])){
 											if(settings.customization.sidenavmode.value == value){
-												html += '<option value="'+value+'" selected>'+API.Helper.ucfirst(value)+'</option>';
-											} else { html += '<option value="'+value+'">'+API.Helper.ucfirst(value)+'</option>'; }
+												html += '<option value="'+value+'" selected>'+Engine.Helper.ucfirst(value)+'</option>';
+											} else { html += '<option value="'+value+'">'+Engine.Helper.ucfirst(value)+'</option>'; }
 										}
 			            html += '</select>';
 			          html += '</div>';
@@ -841,30 +841,30 @@ API.Plugins.settings = {
 		        html += '<div class="form-group row">';
 	            html += '<div class="input-group">';
 								html += '<button type="button" name="SaveApp" class="btn btn-success ml-2">';
-									html += '<i class="fas fa-save mr-1"></i>'+API.Contents.Language['Save'];
+									html += '<i class="fas fa-save mr-1"></i>'+Engine.Contents.Language['Save'];
                 html += '</button>';
 	            html += '</div>';
 		        html += '</div>';
 						content.html(html);
 						content.find('a[data-action="remove"]').off().click(function(){
-							API.request('settings','removeLogo');
+							Engine.request('settings','removeLogo');
 						});
 						content.find('select').select2({ theme: 'bootstrap4' });
 						content.find('button').off().click(function(){
 							var run = true;
 							var customization = {};
-							customization = API.Contents.Settings.customization;
+							customization = Engine.Contents.Settings.customization;
 							content.find('select').each(function(){
 								var key = $(this).attr('name');
 								customization[key].value = $(this).select2('val');
-								customization[key].type = API.Contents.Settings.customization[key].type;
+								customization[key].type = Engine.Contents.Settings.customization[key].type;
 							});
 							content.find('input').each(function(){
 								var key = $(this).attr('name');
 								if(typeof customization[key] === "undefined"){ customization[key] = {}; }
 								if(key != "logo"){
 									customization[key].value = $(this).val();
-									customization[key].type = API.Contents.Settings.customization[key].type;
+									customization[key].type = Engine.Contents.Settings.customization[key].type;
 								} else {
 									if($(this).prop('files').length > 0){
 										if($(this).prop('files')[0].type == "image/png"){
@@ -883,7 +883,7 @@ API.Plugins.settings = {
 								}
 							});
 							if(run){
-								API.request('settings','save',{data:{customization}},function(result){
+								Engine.request('settings','save',{data:{customization}},function(result){
 									json = JSON.parse(result);
 									if(json.success != undefined){
 										var pace = $('body');
@@ -905,15 +905,15 @@ API.Plugins.settings = {
 										sidebar.removeClass(function (index, className) {
 									    return (className.match (/\bsidebar-\S+/g) || []).join(' ');
 										});
-										API.Contents.Settings.customization = json.output.settings.customization;
-										settings = API.Contents.Settings;
-										pace.addClass('pace-'+API.Contents.Settings.customization.pace.value);
-										brand.addClass('navbar-'+API.Contents.Settings.customization.logobg.value);
-										brand.addClass('bg-'+API.Contents.Settings.customization.logobg.value);
+										Engine.Contents.Settings.customization = json.output.settings.customization;
+										settings = Engine.Contents.Settings;
+										pace.addClass('pace-'+Engine.Contents.Settings.customization.pace.value);
+										brand.addClass('navbar-'+Engine.Contents.Settings.customization.logobg.value);
+										brand.addClass('bg-'+Engine.Contents.Settings.customization.logobg.value);
 										navbar.addClass('navbar-expand');
 										navbar.addClass('navbar-'+json.output.settings.customization.nav.value);
 										navbar.addClass('navbar-'+json.output.settings.customization.navmode.value);
-										sidebar.addClass('sidebar-'+API.Contents.Settings.customization.sidenavmode.value+'-'+API.Contents.Settings.customization.sidenav.value);
+										sidebar.addClass('sidebar-'+Engine.Contents.Settings.customization.sidenavmode.value+'-'+Engine.Contents.Settings.customization.sidenav.value);
 									}
 								});
 							}
@@ -925,7 +925,7 @@ API.Plugins.settings = {
 				if(options instanceof Function){ callback = options; options = {}; }
 				var tabs = $('#settingsTabs').find('.card-header').find('ul').first();
 				var contents = $('#settingsTabs').find('.card-body').find('div.tab-content').first();
-				tabs.append('<li class="nav-item"><a class="nav-link" data-toggle="pill" role="tab" id="settingsTabs-'+name.toLowerCase()+'" href="#settingsTabsContent-'+name.toLowerCase()+'" aria-controls="settingsTabsContent-'+name.toLowerCase()+'">'+API.Helper.ucfirst(name)+'</a></li>');
+				tabs.append('<li class="nav-item"><a class="nav-link" data-toggle="pill" role="tab" id="settingsTabs-'+name.toLowerCase()+'" href="#settingsTabsContent-'+name.toLowerCase()+'" aria-controls="settingsTabsContent-'+name.toLowerCase()+'">'+Engine.Helper.ucfirst(name)+'</a></li>');
 				tabs.find('a.nav-link').removeClass('active');
 				tabs.find('a.nav-link').first().addClass('active');
 				contents.append('<div class="tab-pane fade" id="settingsTabsContent-'+name.toLowerCase()+'" role="tabpanel" aria-labelledby="settingsTabs-'+name.toLowerCase()+'"></div>');
@@ -937,4 +937,4 @@ API.Plugins.settings = {
 	}
 }
 
-API.Plugins.settings.init();
+Engine.Plugins.settings.init();
